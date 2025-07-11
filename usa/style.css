@@ -1,0 +1,742 @@
+/* Estilos gerais do corpo da página */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    /* Fonte mais moderna */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    /* Remover margem padrão do body */
+    padding: 20px;
+    background: linear-gradient(to bottom right, #1a2a3a, #0d1a2a);
+    /* Gradiente escuro para fundo adulto */
+    color: #e0e0e0;
+    /* Cor de texto clara para contraste */
+    min-height: 100vh;
+}
+
+h1 {
+    color: #ffcc00;
+    /* Dourado/amarelo para destaque, remetendo a logos */
+    margin-bottom: 25px;
+    font-size: 2.5em;
+    /* Título maior e mais impactante */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Sombra para profundidade */
+    text-align: center;
+    /* Centralizar título */
+}
+
+/* Container principal para o mapa e detalhes */
+#main-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 96vw;
+    /* Um pouco mais de largura para o conteúdo total */
+    max-width: 1400px;
+}
+
+/* --- Estilos da Barra de Pesquisa --- */
+#search-container {
+    margin-bottom: 25px;
+    display: flex;
+    gap: 10px;
+    width: 96vw;
+    /* Alinhar com o main-content-container */
+    max-width: 1400px;
+    justify-content: center;
+}
+
+#search-input {
+    padding: 12px 15px;
+    border: 1px solid #5a5a5a;
+    border-radius: 5px;
+    background-color: #3a4a5a;
+    color: #e0e0e0;
+    font-size: 1em;
+    width: 70%;
+    /* Largura ajustável */
+    box-sizing: border-box;
+    outline: none;
+    /* Remover outline padrão */
+    transition: border-color 0.3s ease;
+}
+
+#search-input::placeholder {
+    color: #b0b0b0;
+}
+
+#search-input:focus {
+    border-color: #66ccff;
+    /* Cor de foco */
+    box-shadow: 0 0 5px rgba(102, 204, 255, 0.5);
+}
+
+#search-button {
+    padding: 12px 20px;
+    background-color: #ffcc00;
+    /* Dourado */
+    color: #1a2a3a;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#search-button:hover {
+    background-color: #e0b300;
+    /* Dourado mais escuro no hover */
+    transform: translateY(-2px);
+    /* Efeito sutil de levantar */
+}
+
+
+/* Estilos do container do mapa */
+#map-container {
+    width: 98%;
+    /* Ajusta à largura do main-content-container */
+    max-width: 1200px;
+    /* Mantém limite para o mapa */
+    height: auto;
+    border: 2px solid #5a5a5a;
+    /* Borda metálica */
+    border-radius: 8px;
+    /* Cantos levemente arredondados */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    /* Sombra mais profunda */
+    background-color: #2a3a4a;
+    /* Fundo escuro para o mapa */
+    padding: 25px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 500px;
+    margin-bottom: 35px;
+    /* Espaço abaixo do mapa */
+    position: relative;
+    /* Para posicionar mensagens de carregamento */
+}
+
+#map-loading-message {
+    color: #ffcc00;
+    font-size: 1.2em;
+}
+
+/* Estilos para o SVG do mapa */
+#usa-map {
+    width: 100%;
+    height: auto;
+}
+
+/* Estilos para o container de detalhes (filmes/séries) */
+#details-container {
+    margin-top: 0;
+    /* Remove a margem superior já que #map-container tem margin-bottom */
+    width: 98%;
+    /* Alinha com a largura do mapa container */
+    max-width: 1200px;
+    background-color: #2a3a4a;
+    /* Fundo escuro */
+    padding: 25px;
+    border: 2px solid #5a5a5a;
+    /* Borda metálica */
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    min-height: 250px;
+    /* Um pouco mais de altura mínima */
+    box-sizing: border-box;
+    /* --- Animação para o container de detalhes --- */
+    opacity: 0;
+    /* Começa invisível */
+    transform: translateY(20px);
+    /* Desliza de baixo para cima */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    /* Transição para ambas propriedades */
+}
+
+#details-container.show {
+    opacity: 1;
+    /* Torna visível */
+    transform: translateY(0);
+    /* Posição final */
+}
+
+.state-title {
+    color: #66ccff;
+    /* Azul vibrante para o título do estado */
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    border-bottom: 1px solid #4a5a6a;
+    /* Linha sutil de separação */
+    padding-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.media-list {
+    list-style: none;
+    padding: 0;
+}
+
+.media-item {
+    margin-bottom: 12px;
+    padding: 10px 15px;
+    background-color: #3a4a5a;
+    /* Fundo para cada item de mídia */
+    border-radius: 5px;
+    border-left: 4px solid #ffcc00;
+    /* Borda lateral dourada */
+    display: flex;
+    flex-direction: column;
+    /* --- Animação para cada item de mídia --- */
+    opacity: 0;
+    /* Começa invisível */
+    transform: translateX(-10px);
+    /* Desliza da esquerda */
+    animation: fadeInSlide 0.4s forwards;
+    /* Animação para cada item */
+}
+
+/* Delay para cada item (para aparecer um por um) */
+.media-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.media-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.media-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.media-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.media-item:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+/* Adicione mais se tiver estados com muitos filmes */
+.media-item:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.media-item:nth-child(7) {
+    animation-delay: 0.7s;
+}
+
+.media-item:nth-child(8) {
+    animation-delay: 0.8s;
+}
+
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+.media-item strong {
+    color: #e0e0e0;
+    font-size: 1.1em;
+    margin-bottom: 3px;
+}
+
+.media-item em {
+    color: #b0b0b0;
+    font-size: 0.9em;
+}
+
+/* Estilos para os novos elementos de mídia */
+.media-header {
+    margin-bottom: 8px;
+}
+
+.media-body {
+    display: flex;
+    align-items: flex-start;
+    /* Alinha a capa no topo */
+    gap: 15px;
+    /* Espaçamento entre capa e texto */
+}
+
+.media-cover {
+    width: 80px;
+    /* Largura da capa */
+    height: auto;
+    /* Mantém proporção */
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+    /* Impede que a imagem encolha demais */
+}
+
+.media-description {
+    flex-grow: 1;
+    /* Permite que a descrição ocupe o espaço restante */
+    font-size: 0.9em;
+    color: #b0b0b0;
+    margin: 0;
+    /* Remove margem padrão de parágrafo */
+}
+
+.media-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    /* Alinha nota e link à direita */
+    font-size: 0.85em;
+    margin-top: 10px;
+    /* Espaço entre descrição e info */
+    width: 100%;
+    /* Para que o alinhamento à direita funcione */
+}
+
+.media-rating {
+    background-color: #ffcc00;
+    /* Dourado para o fundo da nota */
+    color: #1a2a3a;
+    /* Texto escuro */
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.imdb-link {
+    color: #66ccff;
+    /* Azul vibrante para o link */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.imdb-link:hover {
+    text-decoration: underline;
+    color: #a0e0ff;
+    /* Cor mais clara no hover */
+}
+
+/* Estilos para os estados no SVG */
+.state {
+    fill: #4a6a8a;
+    /* Azul acinzentado suave, cor padrão para todos os estados */
+    stroke: #0d1a2a;
+    /* Contorno mais escuro para separação */
+    stroke-width: 0.8px;
+    /* Contorno um pouco mais visível */
+    transition: fill 0.3s ease, transform 0.3s ease;
+    /* Transição suave */
+    transform-origin: center center;
+}
+
+/* Estilo de foco para acessibilidade (após o tabindex) */
+.state:focus {
+    outline: 3px solid #ff00ff;
+    /* Roxo vibrante para acessibilidade no foco */
+    outline-offset: 2px;
+    /* Espaço entre o elemento e o outline */
+}
+
+/* Cores personalizadas para estados específicos */
+/* Estas regras sobrepõem o 'fill' da regra .state genérica */
+#MA {
+    fill: #8B4513;
+}
+
+/* Sela */
+#NY {
+    fill: #483D8B;
+}
+
+/* Azul Ardósia Escuro */
+#TX {
+    fill: #B22222;
+}
+
+/* Tijolo de Fogo */
+#CA {
+    fill: #2E8B57;
+}
+
+/* Verde Mar */
+#FL {
+    fill: #800080;
+}
+
+/* Roxo */
+#WA {
+    fill: #008B8B;
+}
+
+/* Ciano Escuro */
+#IL {
+    fill: #B8860B;
+}
+
+/* Ouro Escuro */
+#CO {
+    fill: #8B0000;
+}
+
+/* Vermelho Escuro */
+#AZ {
+    fill: #D2691E;
+}
+
+/* Chocolate */
+#MN {
+    fill: #5F9EA0;
+}
+
+/* Azul Cadete */
+#MT {
+    fill: #CD853F;
+}
+
+/* Peru */
+#ND {
+    fill: #6A5ACD;
+}
+
+/* Azul Ardósia */
+#ID {
+    fill: #708090;
+}
+
+/* Azul Ardósia Cinza */
+#NV {
+    fill: #8B008B;
+}
+
+/* Magenta Escuro */
+#NM {
+    fill: #A0522D;
+}
+
+/* Sienna */
+#OR {
+    fill: #20B2AA;
+}
+
+/* Verde Mar Claro */
+#UT {
+    fill: #8FBC8F;
+}
+
+/* Verde Mar Escuro */
+#WY {
+    fill: #DAA520;
+}
+
+/* Dourado Sólido */
+#AR {
+    fill: #CD5C5C;
+}
+
+/* Vermelho Indiano */
+#IA {
+    fill: #4682B4;
+}
+
+/* Azul Aço */
+#KS {
+    fill: #D2B48C;
+}
+
+/* Tan */
+#MO {
+    fill: #808000;
+}
+
+/* Oliva */
+#NE {
+    fill: #BC8F8F;
+}
+
+/* RosyBrown */
+#OK {
+    fill: #DC143C;
+}
+
+/* Crimson */
+#SD {
+    fill: #6B8E23;
+}
+
+/* OliveDrab */
+#LA {
+    fill: #A52A2A;
+}
+
+/* Marrom */
+#CT {
+    fill: #5F9EA0;
+}
+
+/* Azul Cadete */
+#NH {
+    fill: #8B4513;
+}
+
+/* Sela */
+#RI {
+    fill: #483D8B;
+}
+
+/* Azul Ardósia Escuro */
+#VT {
+    fill: #B22222;
+}
+
+/* Tijolo de Fogo */
+#AL {
+    fill: #2E8B57;
+}
+
+/* Verde Mar */
+#GA {
+    fill: #800080;
+}
+
+/* Roxo */
+#MS {
+    fill: #008B8B;
+}
+
+/* Ciano Escuro */
+#SC {
+    fill: #B8860B;
+}
+
+/* Ouro Escuro */
+#IL {
+    fill: #8B0000;
+}
+
+/* Vermelho Escuro */
+#IN {
+    fill: #D2691E;
+}
+
+/* Chocolate */
+#KY {
+    fill: #5F9EA0;
+}
+
+/* Azul Cadete */
+#NC {
+    fill: #CD853F;
+}
+
+/* Peru */
+#OH {
+    fill: #6A5ACD;
+}
+
+/* Azul Ardósia */
+#TN {
+    fill: #708090;
+}
+
+/* Azul Ardósia Cinza */
+#VA {
+    fill: #8B008B;
+}
+
+/* Magenta Escuro */
+#WI {
+    fill: #A0522D;
+}
+
+/* Sienna */
+#WV {
+    fill: #20B2AA;
+}
+
+/* Verde Mar Claro */
+#DE {
+    fill: #8FBC8F;
+}
+
+/* Verde Mar Escuro */
+#DC {
+    fill: #DAA520;
+}
+
+/* Dourado Sólido */
+#MD {
+    fill: #CD5C5C;
+}
+
+/* Vermelho Indiano */
+#NJ {
+    fill: #4682B4;
+}
+
+/* Azul Aço */
+#PA {
+    fill: #D2B48C;
+}
+
+/* Tan */
+#ME {
+    fill: #808000;
+}
+
+/* Oliva */
+#AK {
+    fill: #778899;
+}
+
+/* Azul Ardósia Claro */
+#HI {
+    fill: #DB7093;
+}
+
+/* PaleVioletRed */
+
+
+/* REGRAS DE HOVER e SELECTED (MAIS ESPECÍFICAS) */
+/* Estas regras vêm por último para garantir que sobreponham as cores por ID quando o mouse passa ou o estado é selecionado */
+.state:hover {
+    fill: #66ccff;
+    /* Azul vibrante no hover para todos */
+    cursor: pointer;
+    transform: scale(1.03);
+    /* Aumenta um pouco mais no hover */
+}
+
+.state.selected {
+    fill: #ffcc00;
+    /* Amarelo/dourado para o estado selecionado */
+    stroke: #e0e0e0;
+    /* Contorno claro para o selecionado */
+    stroke-width: 1.5px;
+}
+
+/* Responsividade para a barra de pesquisa */
+@media (max-width: 600px) {
+    #search-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    #search-input {
+        width: 90%;
+    }
+
+    #search-button {
+        width: 90%;
+    }
+
+    .media-body {
+        flex-direction: column;
+        /* Capa em cima, texto embaixo */
+        align-items: center;
+    }
+
+    .media-info {
+        align-items: center;
+        /* Centraliza informações em telas menores */
+    }
+
+    .media-cover {
+        margin-bottom: 10px;
+    }
+}
+
+/* Telas muito pequenas (celulares em modo retrato, até 480px) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+
+    #map-container {
+        min-height: 350px;
+        /* Altura mínima menor */
+        padding: 10px;
+    }
+
+    .state-title {
+        font-size: 1.4em;
+    }
+
+    .media-item {
+        padding: 8px 10px;
+        border-left-width: 3px;
+    }
+
+    .media-cover {
+        width: 60px;
+        /* Capa menor */
+    }
+
+    .media-info {
+        margin-top: 5px;
+        /* Espaçamento ajustado */
+    }
+
+    .media-rating {
+        padding: 2px 6px;
+        font-size: 0.8em;
+    }
+
+    .imdb-link {
+        font-size: 0.8em;
+    }
+}
+
+/* Telas pequenas (celulares em modo paisagem e tablets pequenos, 481px a 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    h1 {
+        font-size: 2.2em;
+    }
+
+    #map-container {
+        min-height: 450px;
+        padding: 20px;
+    }
+
+    .state-title {
+        font-size: 1.6em;
+    }
+
+    .media-cover {
+        width: 70px;
+    }
+}
+
+/* Telas médias (tablets maiores e laptops, 769px a 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    #map-container,
+    #details-container {
+        width: 90vw;
+        /* Um pouco mais apertado para telas médias */
+    }
+}
+
+/* Telas grandes (desktops, acima de 1024px) */
+@media (min-width: 1025px) {
+
+    #map-container,
+    #details-container {
+        width: 80vw;
+        /* Ajusta a largura para desktops grandes */
+    }
+}
