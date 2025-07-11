@@ -14,13 +14,13 @@ export function displayStateDetails(stateId) {
 
     // Remover a classe 'show' para reiniciar a animação
     document.getElementById('details-container').classList.remove('show');
-    
+
     mediaList.innerHTML = ''; // Limpa a lista anterior
 
     const data = stateData[stateId];
 
     // Verifica se há dados para o estado E se a lista de mídia existe e não está vazia
-    if (data && data.media && data.media.length > 0) { 
+    if (data && data.media && data.media.length > 0) {
         selectedStateTitle.textContent = `${escapeHTML(data.name)}: Filmes e Séries`;
         data.media.forEach(item => {
             const li = document.createElement('li');
@@ -34,8 +34,8 @@ export function displayStateDetails(stateId) {
             `;
 
             // Validação e adição da capa
-            const defaultCover = "https://placeholder.com/80x120?text=Sem+Capa"; // Placeholder para capas ausentes/inválidas
-            const coverUrl = (item.cover && typeof item.cover === 'string' && item.cover.startsWith('http')) ? escapeHTML(item.cover) : defaultCover;
+            const defaultCover = "https://via.placeholder.com/80x120?text=Sem+Capa"; // Placeholder para capas ausentes/inválidas
+            const coverUrl = (item.cover && typeof item.cover === 'string') ? escapeHTML(item.cover) : defaultCover;
             itemContent += `<img src="${coverUrl}" alt="Capa de ${escapeHTML(item.title) || 'Filme/Série'}" class="media-cover" loading="lazy">`;
 
 
