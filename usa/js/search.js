@@ -2,8 +2,9 @@
 
 import { escapeHTML } from './utils.js';
 import { stateData } from './data.js';
-import { resetStateHighlights, getCurrentSelectedState } from './map-interactions.js'; // Importa funções de mapa
-import { displayStateDetails } from './display.js'; // Importa função de display
+// Importa funções de map-interactions diretamente, pois elas agora são exportadas no nível superior
+import { resetStateHighlights, getCurrentSelectedState, setCurrentSelectedState } from './map-interactions.js'; 
+import { displayStateDetails } from './display.js';
 
 let usaMapInstance = null; // Para guardar a referência do mapa aqui também
 
@@ -31,9 +32,10 @@ function performSearch() {
     const searchInput = document.getElementById('search-input');
     const searchTerm = escapeHTML(searchInput.value.toLowerCase().trim());
     
-    // Assegura que resetStateHighlights seja chamado com a lista de estados correta
-    const states = usaMapInstance.querySelectorAll('.state'); // Pega a lista de estados para resetar
-    resetStateHighlights(states); 
+    // Pega a lista de estados para passar para resetStateHighlights
+    const states = usaMapInstance.querySelectorAll('.state');
+    resetStateHighlights(states); // Chama resetStateHighlights com a lista de estados
+
 
     if (!searchTerm) {
         document.getElementById('selected-state-title').textContent = `Clique em um estado para ver os filmes e séries!`;
@@ -43,34 +45,29 @@ function performSearch() {
 
     let foundAny = false;
 
-    // Iterar por todos os estados para buscar por nome ou conteúdo de mídia
     for (const stateId in stateData) {
         const stateInfo = stateData[stateId];
-        const stateElement = usaMapInstance.getElementById(stateId); // Pega o elemento <path> do estado
+        const stateElement = usaMapInstance.getElementById(stateId);
 
-        // Verificações de robustez:
         if (!stateInfo) {
             console.warn(`Dados para o estado "${stateId}" ausentes em stateData.`);
-            continue; // Pula para o próximo estado se os dados não existirem
+            continue;
         }
         if (!stateElement) {
             console.warn(`Elemento SVG para o estado "${stateId}" não encontrado no mapa.`);
-            continue; // Pula para o próximo estado se o elemento SVG não existir
+            continue;
         }
-
 
         const stateNameLower = stateInfo.name.toLowerCase();
         let stateMatchesSearch = false;
 
-        // Busca por nome do estado
         if (stateNameLower.includes(searchTerm)) {
             stateMatchesSearch = true;
         }
 
-        // Busca por filmes/séries no estado
-        if (!stateMatchesSearch && stateInfo.media && Array.isArray(stateInfo.media)) { // Garante que .media existe e é um array
+        if (!stateMatchesSearch && stateInfo.media && Array.isArray(stateInfo.media)) {
             stateInfo.media.forEach(mediaItem => {
-                if (mediaItem && mediaItem.title && mediaItem.description && mediaItem.type) { // Validação básica do item de mídia
+                if (mediaItem && mediaItem.title && mediaItem.description && mediaItem.type) {
                     if (mediaItem.title.toLowerCase().includes(searchTerm) ||
                         mediaItem.description.toLowerCase().includes(searchTerm) ||
                         mediaItem.type.toLowerCase().includes(searchTerm)) {
@@ -87,14 +84,15 @@ function performSearch() {
             foundAny = true;
 
             if (stateNameLower === searchTerm || stateId.toLowerCase() === searchTerm) {
-                const currentSelectedState = getCurrentSelectedState(); // Pega o estado selecionado atual
+                const currentSelectedState = getCurrentSelectedState();
                 if (currentSelectedState) {
                     currentSelectedState.classList.remove('selected');
                 }
                 stateElement.classList.add('selected');
+                setCurrentSelectedState(stateElement); // Atualiza o estado selecionado via função exportada
                 displayStateDetails(stateId); 
                 document.getElementById('details-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                return; // Sai após encontrar e selecionar um estado exato
+                return;
             }
         }
     }

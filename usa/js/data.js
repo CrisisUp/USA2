@@ -48,9 +48,9 @@ export const stateData = {
 
     "MN": { name: "Minnesota", media: [
 
-        { type: "Filme", title: "Fargo", description: "Uma esposa é sequestrada e seu marido tenta negociar o resgate, mas as coisas não saem como planejado.", cover: "https://image.tmdb.org/t/p/w500/oP3y9j2e1k6l9m8n7h6j5i4u3v2.jpg", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt0116282/" }, 
+        { type: "Filme", title: "Fargo", description: "Uma esposa é sequestrada e seu marido tenta negociar o resgate, mas as coisas não saem como planejado.", cover: "images/Minnesota/fargo.png", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt0116282/" }, 
 
-        { type: "Filme", title: "Juno", description: "Uma adolescente grávida toma uma decisão incomum sobre o futuro de seu bebê.", cover: "https://image.tmdb.org/t/p/w500/p2tF8e9j7h6g5f4d3c2b1a0e9z.jpg", rating: "7.5/10", imdbLink: "https://www.imdb.com/title/tt0460780/" }] },
+        { type: "Filme", title: "Juno", description: "Uma adolescente grávida toma uma decisão incomum sobre o futuro de seu bebê.", cover: "images/Minnesota/juno.png", rating: "7.5/10", imdbLink: "https://www.imdb.com/title/tt0460780/" }] },
 
     "MT": { name: "Montana", media: [
 
@@ -90,9 +90,9 @@ export const stateData = {
 
     "NV": { name: "Nevada", media: [
 
-        { type: "Filme", title: "Se Beber, Não Case!", description: "Quatro amigos viajam para Las Vegas para uma despedida de solteiro que dá muito errado.", cover: "https://image.tmdb.org/t/p/w500/s3bQY9y4d3g6h7i8j9k0l1m2n3p.jpg", rating: "7.7/10", imdbLink: "https://www.imdb.com/title/tt1119646/" }, 
+        { type: "Filme", title: "Se Beber, Não Case!", description: "Quatro amigos viajam para Las Vegas para uma despedida de solteiro que dá muito errado.", cover: "images/Nevada/se-beber-nao-case.png", rating: "7.7/10", imdbLink: "https://www.imdb.com/title/tt1119646/" }, 
 
-        { type: "Série", title: "CSI: Crime Scene Investigation", description: "Uma equipe de cientistas forenses resolve crimes em Las Vegas usando tecnologia avançada.", cover: "https://image.tmdb.org/t/p/w500/q1w2e3r4t5y6u7i8o9p0q1r2s3t.jpg", rating: "7.7/10", imdbLink: "https://www.imdb.com/title/tt0247014/" }] },
+        { type: "Série", title: "CSI: Crime Scene Investigation", description: "Uma equipe de cientistas forenses resolve crimes em Las Vegas usando tecnologia avançada.", cover: "images/Nevada/csi-investigacao-criminal.png", rating: "7.7/10", imdbLink: "https://www.imdb.com/pt/title/tt0247082/" }] },
 
     "NM": { name: "Novo México", media: [
 
@@ -114,9 +114,9 @@ export const stateData = {
 
     "WY": { name: "Wyoming", media: [
 
-        { type: "Filme", title: "Brokeback Mountain", description: "A complexa história de amor entre dois cowboys no Wyoming rural.", cover: "https://image.tmdb.org/t/p/w500/s3bQY9y4d3g6h7i8j9k0l1m2n3p.jpg", rating: "7.7/10", imdbLink: "https://www.imdb.com/title/tt0388795/" }, 
+        { type: "Filme", title: "Brokeback Mountain", description: "A complexa história de amor entre dois cowboys no Wyoming rural.", cover: "images/Wyoming/o-segredo-de-brokeback-mountain.png", rating: "7.7/10", imdbLink: "https://www.imdb.com/title/tt0388795/" }, 
 
-        { type: "Filme", title: "Os Imperdoáveis", description: "Um pistoleiro aposentado é forçado a pegar em armas novamente no Velho Oeste, com locações que remetem ao Wyoming.", cover: "https://image.tmdb.org/t/p/w500/q1w2e3r4t5y6u7i8o9p0q1r2s3t.jpg", rating: "8.2/10", imdbLink: "https://www.imdb.com/title/tt0105695/" }] },
+        { type: "Filme", title: "Os Imperdoáveis", description: "Um pistoleiro aposentado é forçado a pegar em armas novamente no Velho Oeste, com locações que remetem ao Wyoming.", cover: "images/Wyoming/os-imperdoaveis.png", rating: "8.2/10", imdbLink: "https://www.imdb.com/title/tt0105695/" }] },
 
     "AR": { name: "Arkansas", media: [
 
@@ -258,9 +258,9 @@ export const stateData = {
 
     "WI": { name: "Wisconsin", media: [
 
-        { type: "Filme", title: "Missão Madrinha de Casamento", description: "Uma dama de honra em apuros tenta navegar pelas tradições do casamento e um amor improvável, com algumas cenas em Wisconsin.", cover: "https://image.tmdb.org/t/p/w500/r0x1y2z3a4b5c6d7e8f9g0h1i2j.jpg", rating: "6.8/10", imdbLink: "https://www.imdb.com/title/tt1478338/" }, 
+        { type: "Filme", title: "Missão Madrinha de Casamento", description: "Uma dama de honra em apuros tenta navegar pelas tradições do casamento e um amor improvável, com algumas cenas em Wisconsin.", cover: "images/Wisconsin/missao-madrinha-de-casamento.png", rating: "6.8/10", imdbLink: "https://www.imdb.com/title/tt1478338/" }, 
 
-        { type: "Série", title: "That '70s Show", description: "A vida de um grupo de adolescentes nos anos 70 em uma pequena cidade fictícia de Wisconsin.", cover: "https://image.tmdb.org/t/p/w500/s1t2u3v4w5x6y7z8a9b0c1d2e3f.jpg", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt0165598/" }] },
+        { type: "Série", title: "That '70s Show", description: "A vida de um grupo de adolescentes nos anos 70 em uma pequena cidade fictícia de Wisconsin.", cover: "images/Wisconsin/that-70s-show.png", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt0165598/" }] },
 
     "WV": { name: "Virgínia Ocidental", media: [
 
