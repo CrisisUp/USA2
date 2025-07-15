@@ -192,9 +192,9 @@ export const stateData = {
 
     "AL": { name: "Alabama", media: [
 
-        { type: "Filme", title: "Forrest Gump: O Contador de Histórias", description: "A vida de um homem simples do Alabama que vivencia e influencia eventos históricos importantes.", cover: "https://image.tmdb.org/t/p/w500/a1b2c3d4e5f6g7h8i9j0k1l2m3n.jpg", rating: "8.8/10", imdbLink: "https://www.imdb.com/title/tt0109830/" }, 
+        { type: "Filme", title: "Forrest Gump: O Contador de Histórias", description: "A vida de um homem simples do Alabama que vivencia e influencia eventos históricos importantes.", cover: "images/Alabama/forrest-gump.png", rating: "8.8/10", imdbLink: "https://www.imdb.com/title/tt0109830/" }, 
 
-        { type: "Filme", title: "Selma", description: "A marcha liderada por Martin Luther King Jr. de Selma a Montgomery, Alabama, pela igualdade de direitos.", cover: "https://image.tmdb.org/t/p/w500/s3bQY9y4d3g6h7i8j9k0l1m2n3p.jpg", rating: "7.5/10", imdbLink: "https://www.imdb.com/title/tt1020072/" }] },
+        { type: "Filme", title: "Selma", description: "A marcha liderada por Martin Luther King Jr. de Selma a Montgomery, Alabama, pela igualdade de direitos.", cover: "images/Alabama/selma.png", rating: "7.5/10", imdbLink: "https://www.imdb.com/title/tt1020072/" }] },
 
     "GA": { name: "Geórgia", media: [
 
@@ -204,9 +204,9 @@ export const stateData = {
 
     "MS": { name: "Mississippi", media: [
 
-        { type: "Filme", title: "Histórias Cruzadas", description: "Jovens aspirantes a escritores e empregadas negras formam um vínculo improvável no Mississippi dos anos 60.", cover: "https://image.tmdb.org/t/p/w500/r0x1y2z3a4b5c6d7e8f9g0h1i2j.jpg", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt1454029/" }, 
+        { type: "Filme", title: "Histórias Cruzadas", description: "Jovens aspirantes a escritores e empregadas negras formam um vínculo improvável no Mississippi dos anos 60.", cover: "images/Mississippi/historias-cruzadas.png", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt1454029/" }, 
 
-        { type: "Filme", title: "Tempo de Matar", description: "Um advogado defende um homem negro que assassinou os estupradores de sua filha, no Mississippi.", cover: "https://image.tmdb.org/t/p/w500/s1t2u3v4w5x6y7z8a9b0c1d2e3f.jpg", rating: "7.5/10", imdbLink: "https://www.imdb.com/title/tt0117913/" }] },
+        { type: "Filme", title: "Tempo de Matar", description: "Um advogado defende um homem negro que assassinou os estupradores de sua filha, no Mississippi.", cover: "images/Mississippi/tempo-de-matar.png", rating: "7.5/10", imdbLink: "https://www.imdb.com/title/tt0117913/" }] },
 
     "SC": { name: "Carolina do Sul", media: [
 
