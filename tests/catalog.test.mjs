@@ -48,9 +48,9 @@ describe('catálogo', () => {
     }
   });
 
-  it('todos os covers referenciam imagens existentes no disco', () => {
+  it('covers (quando presentes) referenciam imagens existentes no disco', () => {
     for (const item of allItems) {
-      expect(item.cover, `cover ausente em "${item.title}"`).toBeTruthy();
+      if (!item.cover) continue; // sem poster livre → placeholder no display.js
       expect(item.cover, `cover fora do padrão em "${item.title}"`).toMatch(COVER_RE);
       const file = path.resolve(USA_DIR, item.cover);
       expect(fs.existsSync(file), `arquivo não encontrado: ${item.cover} ("${item.title}")`).toBe(true);

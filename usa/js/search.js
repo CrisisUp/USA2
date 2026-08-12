@@ -4,12 +4,20 @@ import { stateData } from './data.js';
 import { resetStateHighlights, getCurrentSelectedState, setCurrentSelectedState, getMapInstance } from './map-interactions.js';
 import { displayStateDetails } from './display.js';
 
+let cachedStates = null; // Cache dos elementos .state do mapa
+
 /**
  * Inicializa a funcionalidade de busca e seus event listeners.
  */
 export function initSearch() {
     const searchInput = document.getElementById('search-input');
     const searchButton = document.getElementById('search-button');
+
+    // Cacheia os elementos .state uma única vez (o mapa não muda após carregamento)
+    const map = getMapInstance();
+    if (map) {
+        cachedStates = map.querySelectorAll('.state');
+    }
 
     searchButton.addEventListener('click', performSearch);
     searchInput.addEventListener('keydown', (event) => {
@@ -121,7 +129,8 @@ function setSearchMessage(title, message) {
  * Executa a busca no mapa e atualiza a exibição.
  */
 function performSearch() {
-    const states = getMapInstance().querySelectorAll('.state');
+    // Usa cache de elementos .state (populado em initSearch)
+    const states = cachedStates || getMapInstance()?.querySelectorAll('.state') || [];
     resetStateHighlights(states); // Limpa destaques e seleções anteriores
 
     const searchTerm = getSearchTerm();

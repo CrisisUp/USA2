@@ -33,7 +33,7 @@ export const stateData = {
 
         { type: "Filme", title: "No Country for Old Men", description: "Um caçador encontra uma mala cheia de dinheiro no deserto do Texas, desencadeando uma perseguição brutal.", cover: "images/TX/no-country-for-old-men.jpg", rating: "8.2/10", imdbLink: "https://www.imdb.com/title/tt0477080/" }, 
 
-        { type: "Série", title: "Friday Night Lights", description: "Drama realista sobre a vida de um time de futebol americano escolar e a comunidade de Dillon, Texas.", cover: "images/TX/friday-night-lights.png", rating: "8.7/10", imdbLink: "https://www.imdb.com/title/tt0758745/" },
+        { type: "Série", title: "Friday Night Lights", description: "Drama realista sobre a vida de um time de futebol americano escolar e a comunidade de Dillon, Texas.",rating: "8.7/10", imdbLink: "https://www.imdb.com/title/tt0758745/" },
 
         { type: "Filme", title: "Apollo 13", description: "A dramática história real da missão lunar que quase terminou em tragédia, comandada a partir do Texas.", cover: "images/TX/apollo-13.jpg", rating: "7.7/10", imdbLink: "https://www.imdb.com/title/tt0112384/" }] },
 
@@ -92,7 +92,7 @@ export const stateData = {
 
         { type: "Filme", title: "Sintonia de Amor", description: "Um menino deseja uma nova esposa para seu pai, e uma jornalista responde ao seu pedido.", cover: "images/WA/sintonia-de-amor.jpg", rating: "6.8/10", imdbLink: "https://www.imdb.com/title/tt0108160/" }, 
 
-        { type: "Série", title: "Grey's Anatomy", description: "Drama médico centrado na vida de cirurgiões residentes e atendentes em Seattle.", cover: "images/WA/grey-s-anatomy.svg", rating: "7.6/10", imdbLink: "https://www.imdb.com/title/tt0413573/" }] },
+        { type: "Série", title: "Grey's Anatomy", description: "Drama médico centrado na vida de cirurgiões residentes e atendentes em Seattle.",rating: "7.6/10", imdbLink: "https://www.imdb.com/title/tt0413573/" }] },
 
     "AZ": { name: "Arizona", media: [
 
@@ -114,19 +114,19 @@ export const stateData = {
 
     "NM": { name: "Novo México", media: [
 
-        { type: "Série", title: "Breaking Bad", description: "Um professor de química do ensino médio diagnosticado com câncer começa a fabricar metanfetamina para garantir o futuro de sua família.", cover: "images/NM/breaking-bad.png", rating: "9.5/10", imdbLink: "https://www.imdb.com/title/tt0903747/" }] },
+        { type: "Série", title: "Breaking Bad", description: "Um professor de química do ensino médio diagnosticado com câncer começa a fabricar metanfetamina para garantir o futuro de sua família.",rating: "9.5/10", imdbLink: "https://www.imdb.com/title/tt0903747/" }] },
 
     "OR": { name: "Oregon", media: [
 
         { type: "Filme", title: "Os Goonies", description: "Um grupo de crianças encontra um mapa do tesouro e embarca em uma aventura para salvar suas casas.", cover: "images/OR/os-goonies.jpg", rating: "7.7/10", imdbLink: "https://www.imdb.com/title/tt0089218/" }, 
 
-        { type: "Série", title: "Portlandia", description: "Uma série de comédia de esquetes que satiriza a cultura peculiar de Portland, Oregon.", cover: "images/OR/portlandia.png", rating: "7.9/10", imdbLink: "https://www.imdb.com/title/tt1702444/" }] },
+        { type: "Série", title: "Portlandia", description: "Uma série de comédia de esquetes que satiriza a cultura peculiar de Portland, Oregon.",rating: "7.9/10", imdbLink: "https://www.imdb.com/title/tt1702444/" }] },
 
     "UT": { name: "Utah", media: [
 
         { type: "Filme", title: "127 Horas", description: "A história real de um alpinista que fica preso sob uma rocha em um cânion remoto de Utah.", cover: "images/UT/127-horas.jpg", rating: "7.5/10", imdbLink: "https://www.imdb.com/title/tt1542344/" }, 
 
-        { type: "Série", title: "Westworld", description: "Um parque temático futurista populado por 'anfitriões' androides, onde os visitantes podem viver suas fantasias, com paisagens que remetem a Utah.", cover: "images/UT/westworld.jpg", rating: "8.5/10", imdbLink: "https://www.imdb.com/title/tt0475784/" }] },
+        { type: "Série", title: "Westworld", description: "Um parque temático futurista populado por 'anfitriões' androides, onde os visitantes podem viver suas fantasias, com paisagens que remetem a Utah.",rating: "8.5/10", imdbLink: "https://www.imdb.com/title/tt0475784/" }] },
 
     "WY": { name: "Wyoming", media: [
 
@@ -148,13 +148,13 @@ export const stateData = {
 
         { type: "Filme", title: "O Mágico de Oz", description: "Uma garota do Kansas é levada por um tornado para uma terra mágica onde busca ajuda para voltar para casa.", cover: "images/KS/o-magico-de-oz.jpg", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt0032138/" }, 
 
-        { type: "Série", title: "Supernatural", description: "Dois irmãos caçam demônios e outras criaturas sobrenaturais pelos Estados Unidos, com raízes em Lawrence, Kansas.", cover: "images/KS/supernatural.svg", rating: "8.4/10", imdbLink: "https://www.imdb.com/title/tt0460681/" }] },
+        { type: "Série", title: "Supernatural", description: "Dois irmãos caçam demônios e outras criaturas sobrenaturais pelos Estados Unidos, com raízes em Lawrence, Kansas.",rating: "8.4/10", imdbLink: "https://www.imdb.com/title/tt0460681/" }] },
 
     "MO": { name: "Missouri", media: [
 
         { type: "Filme", title: "Garota Exemplar", description: "Um homem se torna o principal suspeito no desaparecimento de sua esposa no Missouri.", cover: "images/MO/garota-exemplar.jpg", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt2267998/" }, 
 
-        { type: "Série", title: "Ozark", description: "Uma família de lavadores de dinheiro de Chicago é forçada a se mudar para os lagos Ozark, no Missouri.", cover: "images/MO/ozark.svg", rating: "8.5/10", imdbLink: "https://www.imdb.com/title/tt5071412/" }] },
+        { type: "Série", title: "Ozark", description: "Uma família de lavadores de dinheiro de Chicago é forçada a se mudar para os lagos Ozark, no Missouri.",rating: "8.5/10", imdbLink: "https://www.imdb.com/title/tt5071412/" }] },
 
     "NE": { name: "Nebraska", media: [
 
@@ -170,7 +170,7 @@ export const stateData = {
 
     "SD": { name: "Dakota do Sul", media: [
 
-        { type: "Série", title: "Deadwood", description: "Um drama de faroeste que retrata a vida em uma cidade sem lei nas Colinas Negras de Dakota do Sul.", cover: "images/SD/deadwood.jpg", rating: "8.6/10", imdbLink: "https://www.imdb.com/title/tt0349909/" }, 
+        { type: "Série", title: "Deadwood", description: "Um drama de faroeste que retrata a vida em uma cidade sem lei nas Colinas Negras de Dakota do Sul.", cover: "images/SD/deadwood-season1.jpg", rating: "8.6/10", imdbLink: "https://www.imdb.com/title/tt0349909/" }, 
 
         { type: "Filme", title: "O Voo do Dragão", description: "Um piloto tenta provar a existência de dragões, com uma parte da história se passando em Dakota do Sul.", cover: "images/SD/o-voo-do-dragao.jpg", rating: "6.3/10", imdbLink: "https://www.imdb.com/title/tt0097241/" }] },
 
@@ -178,13 +178,13 @@ export const stateData = {
 
         { type: "Filme", title: "Um Bonde Chamado Desejo", description: "Um clássico drama adaptado de Tennessee Williams, ambientado na Nova Orleans da Louisiana.", cover: "images/LA/um-bonde-chamado-desejo.jpg", rating: "7.9/10", imdbLink: "https://www.imdb.com/title/tt0045322/" }, 
 
-        { type: "Série", title: "True Detective (Temporada 1)", description: "Dois detetives rastreiam um serial killer ao longo de 17 anos na Louisiana, em um drama criminal complexo.", cover: "images/LA/true-detective-temporada-1.jpg", rating: "8.9/10", imdbLink: "https://www.imdb.com/title/tt2356777/" }] },
+        { type: "Série", title: "True Detective (Temporada 1)", description: "Dois detetives rastreiam um serial killer ao longo de 17 anos na Louisiana, em um drama criminal complexo.",rating: "8.9/10", imdbLink: "https://www.imdb.com/title/tt2356777/" }] },
 
     "CT": { name: "Connecticut", media: [
 
         { type: "Filme", title: "O Show de Truman", description: "Um homem descobre que toda a sua vida é um reality show televisionado, ambientado em uma cidade fictícia inspirada em Connecticut.", cover: "images/CT/o-show-de-truman.jpg", rating: "8.2/10", imdbLink: "https://www.imdb.com/title/tt0120382/" },
 
-        { type: "Série", title: "Gilmore Girls", description: "A relação entre uma mãe solteira e sua filha em uma charmosa cidade fictícia de Connecticut.", cover: "images/CT/gilmore-girls.svg", rating: "8.2/10", imdbLink: "https://www.imdb.com/title/tt0201889/" }] },
+        { type: "Série", title: "Gilmore Girls", description: "A relação entre uma mãe solteira e sua filha em uma charmosa cidade fictícia de Connecticut.",rating: "8.2/10", imdbLink: "https://www.imdb.com/title/tt0201889/" }] },
 
     "NH": { name: "Nova Hampshire", media: [
 
@@ -212,7 +212,7 @@ export const stateData = {
 
     "GA": { name: "Geórgia", media: [
 
-        { type: "Série", title: "Stranger Things", description: "Um grupo de crianças em uma cidade de Indiana se depara com forças sobrenaturais, filmado principalmente na Geórgia.", cover: "images/GA/stranger-things.png", rating: "8.7/10", imdbLink: "https://www.imdb.com/title/tt4574334/" }, 
+        { type: "Série", title: "Stranger Things", description: "Um grupo de crianças em uma cidade de Indiana se depara com forças sobrenaturais, filmado principalmente na Geórgia.",rating: "8.7/10", imdbLink: "https://www.imdb.com/title/tt4574334/" }, 
 
         { type: "Série", title: "The Walking Dead", description: "Sobreviventes de um apocalipse zumbi lutam para sobreviver, com grande parte da série filmada na Geórgia.", cover: "images/GA/the-walking-dead.jpg", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt1520211/" }] },
 
@@ -236,7 +236,7 @@ export const stateData = {
 
         { type: "Filme", title: "Hoosiers", description: "Um treinador com um passado problemático lidera um pequeno time de basquete do ensino médio de Indiana a um campeonato estadual.", cover: "images/IN/hoosiers.jpg", rating: "7.5/10", imdbLink: "https://www.imdb.com/title/tt0091217/" }, 
 
-        { type: "Série", title: "Parks and Recreation", description: "Uma funcionária otimista do departamento de parques tenta melhorar sua pequena cidade fictícia de Pawnee, Indiana.", cover: "images/IN/parks-and-recreation.svg", rating: "8.6/10", imdbLink: "https://www.imdb.com/title/tt1266020/" }] },
+        { type: "Série", title: "Parks and Recreation", description: "Uma funcionária otimista do departamento de parques tenta melhorar sua pequena cidade fictícia de Pawnee, Indiana.",rating: "8.6/10", imdbLink: "https://www.imdb.com/title/tt1266020/" }] },
 
     "KY": { name: "Kentucky", media: [
 
@@ -246,7 +246,7 @@ export const stateData = {
 
     "NC": { name: "Carolina do Norte", media: [
 
-        { type: "Série", title: "One Tree Hill", description: "A vida de dois meio-irmãos e seus amigos no ensino médio e na vida adulta em uma pequena cidade da Carolina do Norte.", cover: "images/NC/one-tree-hill.jpg", rating: "7.7/10", imdbLink: "https://www.imdb.com/title/tt0368598/" }, 
+        { type: "Série", title: "One Tree Hill", description: "A vida de dois meio-irmãos e seus amigos no ensino médio e na vida adulta em uma pequena cidade da Carolina do Norte.",rating: "7.7/10", imdbLink: "https://www.imdb.com/title/tt0368598/" }, 
 
         { type: "Filme", title: "Jogos Vorazes", description: "Adolescentes são forçados a lutar até a morte em um evento televisivo, com muitas cenas filmadas na Carolina do Norte.", cover: "images/NC/jogos-vorazes.jpg", rating: "7.2/10", imdbLink: "https://www.imdb.com/title/tt1392170/" }] },
 
@@ -264,7 +264,7 @@ export const stateData = {
 
         { type: "Filme", title: "Duelo de Titãs", description: "Um drama esportivo baseado na história real de um time de futebol americano escolar integrado racialmente na Virgínia.", cover: "images/VA/duelo-de-titas.jpg", rating: "7.8/10", imdbLink: "https://www.imdb.com/title/tt0210945/" }, 
 
-        { type: "Série", title: "The Americans", description: "Espiões da KGB disfarçados de casal americano vivem no subúrbio de Washington D.C., com muitas cenas na Virgínia.", cover: "images/VA/the-americans.png", rating: "8.4/10", imdbLink: "https://www.imdb.com/title/tt2149175/" }] },
+        { type: "Série", title: "The Americans", description: "Espiões da KGB disfarçados de casal americano vivem no subúrbio de Washington D.C., com muitas cenas na Virgínia.",rating: "8.4/10", imdbLink: "https://www.imdb.com/title/tt2149175/" }] },
 
     "WI": { name: "Wisconsin", media: [
 
@@ -286,19 +286,19 @@ export const stateData = {
 
     "DC": { name: "Distrito de Columbia", media: [
 
-        { type: "Série", title: "House of Cards", description: "Um congressista inescrupuloso e sua esposa buscam poder em Washington D.C.", cover: "images/DC/house-of-cards.png", rating: "8.7/10", imdbLink: "https://www.imdb.com/title/tt1856010/" }, 
+        { type: "Série", title: "House of Cards", description: "Um congressista inescrupuloso e sua esposa buscam poder em Washington D.C.",rating: "8.7/10", imdbLink: "https://www.imdb.com/title/tt1856010/" }, 
 
         { type: "Filme", title: "A Casa Branca", description: "Um guarda do Capitólio deve proteger o Presidente durante um ataque à Casa Branca, em D.C.", cover: "images/DC/a-casa-branca.jpg", rating: "6.3/10", imdbLink: "https://www.imdb.com/title/tt2302828/" }] },
 
     "MD": { name: "Maryland", media: [
 
-        { type: "Série", title: "The Wire", description: "Um olhar detalhado sobre o tráfico de drogas em Baltimore, Maryland, sob a perspectiva de traficantes e policiais.", cover: "images/MD/the-wire.svg", rating: "9.3/10", imdbLink: "https://www.imdb.com/title/tt0306764/" }, 
+        { type: "Série", title: "The Wire", description: "Um olhar detalhado sobre o tráfico de drogas em Baltimore, Maryland, sob a perspectiva de traficantes e policiais.",rating: "9.3/10", imdbLink: "https://www.imdb.com/title/tt0306764/" }, 
 
         { type: "Filme", title: "O Silêncio dos Inocentes", description: "Uma jovem agente do FBI busca a ajuda de um assassino em série canibal para capturar outro serial killer, com locações em Maryland.", cover: "images/MD/o-silencio-dos-inocentes.jpg", rating: "8.6/10", imdbLink: "https://www.imdb.com/title/tt0102926/" }] },
 
     "NJ": { name: "Nova Jersey", media: [
 
-        { type: "Série", title: "The Sopranos", description: "A vida de um chefe da máfia de Nova Jersey que tenta equilibrar sua vida familiar com seus negócios criminosos.", cover: "images/NJ/the-sopranos.jpg", rating: "9.2/10", imdbLink: "https://www.imdb.com/title/tt0141842/" }, 
+        { type: "Série", title: "The Sopranos", description: "A vida de um chefe da máfia de Nova Jersey que tenta equilibrar sua vida familiar com seus negócios criminosos.",rating: "9.2/10", imdbLink: "https://www.imdb.com/title/tt0141842/" }, 
 
         { type: "Filme", title: "Garden State", description: "Um ator retorna à sua cidade natal em Nova Jersey para o funeral de sua mãe e redescobre a si mesmo.", cover: "images/NJ/garden-state.jpg", rating: "7.4/10", imdbLink: "https://www.imdb.com/title/tt0333766/" }] },
 
@@ -306,7 +306,7 @@ export const stateData = {
 
         { type: "Filme", title: "Rocky", description: "Um boxeador azarão da Filadélfia, Pensilvânia, tem a chance de lutar pelo título mundial.", cover: "images/PA/rocky.jpg", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt0075148/" },
         
-        { type: "Série", title: "The Office", description: "O dia a dia de funcionários de uma empresa de papel em Scranton, Pensilvânia, no formato de mockumentary.", cover: "images/PA/the-office.svg", rating: "9.0/10", imdbLink: "https://www.imdb.com/title/tt0386676/" }] },
+        { type: "Série", title: "The Office", description: "O dia a dia de funcionários de uma empresa de papel em Scranton, Pensilvânia, no formato de mockumentary.",rating: "9.0/10", imdbLink: "https://www.imdb.com/title/tt0386676/" }] },
 
     "ME": { name: "Maine", media: [
 
