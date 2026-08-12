@@ -3,19 +3,19 @@
 export const stateData = {
     "CA": { name: "Califórnia", media: [
 
-        { type: "Filme", title: "La La Land", description: "Um musical romântico que celebra a magia e os desafios de Los Angeles, com Ryan Gosling e Emma Stone.", cover: "images/California/lalaland.png", rating: "8.0/10", imdbLink: "https://www.imdb.com/title/tt3783958/" }, 
+        { type: "Filme", title: "La La Land", description: "Um musical romântico que celebra a magia e os desafios de Los Angeles, com Ryan Gosling e Emma Stone.", cover: "images/CA/lalaland.png", rating: "8.0/10", imdbLink: "https://www.imdb.com/title/tt3783958/" }, 
         
-        { type: "Série", title: "Big Little Lies", description: "Drama investigativo ambientado na rica comunidade costeira de Monterey, explorando segredos e mentiras.", cover: "images/California/biglittlelies.png", rating: "8.5/10", imdbLink: "https://www.imdb.com/title/tt3920596/" }, 
+        { type: "Série", title: "Big Little Lies", description: "Drama investigativo ambientado na rica comunidade costeira de Monterey, explorando segredos e mentiras.", cover: "images/CA/biglittlelies.png", rating: "8.5/10", imdbLink: "https://www.imdb.com/title/tt3920596/" }, 
         
-        { type: "Filme", title: "Pulp Fiction", description: "Um clássico cult de Quentin Tarantino com múltiplas linhas narrativas interligadas em Los Angeles.", cover: "images/California/pulpfiction.png", rating: "8.9/10", imdbLink: "https://www.imdb.com/title/tt0110912/" }] },
+        { type: "Filme", title: "Pulp Fiction", description: "Um clássico cult de Quentin Tarantino com múltiplas linhas narrativas interligadas em Los Angeles.", cover: "images/CA/pulpfiction.png", rating: "8.9/10", imdbLink: "https://www.imdb.com/title/tt0110912/" }] },
 
     "NY": { name: "Nova Iorque", media: [
 
-        { type: "Filme", title: "Taxi Driver", description: "Um veterano do Vietnã se torna taxista em Nova Iorque, mergulhando na depravação da cidade e planejando a violência.", cover: "images/New-York/taxi-driver.png", rating: "8.2/10", imdbLink: "https://www.imdb.com/title/tt0075314/" }, 
+        { type: "Filme", title: "Taxi Driver", description: "Um veterano do Vietnã se torna taxista em Nova Iorque, mergulhando na depravação da cidade e planejando a violência.", cover: "images/NY/taxi-driver.png", rating: "8.2/10", imdbLink: "https://www.imdb.com/title/tt0075314/" }, 
         
-        { type: "Série", title: "Friends", description: "A vida e os amores de seis amigos que vivem em Manhattan, explorando amizade, carreira e desafios diários.", cover: "images/New-York/friends.png", rating: "8.9/10", imdbLink: "https://www.imdb.com/title/tt0108778/" }, 
+        { type: "Série", title: "Friends", description: "A vida e os amores de seis amigos que vivem em Manhattan, explorando amizade, carreira e desafios diários.", cover: "images/NY/friends.png", rating: "8.9/10", imdbLink: "https://www.imdb.com/title/tt0108778/" }, 
         
-        { type: "Filme", title: "O Poderoso Chefão", description: "A saga da família Corleone, uma poderosa máfia italiana em Nova Iorque, com foco em poder, lealdade e traição.", cover: "images/New-York/o-poderoso-chefao.png", rating: "9.2/10", imdbLink: "https://www.imdb.com/title/tt0068646/" }] },
+        { type: "Filme", title: "O Poderoso Chefão", description: "A saga da família Corleone, uma poderosa máfia italiana em Nova Iorque, com foco em poder, lealdade e traição.", cover: "images/NY/o-poderoso-chefao.png", rating: "9.2/10", imdbLink: "https://www.imdb.com/title/tt0068646/" }] },
 
     "TX": { name: "Texas", media: [
 
@@ -36,9 +36,9 @@ export const stateData = {
         { type: "Série", title: "Northern Exposure", description: "Um jovem médico de Nova York é forçado a praticar medicina em uma pequena cidade remota no Alasca.", cover: "images/AK/northern-exposure.jpg", rating: "8.3/10", imdbLink: "https://www.imdb.com/title/tt0098904/" }] },
 
     "HI": { name: "Havaí", media: [
-        { type: "Filme", title: "50 First Dates", description: "Um veterinário se apaixona por uma mulher com amnésia anterógrada, tendo que fazê-la se apaixonar por ele todos os dias.", cover: "images/Havai/como-se-fosse-a-primeira-vez.png", rating: "6.8/10", imdbLink: "https://www.imdb.com/title/tt0343660/" }, 
+        { type: "Filme", title: "50 First Dates", description: "Um veterinário se apaixona por uma mulher com amnésia anterógrada, tendo que fazê-la se apaixonar por ele todos os dias.", cover: "images/HI/como-se-fosse-a-primeira-vez.png", rating: "6.8/10", imdbLink: "https://www.imdb.com/title/tt0343660/" }, 
 
-        { type: "Série", title: "Hawaii Five-0", description: "Uma força-tarefa de elite combate o crime nas paradisíacas ilhas do Havaí.", cover: "images/Havai/havai-five-0.png", rating: "7.4/10", imdbLink: "https://www.imdb.com/title/tt1600194/" }] },
+        { type: "Série", title: "Hawaii Five-0", description: "Uma força-tarefa de elite combate o crime nas paradisíacas ilhas do Havaí.", cover: "images/HI/havai-five-0.png", rating: "7.4/10", imdbLink: "https://www.imdb.com/title/tt1600194/" }] },
 
     "MA": { name: "Massachusetts", media: [
 
@@ -48,15 +48,15 @@ export const stateData = {
 
     "MN": { name: "Minnesota", media: [
 
-        { type: "Filme", title: "Fargo", description: "Uma esposa é sequestrada e seu marido tenta negociar o resgate, mas as coisas não saem como planejado.", cover: "images/Minnesota/fargo.png", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt0116282/" }, 
+        { type: "Filme", title: "Fargo", description: "Uma esposa é sequestrada e seu marido tenta negociar o resgate, mas as coisas não saem como planejado.", cover: "images/MN/fargo.png", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt0116282/" }, 
 
-        { type: "Filme", title: "Juno", description: "Uma adolescente grávida toma uma decisão incomum sobre o futuro de seu bebê.", cover: "images/Minnesota/juno.png", rating: "7.5/10", imdbLink: "https://www.imdb.com/title/tt0460780/" }] },
+        { type: "Filme", title: "Juno", description: "Uma adolescente grávida toma uma decisão incomum sobre o futuro de seu bebê.", cover: "images/MN/juno.png", rating: "7.5/10", imdbLink: "https://www.imdb.com/title/tt0460780/" }] },
 
     "MT": { name: "Montana", media: [
 
-        { type: "Série", title: "Yellowstone", description: "A saga da família Dutton, proprietários da maior fazenda dos EUA, lutando para manter suas terras.", cover: "images/Montana/yellowstone.png", rating: "8.7/10", imdbLink: "https://www.imdb.com/title/tt4236770/" }, 
+        { type: "Série", title: "Yellowstone", description: "A saga da família Dutton, proprietários da maior fazenda dos EUA, lutando para manter suas terras.", cover: "images/MT/yellowstone.png", rating: "8.7/10", imdbLink: "https://www.imdb.com/title/tt4236770/" }, 
 
-        { type: "Série", title: "1883", description: "Prequela de Yellowstone que mostra a origem da família Dutton na expansão para Montana.", cover: "images/Montana/1883.png", rating: "6.5/10", imdbLink: "https://www.imdb.com/title/tt13991232/" }] },
+        { type: "Série", title: "1883", description: "Prequela de Yellowstone que mostra a origem da família Dutton na expansão para Montana.", cover: "images/MT/1883.png", rating: "6.5/10", imdbLink: "https://www.imdb.com/title/tt13991232/" }] },
 
     "ND": { name: "Dakota do Norte", media: [
 
@@ -90,9 +90,9 @@ export const stateData = {
 
     "NV": { name: "Nevada", media: [
 
-        { type: "Filme", title: "Se Beber, Não Case!", description: "Quatro amigos viajam para Las Vegas para uma despedida de solteiro que dá muito errado.", cover: "images/Nevada/se-beber-nao-case.png", rating: "7.7/10", imdbLink: "https://www.imdb.com/title/tt1119646/" }, 
+        { type: "Filme", title: "Se Beber, Não Case!", description: "Quatro amigos viajam para Las Vegas para uma despedida de solteiro que dá muito errado.", cover: "images/NV/se-beber-nao-case.png", rating: "7.7/10", imdbLink: "https://www.imdb.com/title/tt1119646/" }, 
 
-        { type: "Série", title: "CSI: Crime Scene Investigation", description: "Uma equipe de cientistas forenses resolve crimes em Las Vegas usando tecnologia avançada.", cover: "images/Nevada/csi-investigacao-criminal.png", rating: "7.7/10", imdbLink: "https://www.imdb.com/pt/title/tt0247082/" }] },
+        { type: "Série", title: "CSI: Crime Scene Investigation", description: "Uma equipe de cientistas forenses resolve crimes em Las Vegas usando tecnologia avançada.", cover: "images/NV/csi-investigacao-criminal.png", rating: "7.7/10", imdbLink: "https://www.imdb.com/pt/title/tt0247082/" }] },
 
     "NM": { name: "Novo México", media: [
 
@@ -114,9 +114,9 @@ export const stateData = {
 
     "WY": { name: "Wyoming", media: [
 
-        { type: "Filme", title: "Brokeback Mountain", description: "A complexa história de amor entre dois cowboys no Wyoming rural.", cover: "images/Wyoming/o-segredo-de-brokeback-mountain.png", rating: "7.7/10", imdbLink: "https://www.imdb.com/title/tt0388795/" }, 
+        { type: "Filme", title: "Brokeback Mountain", description: "A complexa história de amor entre dois cowboys no Wyoming rural.", cover: "images/WY/o-segredo-de-brokeback-mountain.png", rating: "7.7/10", imdbLink: "https://www.imdb.com/title/tt0388795/" }, 
 
-        { type: "Filme", title: "Os Imperdoáveis", description: "Um pistoleiro aposentado é forçado a pegar em armas novamente no Velho Oeste, com locações que remetem ao Wyoming.", cover: "images/Wyoming/os-imperdoaveis.png", rating: "8.2/10", imdbLink: "https://www.imdb.com/title/tt0105695/" }] },
+        { type: "Filme", title: "Os Imperdoáveis", description: "Um pistoleiro aposentado é forçado a pegar em armas novamente no Velho Oeste, com locações que remetem ao Wyoming.", cover: "images/WY/os-imperdoaveis.png", rating: "8.2/10", imdbLink: "https://www.imdb.com/title/tt0105695/" }] },
 
     "AR": { name: "Arkansas", media: [
 
@@ -192,9 +192,9 @@ export const stateData = {
 
     "AL": { name: "Alabama", media: [
 
-        { type: "Filme", title: "Forrest Gump: O Contador de Histórias", description: "A vida de um homem simples do Alabama que vivencia e influencia eventos históricos importantes.", cover: "images/Alabama/forrest-gump.png", rating: "8.8/10", imdbLink: "https://www.imdb.com/title/tt0109830/" }, 
+        { type: "Filme", title: "Forrest Gump: O Contador de Histórias", description: "A vida de um homem simples do Alabama que vivencia e influencia eventos históricos importantes.", cover: "images/AL/forrest-gump.png", rating: "8.8/10", imdbLink: "https://www.imdb.com/title/tt0109830/" }, 
 
-        { type: "Filme", title: "Selma", description: "A marcha liderada por Martin Luther King Jr. de Selma a Montgomery, Alabama, pela igualdade de direitos.", cover: "images/Alabama/selma.png", rating: "7.5/10", imdbLink: "https://www.imdb.com/title/tt1020072/" }] },
+        { type: "Filme", title: "Selma", description: "A marcha liderada por Martin Luther King Jr. de Selma a Montgomery, Alabama, pela igualdade de direitos.", cover: "images/AL/selma.png", rating: "7.5/10", imdbLink: "https://www.imdb.com/title/tt1020072/" }] },
 
     "GA": { name: "Geórgia", media: [
 
@@ -204,9 +204,9 @@ export const stateData = {
 
     "MS": { name: "Mississippi", media: [
 
-        { type: "Filme", title: "Histórias Cruzadas", description: "Jovens aspirantes a escritores e empregadas negras formam um vínculo improvável no Mississippi dos anos 60.", cover: "images/Mississippi/historias-cruzadas.png", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt1454029/" }, 
+        { type: "Filme", title: "Histórias Cruzadas", description: "Jovens aspirantes a escritores e empregadas negras formam um vínculo improvável no Mississippi dos anos 60.", cover: "images/MS/historias-cruzadas.png", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt1454029/" }, 
 
-        { type: "Filme", title: "Tempo de Matar", description: "Um advogado defende um homem negro que assassinou os estupradores de sua filha, no Mississippi.", cover: "images/Mississippi/tempo-de-matar.png", rating: "7.5/10", imdbLink: "https://www.imdb.com/title/tt0117913/" }] },
+        { type: "Filme", title: "Tempo de Matar", description: "Um advogado defende um homem negro que assassinou os estupradores de sua filha, no Mississippi.", cover: "images/MS/tempo-de-matar.png", rating: "7.5/10", imdbLink: "https://www.imdb.com/title/tt0117913/" }] },
 
     "SC": { name: "Carolina do Sul", media: [
 
@@ -258,9 +258,9 @@ export const stateData = {
 
     "WI": { name: "Wisconsin", media: [
 
-        { type: "Filme", title: "Missão Madrinha de Casamento", description: "Uma dama de honra em apuros tenta navegar pelas tradições do casamento e um amor improvável, com algumas cenas em Wisconsin.", cover: "images/Wisconsin/missao-madrinha-de-casamento.png", rating: "6.8/10", imdbLink: "https://www.imdb.com/title/tt1478338/" }, 
+        { type: "Filme", title: "Missão Madrinha de Casamento", description: "Uma dama de honra em apuros tenta navegar pelas tradições do casamento e um amor improvável, com algumas cenas em Wisconsin.", cover: "images/WI/missao-madrinha-de-casamento.png", rating: "6.8/10", imdbLink: "https://www.imdb.com/title/tt1478338/" }, 
 
-        { type: "Série", title: "That '70s Show", description: "A vida de um grupo de adolescentes nos anos 70 em uma pequena cidade fictícia de Wisconsin.", cover: "images/Wisconsin/that-70s-show.png", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt0165598/" }] },
+        { type: "Série", title: "That '70s Show", description: "A vida de um grupo de adolescentes nos anos 70 em uma pequena cidade fictícia de Wisconsin.", cover: "images/WI/that-70s-show.png", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt0165598/" }] },
 
     "WV": { name: "Virgínia Ocidental", media: [
 
