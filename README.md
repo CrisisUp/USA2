@@ -69,36 +69,36 @@ Para explorar este mapa interativo em seu ambiente local, siga as instruções a
 
     ```
     USA2/
-    ├── index.html            # Página principal do site
-    ├── css/                  # Contém os arquivos CSS modularizados
-    │   ├── animations.css
-    │   ├── base.css
-    │   ├── components.css
-    │   ├── layout.css
-    │   ├── map.css
-    │   └── responsive.css
-    ├── js/                   # Contém os arquivos JavaScript modularizados
-    │   ├── data.js           # Os dados dos filmes e séries por estado
-    │   ├── display.js
-    │   ├── main.js           # O script principal que orquestra os demais
-    │   ├── map-interactions.js
-    │   ├── search.js
-    │   └── utils.js
-    ├── images/               # Contém as imagens das capas dos filmes/séries
-    │   ├── California/
-    │   │   ├── biglittlelies.png
-    │   │   ├── lalaland.png
-    │   │   └── pulpfiction.png
-    │   ├── New-York/
-    │   │   └── taxi-driver.png
-    │   └── ... (e outras subpastas de estados com suas imagens)
-    └── usa-map.svg           # O arquivo do mapa SVG dos Estados Unidos
+    ├── usa/                  # Todo o site fica aqui (não há index.html na raiz)
+    │   ├── index.html        # Página principal do site
+    │   ├── css/              # Contém os arquivos CSS modularizados
+    │   │   ├── animations.css
+    │   │   ├── base.css
+    │   │   ├── components.css
+    │   │   ├── layout.css
+    │   │   ├── map.css
+    │   │   └── responsive.css
+    │   ├── js/               # Contém os arquivos JavaScript modularizados
+    │   │   ├── data.js       # Os dados dos filmes e séries por estado
+    │   │   ├── display.js
+    │   │   ├── main.js       # O script principal que orquestra os demais
+    │   │   ├── map-interactions.js
+    │   │   ├── search.js
+    │   │   └── utils.js
+    │   ├── images/           # Capas locais (100% offline, sem CDN externo)
+    │   │   ├── California/
+    │   │   │   ├── biglittlelies.png
+    │   │   │   ├── lalaland.png
+    │   │   │   └── pulpfiction.png
+    │   │   └── ... (subpastas dos estados com suas capas)
+    │   └── usa-map.svg       # O arquivo do mapa SVG dos Estados Unidos
+    └── README.md
     ```
 
 4.  **Inicie o Servidor Local (Recomendado):**
-    * **Com Live Server (VS Code):** Abra a pasta `USA2` no VS Code. Clique com o botão direito no arquivo `index.html` e selecione "Open with Live Server". Seu navegador abrirá automaticamente o site.
-    * **Com Python:** Na pasta `USA2`, execute `python -m http.server`.
-    * **Com Node.js `http-server`:** Instale globalmente (`npm install -g http-server`) e, na pasta `USA2`, execute `http-server`.
+    * **Com Live Server (VS Code):** Abra a pasta `USA2` no VS Code. Clique com o botão direito no arquivo `usa/index.html` e selecione "Open with Live Server". Seu navegador abrirá automaticamente o site.
+    * **Com Python:** Na pasta `USA2`, execute `python -m http.server 8000 --directory usa` (ou navegue até `usa/` e rode `python -m http.server`).
+    * **Com Node.js `http-server`:** Instale globalmente (`npm install -g http-server`) e, na pasta `usa/`, execute `http-server`.
     * Após iniciar o servidor, abra seu navegador e navegue para o endereço fornecido (ex: `http://localhost:8000`).
 
 ---
@@ -112,7 +112,7 @@ Este projeto foi desenhado para ser facilmente personalizável e expansível:
 * **Funcionalidades:**
     * Adicione filtros por gênero, ano de lançamento, etc.
     * Implemente a exibição de mais detalhes ao passar o mouse sobre os itens de mídia na lista.
-    * Conecte-se a uma API de filmes (como [TMDB](https://www.themoviedb.org/documentation/api)) para buscar dados de mídia dinamicamente (passo avançado).
+    * As capas são **arquivos locais** em `usa/images/` — o site funciona 100% offline, sem depender de CDN ou API de filmes.
 * **Acessibilidade:** Continue testando com ferramentas como o [Lighthouse](https://developers.google.com/web/tools/lighthouse) no Chrome para identificar e corrigir quaisquer outras questões de acessibilidade.
 
 ---
