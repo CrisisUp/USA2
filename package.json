@@ -19,7 +19,8 @@
     "check": "node --check usa/js/main.js && node --check usa/js/data.js",
     "verify": "npm run format:check && npm run lint && npm run test:unit && npm run check",
     "ci": "npm run verify",
-    "optimize:images": "node scripts/optimize-images.js"
+    "optimize:images": "node scripts/optimize-images.js",
+    "build:sw": "node scripts/generate-sw-cache.js"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
