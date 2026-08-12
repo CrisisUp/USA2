@@ -1,0 +1,21 @@
+{
+  "name": "usa2",
+  "version": "1.0.0",
+  "description": "Mapa interativo dos EUA com filmes e séries por estado (site estático em usa/).",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "jshint usa/js/data.js usa/js/display.js usa/js/favorites.js usa/js/filters.js usa/js/main.js usa/js/map-interactions.js usa/js/search.js usa/js/utils.js",
+    "check": "node --check usa/js/main.js && node --check usa/js/data.js",
+    "verify": "npm run lint && npm run test && npm run check"
+  },
+  "devDependencies": {
+    "jsdom": "^24.1.3",
+    "jshint": "^2.13.6",
+    "vitest": "^2.1.9"
+  }
+}
