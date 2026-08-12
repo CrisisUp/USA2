@@ -7,7 +7,13 @@ export const stateData = {
         
         { type: "Série", title: "Big Little Lies", description: "Drama investigativo ambientado na rica comunidade costeira de Monterey, explorando segredos e mentiras.", cover: "images/CA/biglittlelies.png", rating: "8.5/10", imdbLink: "https://www.imdb.com/title/tt3920596/" }, 
         
-        { type: "Filme", title: "Pulp Fiction", description: "Um clássico cult de Quentin Tarantino com múltiplas linhas narrativas interligadas em Los Angeles.", cover: "images/CA/pulpfiction.png", rating: "8.9/10", imdbLink: "https://www.imdb.com/title/tt0110912/" }] },
+        { type: "Filme", title: "Pulp Fiction", description: "Um clássico cult de Quentin Tarantino com múltiplas linhas narrativas interligadas em Los Angeles.", cover: "images/CA/pulpfiction.png", rating: "8.9/10", imdbLink: "https://www.imdb.com/title/tt0110912/" },
+
+        { type: "Filme", title: "L.A. Confidential", description: "Três detetives de Los Angeles dos anos 50 se envolvem em uma trama de corrupção e escândalos que expõe o submundo da cidade.", cover: "images/CA/la-confidential.jpg", rating: "8.2/10", imdbLink: "https://www.imdb.com/title/tt0119488/" },
+
+        { type: "Filme", title: "Era Uma Vez em Hollywood", description: "Na Los Angeles de 1969, um ator de faroestes de TV e seu dublê tentam se manter relevantes enquanto o mundo ao redor muda.", cover: "images/CA/once-upon-a-time-in-hollywood.png", rating: "7.6/10", imdbLink: "https://www.imdb.com/title/tt7131622/" },
+
+        { type: "Filme", title: "Os Donos da Rua", description: "Um jovem negro talentoso de Los Angeles enfrenta dilemas entre educação, amigos e gangues na década de 1990.", cover: "images/CA/boyz-n-the-hood.jpg", rating: "7.8/10", imdbLink: "https://www.imdb.com/title/tt0101507/" }] },
 
     "NY": { name: "Nova Iorque", media: [
 
@@ -15,19 +21,31 @@ export const stateData = {
         
         { type: "Série", title: "Friends", description: "A vida e os amores de seis amigos que vivem em Manhattan, explorando amizade, carreira e desafios diários.", cover: "images/NY/friends.png", rating: "8.9/10", imdbLink: "https://www.imdb.com/title/tt0108778/" }, 
         
-        { type: "Filme", title: "O Poderoso Chefão", description: "A saga da família Corleone, uma poderosa máfia italiana em Nova Iorque, com foco em poder, lealdade e traição.", cover: "images/NY/o-poderoso-chefao.png", rating: "9.2/10", imdbLink: "https://www.imdb.com/title/tt0068646/" }] },
+        { type: "Filme", title: "O Poderoso Chefão", description: "A saga da família Corleone, uma poderosa máfia italiana em Nova Iorque, com foco em poder, lealdade e traição.", cover: "images/NY/o-poderoso-chefao.png", rating: "9.2/10", imdbLink: "https://www.imdb.com/title/tt0068646/" },
+
+        { type: "Filme", title: "O Poderoso Chefão: Parte II", description: "A continuação da saga dos Corleone, alternando entre a ascensão do jovem Vito em Nova Iorque e o declínio de seu filho Michael.", cover: "images/NY/o-poderoso-chefao-parte-2.jpg", rating: "9.0/10", imdbLink: "https://www.imdb.com/title/tt0071562/" },
+
+        { type: "Filme", title: "Perdidos na Noite", description: "Um ambicioso caubói do Texas chega a Nova Iorque em busca de sucesso e forma uma improvável amizade com um vigarista tuberculoso.", cover: "images/NY/midnight-cowboy.jpg", rating: "8.0/10", imdbLink: "https://www.imdb.com/title/tt0064665/" },
+
+        { type: "Filme", title: "Um Dia de Cão", description: "Baseado em fatos reais, um assalto a banco em Brooklyn degenera em uma crise que toma conta da atenção da cidade inteira.", cover: "images/NY/dog-day-afternoon.png", rating: "8.0/10", imdbLink: "https://www.imdb.com/title/tt0072890/" }] },
 
     "TX": { name: "Texas", media: [
 
         { type: "Filme", title: "No Country for Old Men", description: "Um caçador encontra uma mala cheia de dinheiro no deserto do Texas, desencadeando uma perseguição brutal.", cover: "images/TX/no-country-for-old-men.jpg", rating: "8.2/10", imdbLink: "https://www.imdb.com/title/tt0477080/" }, 
 
-        { type: "Série", title: "Friday Night Lights", description: "Drama realista sobre a vida de um time de futebol americano escolar e a comunidade de Dillon, Texas.", cover: "images/TX/friday-night-lights.png", rating: "8.7/10", imdbLink: "https://www.imdb.com/title/tt0758745/" }] },
+        { type: "Série", title: "Friday Night Lights", description: "Drama realista sobre a vida de um time de futebol americano escolar e a comunidade de Dillon, Texas.", cover: "images/TX/friday-night-lights.png", rating: "8.7/10", imdbLink: "https://www.imdb.com/title/tt0758745/" },
+
+        { type: "Filme", title: "Apollo 13", description: "A dramática história real da missão lunar que quase terminou em tragédia, comandada a partir do Texas.", cover: "images/TX/apollo-13.jpg", rating: "7.7/10", imdbLink: "https://www.imdb.com/title/tt0112384/" }] },
 
     "FL": { name: "Flórida", media: [
 
         { type: "Filme", title: "Miami Vice", description: "Dois detetives da narcóticos em Miami trabalham disfarçados para combater o crime organizado.", cover: "images/FL/miami-vice.jpg", rating: "6.0/10", imdbLink: "https://www.imdb.com/title/tt0473582/" }, 
 
-        { type: "Filme", title: "Scarface", description: "A ascensão e queda de Tony Montana, um imigrante cubano que se torna um poderoso chefão das drogas em Miami.", cover: "images/FL/scarface.jpg", rating: "8.3/10", imdbLink: "https://www.imdb.com/title/tt0086250/" }] },
+        { type: "Filme", title: "Scarface", description: "A ascensão e queda de Tony Montana, um imigrante cubano que se torna um poderoso chefão das drogas em Miami.", cover: "images/FL/scarface.jpg", rating: "8.3/10", imdbLink: "https://www.imdb.com/title/tt0086250/" },
+
+        { type: "Filme", title: "Marley & Eu", description: "Um casal recém-casado adota um labrador impossível e descobre que o cachorro mais difícil de todos se torna o melhor amigo da família.", cover: "images/FL/marley-e-me.jpg", rating: "7.0/10", imdbLink: "https://www.imdb.com/title/tt0822832/" },
+
+        { type: "Filme", title: "A Gaiola das Loucas", description: "Um casal gay gerencia uma boate de drag queens em South Beach, Miami, e o filho do protagonista anuncia que vai se casar com a filha de um político conservador.", cover: "images/FL/the-birdcage.jpg", rating: "7.2/10", imdbLink: "https://www.imdb.com/title/tt0115685/" }] },
 
     "AK": { name: "Alaska", media: [
 
