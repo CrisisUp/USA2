@@ -21,6 +21,10 @@
     --color-selected: #ffcc00;
     --color-search-match: #ffcc00;
 
+    --color-state-default: #4a6a8a;
+    --color-mode-filmes: #2e8b57;
+    --color-mode-series: #da70d6;
+
     --font-family: 'Segoe UI', Arial, sans-serif;
     --font-size-base: 1rem;
     --font-size-lg: 1.2rem;

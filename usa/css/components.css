@@ -190,6 +190,70 @@
   width: 180px;
 }
 
+/* Toggle Modo Mapa: Filmes vs Séries */
+#map-mode-toggle {
+  display: inline-flex;
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xs);
+  gap: var(--spacing-xs);
+  margin-right: var(--spacing-sm);
+}
+
+.map-mode-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.map-mode-btn:hover {
+  background-color: var(--color-border);
+  color: var(--color-text);
+  transform: scale(1.05);
+}
+
+.map-mode-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.map-mode-btn.active {
+  background-color: var(--color-primary);
+  color: var(--color-bg-start);
+}
+
+.map-mode-btn.active:hover {
+  background-color: var(--color-primary-hover);
+  color: var(--color-bg-start);
+}
+
+.map-mode-btn .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 #surprise-button {
   padding: var(--spacing-xs) var(--spacing-sm);
   background-color: var(--color-accent);
@@ -238,6 +302,72 @@
   max-width: 200px;
   font-size: 0.85rem;
   color: var(--color-text);
+}
+
+/* Popover rico - estilos para tooltips enriquecidos */
+.state-popover {
+  min-width: 180px;
+  max-width: 240px;
+}
+
+.popover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-xs);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.popover-badge {
+  background-color: var(--color-accent);
+  color: var(--color-bg-start);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.popover-stats {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.popover-top-item {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-xs);
+  border-top: 1px solid var(--color-border);
+}
+
+.popover-thumb {
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+.popover-top-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.popover-top-title {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.popover-top-type {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
 }
 
 /* Animação de entrada dos itens de mídia (via @keyframes em animations.css) */

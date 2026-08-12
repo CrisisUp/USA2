@@ -180,6 +180,46 @@ export function displayStateDetails(stateId, options = {}) {
 }
 
 /**
+ * Calcula estatísticas ricas para um estado.
+ * @param {Array} media - Lista de mídia do estado.
+ * @returns {{count: number, filmes: number, series: number, avgRating: number, topItem: object|null}}
+ */
+function calculateStateStats(media) {
+  if (!media || media.length === 0) {
+    return { count: 0, filmes: 0, series: 0, avgRating: 0, topItem: null };
+  }
+
+  const filmes = media.filter(m => m.type === 'Filme');
+  const series = media.filter(m => m.type === 'Série');
+
+  // Calcula nota média
+  const ratings = media
+    .map(m => parseFloat((m.rating || '').replace(',', '.')))
+    .filter(r => !Number.isNaN(r));
+  const avgRating =
+    ratings.length > 0 ? (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(1) : 0;
+
+  // Encontra item com maior nota
+  let topItem = null;
+  let topRating = -1;
+  for (const item of media) {
+    const rating = parseFloat((item.rating || '').replace(',', '.'));
+    if (!Number.isNaN(rating) && rating > topRating) {
+      topRating = rating;
+      topItem = item;
+    }
+  }
+
+  return {
+    count: media.length,
+    filmes: filmes.length,
+    series: series.length,
+    avgRating,
+    topItem,
+  };
+}
+
+/**
  * Inicializa Popover API para tooltips nos estados do mapa.
  * @param {SVGElement} mapElement - O elemento SVG do mapa.
  * @param {object} stateData - Dados dos estados.
@@ -197,13 +237,42 @@ export function initStatePopovers(mapElement, stateData) {
     const data = stateData[stateId];
 
     if (data && data.media && data.media.length > 0) {
+      const stats = calculateStateStats(data.media);
+      const { topItem } = stats;
+
+      // Prepara URLs da imagem do top item
+      let topItemImg = '';
+      if (topItem && topItem.cover) {
+        const basePath = topItem.cover.replace(/\.(png|jpg|jpeg)$/i, '');
+        topItemImg = `<img src="${basePath}.webp" alt="" class="popover-thumb" loading="lazy" width="48" height="72">`;
+      }
+
       // Cria elemento popover
       const popover = document.createElement('div');
       popover.popover = 'manual';
       popover.className = 'state-popover';
       popover.innerHTML = `
-        <strong>${escapeHTML(data.name)}</strong>
-        <span>${data.media.length} título${data.media.length !== 1 ? 's' : ''}</span>
+        <div class="popover-header">
+          <strong>${escapeHTML(data.name)}</strong>
+          <span class="popover-badge">${stats.avgRating} ★</span>
+        </div>
+        <div class="popover-stats">
+          <span>${stats.filmes} 🎬</span>
+          <span>${stats.series} 📺</span>
+        </div>
+        ${
+          topItem
+            ? `
+          <div class="popover-top-item">
+            ${topItemImg}
+            <div class="popover-top-info">
+              <span class="popover-top-title">${escapeHTML(topItem.title)}</span>
+              <span class="popover-top-type">${escapeHTML(topItem.type)} • ${topItem.rating} ★</span>
+            </div>
+          </div>
+        `
+            : ''
+        }
       `;
       document.body.appendChild(popover);
 

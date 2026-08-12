@@ -3,8 +3,10 @@
 import { stateData } from './data.js';
 import { displayStateDetails } from './display.js';
 import { toggleFavorite } from './favorites.js';
+import { getMapInstance } from './map-interactions.js';
 
 let currentStateId = null; // Estado cujos detalhes estão exibidos
+let currentMapMode = 'filmes'; // 'filmes' | 'series'
 
 /**
  * Lê os filtros ativos do DOM.
@@ -65,6 +67,88 @@ function getRandomStateIdWithMedia() {
 }
 
 /**
+ * Calcula a contagem de filmes e séries por estado.
+ * @returns {Map<string, {filmes: number, series: number, total: number}>}
+ */
+function calculateMediaCounts() {
+  const counts = new Map();
+  for (const [stateId, stateData] of Object.entries(stateData)) {
+    if (stateData.media) {
+      const filmes = stateData.media.filter(m => m.type === 'Filme').length;
+      const series = stateData.media.filter(m => m.type === 'Série').length;
+      counts.set(stateId, { filmes, series, total: filmes + series });
+    } else {
+      counts.set(stateId, { filmes: 0, series: 0, total: 0 });
+    }
+  }
+  return counts;
+}
+
+/**
+ * Aplica o modo de visualização do mapa (filmes vs séries).
+ * @param {string} mode - 'filmes' ou 'series'
+ */
+function applyMapMode(mode) {
+  const usaMap = getMapInstance();
+  if (!usaMap) return;
+
+  const counts = calculateMediaCounts();
+  const states = usaMap.querySelectorAll('.state');
+
+  states.forEach(statePath => {
+    const stateId = statePath.id;
+    const count = counts.get(stateId);
+
+    // Remove classes anteriores
+    statePath.classList.remove('mode-filmes', 'mode-series', 'mode-neutral');
+
+    if (!count || count.total === 0) {
+      statePath.classList.add('mode-neutral');
+      return;
+    }
+
+    if (mode === 'filmes') {
+      if (count.filmes > count.series) {
+        statePath.classList.add('mode-filmes');
+      } else if (count.series > count.filmes) {
+        statePath.classList.add('mode-series');
+      } else {
+        statePath.classList.add('mode-neutral');
+      }
+    } else if (mode === 'series') {
+      if (count.series > count.filmes) {
+        statePath.classList.add('mode-series');
+      } else if (count.filmes > count.series) {
+        statePath.classList.add('mode-filmes');
+      } else {
+        statePath.classList.add('mode-neutral');
+      }
+    }
+  });
+
+  currentMapMode = mode;
+
+  // Atualiza botões
+  document.getElementById('mode-filmes').classList.toggle('active', mode === 'filmes');
+  document.getElementById('mode-filmes').setAttribute('aria-pressed', mode === 'filmes');
+  document.getElementById('mode-series').classList.toggle('active', mode === 'series');
+  document.getElementById('mode-series').setAttribute('aria-pressed', mode === 'series');
+}
+
+/**
+ * Inicializa o toggle de modo do mapa (Filmes vs Séries).
+ */
+function initMapModeToggle() {
+  const filmesBtn = document.getElementById('mode-filmes');
+  const seriesBtn = document.getElementById('mode-series');
+
+  if (!filmesBtn || !seriesBtn) return;
+
+  filmesBtn.addEventListener('click', () => applyMapMode('filmes'));
+  seriesBtn.addEventListener('click', () => applyMapMode('series'));
+}
+
+/**
  * Inicializa os controles de filtros, favoritos e o botão "surpreenda-me".
  */
 export function initFilters() {
@@ -95,4 +179,10 @@ export function initFilters() {
       isNowFav ? 'Remover dos favoritos' : 'Adicionar aos favoritos'
     );
   });
+
+  // Inicializa toggle de modo do mapa
+  initMapModeToggle();
+
+  // Aplica modo inicial após mapa carregar
+  setTimeout(() => applyMapMode(currentMapMode), 100);
 }

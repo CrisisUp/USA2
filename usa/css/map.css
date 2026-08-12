@@ -7,13 +7,29 @@
 
 /* Estilos para os estados no SVG */
 .state {
-  fill: #4a6a8a; /* Azul acinzentado suave, cor padrão para todos os estados */
-  stroke: #0d1a2a; /* Contorno mais escuro para separação */
+  fill: var(
+    --color-state-default,
+    #4a6a8a
+  ); /* Azul acinzentado suave, cor padrão para todos os estados */
+  stroke: var(--color-border, #0d1a2a); /* Contorno mais escuro para separação */
   stroke-width: 0.8px;
   transition:
     fill 0.3s ease,
     transform 0.3s ease;
   transform-origin: center center;
+}
+
+/* Modos de visualização do mapa: Filmes vs Séries */
+.state.mode-filmes {
+  fill: var(--color-mode-filmes, #2e8b57); /* Verde = mais filmes */
+}
+
+.state.mode-series {
+  fill: var(--color-mode-series, #da70d6); /* Rosa/Roxo = mais séries */
+}
+
+.state.mode-neutral {
+  fill: var(--color-state-default, #4a6a8a); /* Cor padrão = empate ou sem dados */
 }
 
 /* Estilo de foco para acessibilidade */

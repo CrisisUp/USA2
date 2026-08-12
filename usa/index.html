@@ -33,6 +33,35 @@
 
       <div id="filters-container">
         <div id="filters">
+          <div
+            id="map-mode-toggle"
+            class="map-mode-toggle"
+            role="group"
+            aria-label="Modo de visualização do mapa"
+          >
+            <button
+              type="button"
+              id="mode-filmes"
+              class="map-mode-btn active"
+              data-mode="filmes"
+              aria-pressed="true"
+              title="Mostrar estados com mais filmes"
+            >
+              <span aria-hidden="true">🎬</span>
+              <span class="sr-only">Filmes</span>
+            </button>
+            <button
+              type="button"
+              id="mode-series"
+              class="map-mode-btn"
+              data-mode="series"
+              aria-pressed="false"
+              title="Mostrar estados com mais séries"
+            >
+              <span aria-hidden="true">📺</span>
+              <span class="sr-only">Séries</span>
+            </button>
+          </div>
           <label for="type-filter">Tipo:</label>
           <select id="type-filter" aria-label="Filtrar por tipo">
             <option value="all">Todos</option>
