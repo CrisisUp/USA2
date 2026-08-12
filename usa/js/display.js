@@ -36,7 +36,9 @@ export function displayStateDetails(stateId) {
             // Validação e adição da capa
             const defaultCover = "https://via.placeholder.com/80x120?text=Sem+Capa"; // Placeholder para capas ausentes/inválidas
             const coverUrl = (item.cover && typeof item.cover === 'string') ? escapeHTML(item.cover) : defaultCover;
-            itemContent += `<img src="${coverUrl}" alt="Capa de ${escapeHTML(item.title) || 'Filme/Série'}" class="media-cover" loading="lazy">`;
+            // onerror: se a capa local falhar (arquivo ausente em deploy/404), troca pelo
+            // placeholder para não exibir imagem quebrada.
+            itemContent += `<img src="${coverUrl}" alt="Capa de ${escapeHTML(item.title) || 'Filme/Série'}" class="media-cover" loading="lazy" onerror="this.onerror=null; this.src='${defaultCover}';">`;
 
 
             itemContent += `

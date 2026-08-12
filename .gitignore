@@ -1,0 +1,10 @@
+# --- Dependências / build local (não versionar) ---
+node_modules/
+package-lock.json
+
+# --- Ferramentas one-shot de build de capas (não fazem parte do site) ---
+usa/tools/
+
+# --- Arquivos temporários ---
+.tmp/
+*.log

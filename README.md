@@ -85,12 +85,12 @@ Para explorar este mapa interativo em seu ambiente local, siga as instruções a
     │   ├── search.js
     │   └── utils.js
     ├── images/               # Contém as imagens das capas dos filmes/séries
-    │   ├── california/
+    │   ├── California/
     │   │   ├── biglittlelies.png
     │   │   ├── lalaland.png
     │   │   └── pulpfiction.png
-    │   ├── newyork/
-    │   │   └── taxidriver.png
+    │   ├── New-York/
+    │   │   └── taxi-driver.png
     │   └── ... (e outras subpastas de estados com suas imagens)
     └── usa-map.svg           # O arquivo do mapa SVG dos Estados Unidos
     ```
