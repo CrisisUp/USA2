@@ -78,7 +78,7 @@ export const stateData = {
 
     "ND": { name: "Dakota do Norte", media: [
 
-        { type: "Filme", title: "Fargo", description: "Um filme e série com a mesma premissa de crime e humor negro, ambientados no frio Dakota do Norte.", cover: "images/ND/fargo.png", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt0116282/" }, 
+        { type: "Série", title: "Fargo", description: "Um filme e série com a mesma premissa de crime e humor negro, ambientados no frio Dakota do Norte.", cover: "images/ND/fargo.png", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt2802850/" }, 
 
         { type: "Filme", title: "Nomadland", description: "Uma mulher idosa embarca em uma jornada pelas vastas paisagens da América, incluindo partes de Dakota do Norte, após perder tudo na recessão.", cover: "images/ND/nomadland.jpg", rating: "7.3/10", imdbLink: "https://www.imdb.com/title/tt9770150/" }] },
 
@@ -114,9 +114,7 @@ export const stateData = {
 
     "NM": { name: "Novo México", media: [
 
-        { type: "Série", title: "Breaking Bad", description: "Um professor de química do ensino médio diagnosticado com câncer começa a fabricar metanfetamina para garantir o futuro de sua família.", cover: "images/NM/breaking-bad.png", rating: "9.5/10", imdbLink: "https://www.imdb.com/title/tt0903747/" }, 
-
-        { type: "Filme", title: "Onde os Fracos Não Têm Vez", description: "Um caçador de antílopes se depara com um massacre e uma mala cheia de dinheiro no deserto do Texas/Novo México.", cover: "images/NM/onde-os-fracos-nao-tem-vez.jpg", rating: "8.1/10", imdbLink: "https://www.imdb.com/title/tt0477080/" }] },
+        { type: "Série", title: "Breaking Bad", description: "Um professor de química do ensino médio diagnosticado com câncer começa a fabricar metanfetamina para garantir o futuro de sua família.", cover: "images/NM/breaking-bad.png", rating: "9.5/10", imdbLink: "https://www.imdb.com/title/tt0903747/" }] },
 
     "OR": { name: "Oregon", media: [
 
@@ -138,9 +136,7 @@ export const stateData = {
 
     "AR": { name: "Arkansas", media: [
 
-        { type: "Filme", title: "Mud", description: "Dois meninos descobrem um fugitivo em uma ilha no rio Arkansas e o ajudam a escapar.", cover: "images/AR/mud.jpg", rating: "7.4/10", imdbLink: "https://www.imdb.com/title/tt1935179/" }, 
-        
-        { type: "Filme", title: "Um Sonho de Liberdade", description: "Um homem é condenado injustamente e passa décadas na prisão. Embora ambientado no Maine (fictício), a atmosfera lembra algumas áreas rurais do Sul.", cover: "images/AR/um-sonho-de-liberdade.jpg", rating: "9.3/10", imdbLink: "https://www.imdb.com/title/tt0111161/" }] },
+        { type: "Filme", title: "Mud", description: "Dois meninos descobrem um fugitivo em uma ilha no rio Arkansas e o ajudam a escapar.", cover: "images/AR/mud.jpg", rating: "7.4/10", imdbLink: "https://www.imdb.com/title/tt1935179/" }] },
 
     "IA": { name: "Iowa", media: [
 
@@ -228,9 +224,7 @@ export const stateData = {
 
     "SC": { name: "Carolina do Sul", media: [
 
-        { type: "Filme", title: "Diário de uma Paixão", description: "Um romance épico que se desenrola na Carolina do Sul durante o século XX.", cover: "images/SC/diario-de-uma-paixao.jpg", rating: "7.8/10", imdbLink: "https://www.imdb.com/title/tt0332280/" }, 
-
-        { type: "Filme", title: "Forrest Gump: O Contador de Histórias", description: "Partes da infância de Forrest e seu serviço militar são ligadas à Carolina do Sul.", cover: "images/SC/forrest-gump-o-contador-de-historias.png", rating: "8.8/10", imdbLink: "https://www.imdb.com/title/tt0109830/" }] },
+        { type: "Filme", title: "Diário de uma Paixão", description: "Um romance épico que se desenrola na Carolina do Sul durante o século XX.", cover: "images/SC/diario-de-uma-paixao.jpg", rating: "7.8/10", imdbLink: "https://www.imdb.com/title/tt0332280/" }] },
 
     "IL": { name: "Illinois", media: [
 
@@ -257,8 +251,6 @@ export const stateData = {
         { type: "Filme", title: "Jogos Vorazes", description: "Adolescentes são forçados a lutar até a morte em um evento televisivo, com muitas cenas filmadas na Carolina do Norte.", cover: "images/NC/jogos-vorazes.jpg", rating: "7.2/10", imdbLink: "https://www.imdb.com/title/tt1392170/" }] },
 
     "OH": { name: "Ohio", media: [
-
-        { type: "Filme", title: "Um Sonho de Liberdade", description: "Condenado injustamente, Andy Dufresne passa décadas na prisão de Shawshank, um local que remete a prisões em Ohio.", cover: "images/OH/um-sonho-de-liberdade.jpg", rating: "9.3/10", imdbLink: "https://www.imdb.com/title/tt0111161/" }, 
 
         { type: "Filme", title: "Vingadores: Os Vingadores", description: "Super-heróis se unem para salvar a Terra de uma invasão alienígena, com a batalha final ocorrendo em Cleveland, Ohio.", cover: "images/OH/vingadores-os-vingadores.jpg", rating: "8.0/10", imdbLink: "https://www.imdb.com/title/tt0848228/" }] },
 
