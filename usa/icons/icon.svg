@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Fundo -->
+  <rect width="512" height="512" fill="#1a2a3a"/>
+  <!-- Mapa estilizado dos EUA (contorno) -->
+  <path d="M60 180 L120 150 L200 165 L260 130 L340 145 L430 170 L460 220 L440 300 L380 360 L300 390 L220 370 L150 410 L90 380 L50 300 Z" fill="#2a3a4a" stroke="#66ccff" stroke-width="6" stroke-linejoin="round"/>
+  <!-- Correia de filme -->
+  <rect x="120" y="250" width="260" height="150" rx="14" fill="#ffcc00"/>
+  <rect x="136" y="266" width="228" height="118" rx="10" fill="#1a2a3a"/>
+  <!-- Perfurações da correia -->
+  <g fill="#1a2a3a">
+    <rect x="150" y="282" width="14" height="10" rx="2"/>
+    <rect x="214" y="282" width="14" height="10" rx="2"/>
+    <rect x="278" y="282" width="14" height="10" rx="2"/>
+    <rect x="342" y="282" width="14" height="10" rx="2"/>
+    <rect x="150" y="352" width="14" height="10" rx="2"/>
+    <rect x="214" y="352" width="14" height="10" rx="2"/>
+    <rect x="278" y="352" width="14" height="10" rx="2"/>
+    <rect x="342" y="352" width="14" height="10" rx="2"/>
+  </g>
+  <!-- Estrela de seleção -->
+  <polygon points="256,195 266,225 298,228 273,251 280,282 256,268 232,282 239,251 214,228 246,225" fill="#ffcc00"/>
+</svg>

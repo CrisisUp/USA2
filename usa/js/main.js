@@ -6,6 +6,7 @@ import { initSearch } from './search.js'; // Lógica de busca
 import { displayStateDetails } from './display.js'; // Lógica de exibição de detalhes
 import { stateData } from './data.js'; // Dados (necessário para o initMapInteractions e outras funções que dependem dele)
 import { resetStateHighlights } from './map-interactions.js'; // Importa a função resetStateHighlights
+import { initFilters, setDisplayedState } from './filters.js'; // Filtros, favoritos e "surpreenda-me"
 
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -34,10 +35,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Inicializa as interações do mapa, passando as dependências
         // Passamos usaMap, stateData, displayStateDetails e resetStateHighlights para o módulo
         // O initMapInteractions usará usaMap, stateData diretamente e chamará displayStateDetails e resetStateHighlights
-        initMapInteractions(usaMap, stateData, displayStateDetails, (statesList) => resetStateHighlights(statesList));
-        
+        initMapInteractions(usaMap, stateData, (stateId) => setDisplayedState(stateId), (statesList) => resetStateHighlights(statesList));
+
         // Inicializa a funcionalidade de busca (usa a instância do mapa compartilhada)
         initSearch();
+
+        // Inicializa filtros, favoritos e o botão "surpreenda-me"
+        initFilters();
 
     } catch (error) {
         console.error('Erro na inicialização ou carregamento do mapa:', error);
