@@ -20,6 +20,12 @@ h1 {
     text-align: center;
 }
 
+/* Mensagem de carregamento do mapa (estava em style.css, que era código morto) */
+#map-loading-message {
+    color: #ffcc00;
+    font-size: 1.2em;
+}
+
 /* Container principal para o mapa e detalhes */
 #main-content-container {
     display: flex;

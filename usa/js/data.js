@@ -302,5 +302,11 @@ export const stateData = {
 
         { type: "Filme", title: "Um Sonho de Liberdade", description: "Um homem é condenado injustamente e passa décadas na prisão de Shawshank, no Maine.", cover: "images/ME/um-sonho-de-liberdade.jpg", rating: "9.3/10", imdbLink: "https://www.imdb.com/title/tt0111161/" }, 
 
-        { type: "Filme", title: "It: A Coisa", description: "Crianças em uma pequena cidade do Maine são aterrorizadas por uma entidade maligna que se manifesta como um palhaço.", cover: "images/ME/it-a-coisa.jpg", rating: "7.3/10", imdbLink: "https://www.imdb.com/title/tt1396484/" }] }
+        { type: "Filme", title: "It: A Coisa", description: "Crianças em uma pequena cidade do Maine são aterrorizadas por uma entidade maligna que se manifesta como um palhaço.", cover: "images/ME/it-a-coisa.jpg", rating: "7.3/10", imdbLink: "https://www.imdb.com/title/tt1396484/" }] },
+
+    "MI": { name: "Michigan", media: [
+
+        { type: "Filme", title: "RoboCop", description: "Em uma Detroit futurista e decadente, um policial gravemente ferido é transformado em um ciborgue de combate ao crime.", cover: "images/MI/robocop.jpg", rating: "7.6/10", imdbLink: "https://www.imdb.com/title/tt0093870/" },
+
+        { type: "Filme", title: "8 Mile", description: "Um jovem rapper branco de Detroit luta para se firmar na cena do hip-hop, numa história inspirada na vida de Eminem.", cover: "images/MI/8-mile.jpg", rating: "7.1/10", imdbLink: "https://www.imdb.com/title/tt0298203/" }] }
 };
