@@ -86,7 +86,7 @@ Para explorar este mapa interativo em seu ambiente local, siga as instruções a
     │   │   ├── search.js
     │   │   └── utils.js
     │   ├── images/           # Capas locais (100% offline, sem CDN externo)
-    │   │   ├── California/
+    │   │   ├── CA/
     │   │   │   ├── biglittlelies.png
     │   │   │   ├── lalaland.png
     │   │   │   └── pulpfiction.png
