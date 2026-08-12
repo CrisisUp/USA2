@@ -6,6 +6,22 @@ let currentSelectedState = null;
 const originalParents = new Map(); // Para armazenar o pai original de cada estado para a animação
 
 /**
+ * Define a referência do mapa SVG, compartilhada entre os módulos.
+ * @param {SVGElement} mapElement - O elemento SVG do mapa.
+ */
+export function setMapInstance(mapElement) {
+    usaMapInstance = mapElement;
+}
+
+/**
+ * Obtém a referência atual do mapa SVG.
+ * @returns {SVGElement | null} O elemento SVG do mapa ou null.
+ */
+export function getMapInstance() {
+    return usaMapInstance;
+}
+
+/**
  * Move um estado para o final do seu pai, trazendo-o para "a frente" dos demais
  * (necessário para o efeito de zoom no hover e na seleção).
  * @param {SVGPathElement} statePath - O elemento <path> do estado.
@@ -45,7 +61,7 @@ function restoreOriginalPosition(statePath) {
  */
 export function resetStateHighlights(statesList) {
     // Garante que statesList é um array iterável e usa a instância do mapa se statesList não for fornecido diretamente
-    const statesToReset = Array.from(statesList || (usaMapInstance ? usaMapInstance.querySelectorAll('.state') : []));
+    const statesToReset = Array.from(statesList || getMapInstance()?.querySelectorAll('.state') || []);
 
     statesToReset.forEach(statePath => {
         statePath.style.outline = ''; // Remove outline temporário de busca
@@ -64,7 +80,7 @@ export function resetStateHighlights(statesList) {
  * @param {function} displayDetailsFunction - Função para exibir os detalhes do estado.
  */
 export function initMapInteractions(mapElement, stateData, displayDetailsFunction) {
-    usaMapInstance = mapElement; // Atribui o elemento do mapa para uso interno do módulo
+    setMapInstance(mapElement); // Atribui o elemento do mapa para uso interno do módulo
 
     const states = usaMapInstance.querySelectorAll('.state'); // Captura a lista inicial de estados
 
@@ -85,8 +101,6 @@ export function initMapInteractions(mapElement, stateData, displayDetailsFunctio
         });
 
         statePath.addEventListener('click', () => {
-            // resetStateHighlights(states); // Esta chamada foi movida para fora de map-interactions
-
             const stateId = statePath.id;
 
             // Ao clicar, garante que o estado selecionado fique na frente
@@ -115,8 +129,8 @@ export function initMapInteractions(mapElement, stateData, displayDetailsFunctio
                 statePath.click();
             }
         });
-    }); // Fim do forEach para states
-} // Fim da função initMapInteractions
+    });
+}
 
 
 /**

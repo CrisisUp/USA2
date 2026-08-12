@@ -1,18 +1,13 @@
 // search.js - Lógica de busca
 
 import { stateData } from './data.js';
-// Importa funções de map-interactions diretamente, pois elas agora são exportadas no nível superior
-import { resetStateHighlights, getCurrentSelectedState, setCurrentSelectedState } from './map-interactions.js'; 
+import { resetStateHighlights, getCurrentSelectedState, setCurrentSelectedState, getMapInstance } from './map-interactions.js';
 import { displayStateDetails } from './display.js';
-
-let usaMapInstance = null; // Para guardar a referência do mapa aqui também
 
 /**
  * Inicializa a funcionalidade de busca e seus event listeners.
- * @param {SVGElement} mapElement - O elemento SVG do mapa.
  */
-export function initSearch(mapElement) {
-    usaMapInstance = mapElement; // Guarda a referência do mapa
+export function initSearch() {
     const searchInput = document.getElementById('search-input');
     const searchButton = document.getElementById('search-button');
 
@@ -62,12 +57,13 @@ function stateMatches(stateInfo, searchTerm) {
  * @returns {{ foundAny: boolean, exactMatch: boolean }} Se algum estado foi encontrado e se houve correspondência exata.
  */
 function findAndHighlightStates(searchTerm) {
+    const usaMap = getMapInstance();
     let foundAny = false;
     let exactMatch = false;
 
     for (const stateId in stateData) {
         const stateInfo = stateData[stateId];
-        const stateElement = usaMapInstance.getElementById(stateId);
+        const stateElement = usaMap.getElementById(stateId);
 
         if (!stateInfo) {
             console.warn(`Dados para o estado "${stateId}" ausentes em stateData.`);
@@ -125,7 +121,7 @@ function setSearchMessage(title, message) {
  * Executa a busca no mapa e atualiza a exibição.
  */
 function performSearch() {
-    const states = usaMapInstance.querySelectorAll('.state');
+    const states = getMapInstance().querySelectorAll('.state');
     resetStateHighlights(states); // Limpa destaques e seleções anteriores
 
     const searchTerm = getSearchTerm();

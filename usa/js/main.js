@@ -36,8 +36,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         // O initMapInteractions usará usaMap, stateData diretamente e chamará displayStateDetails e resetStateHighlights
         initMapInteractions(usaMap, stateData, displayStateDetails, (statesList) => resetStateHighlights(statesList));
         
-        // Inicializa a funcionalidade de busca, passando usaMap
-        initSearch(usaMap);
+        // Inicializa a funcionalidade de busca (usa a instância do mapa compartilhada)
+        initSearch();
 
     } catch (error) {
         console.error('Erro na inicialização ou carregamento do mapa:', error);
