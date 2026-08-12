@@ -1,7 +1,7 @@
 // filters.js - Filtros, favoritos e "surpreenda-me"
 
 import { stateData } from './data.js';
-import { displayStateDetails, itemSlug } from './display.js';
+import { displayStateDetails } from './display.js';
 import { toggleFavorite } from './favorites.js';
 
 let currentStateId = null; // Estado cujos detalhes estão exibidos

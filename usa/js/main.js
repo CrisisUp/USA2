@@ -1,11 +1,9 @@
 // main.js - Ponto de entrada principal do aplicativo
 
 // Importa os módulos necessários
-import { initMapInteractions } from './map-interactions.js'; // Interações do mapa
+import { initMapInteractions, resetStateHighlights } from './map-interactions.js'; // Interações do mapa
 import { initSearch } from './search.js'; // Lógica de busca
-import { displayStateDetails } from './display.js'; // Lógica de exibição de detalhes
 import { stateData } from './data.js'; // Dados (necessário para o initMapInteractions e outras funções que dependem dele)
-import { resetStateHighlights } from './map-interactions.js'; // Importa a função resetStateHighlights
 import { initFilters, setDisplayedState } from './filters.js'; // Filtros, favoritos e "surpreenda-me"
 
 

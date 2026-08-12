@@ -1,7 +1,7 @@
 {
   "version": 2,
   "framework": null,
-  "installCommand": null,
+  "installCommand": "npm ci || npm install --no-audit --no-fund",
   "buildCommand": null,
   "outputDirectory": "usa"
 }
