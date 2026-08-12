@@ -20,7 +20,7 @@
     outline-offset: 2px;
 }
 
-/* Cores personalizadas para estados específicos */
+/* Cores personalizadas para estados específicos (todas únicas para legibilidade no mapa) */
 #MA { fill: #8B4513; } /* Sela */
 #NY { fill: #483D8B; } /* Azul Ardósia Escuro */
 #TX { fill: #B22222; } /* Tijolo de Fogo */
@@ -46,29 +46,30 @@
 #OK { fill: #DC143C; } /* Crimson */
 #SD { fill: #6B8E23; } /* OliveDrab */
 #LA { fill: #A52A2A; } /* Marrom */
-#CT { fill: #5F9EA0; } /* Azul Cadete */
-#NH { fill: #8B4513; } /* Sela */
-#RI { fill: #483D8B; } /* Azul Ardósia Escuro */
-#VT { fill: #B22222; } /* Tijolo de Fogo */
-#AL { fill: #2E8B57; } /* Verde Mar */
-#GA { fill: #800080; } /* Roxo */
-#MS { fill: #008B8B; } /* Ciano Escuro */
+#CT { fill: #F4A460; } /* SandyBrown */
+#NH { fill: #9370DB; } /* MediumPurple */
+#RI { fill: #FF7F50; } /* Coral */
+#VT { fill: #66CDAA; } /* MediumAquamarine */
+#AL { fill: #00CED1; } /* DarkTurquoise */
+#GA { fill: #DA70D6; } /* Orchid */
+#MS { fill: #48D1CC; } /* MediumTurquoise */
 #SC { fill: #B8860B; } /* Ouro Escuro */
-#IL { fill: #8B0000; } /* Vermelho Escuro */
-#IN { fill: #D2691E; } /* Chocolate */
-#KY { fill: #5F9EA0; } /* Azul Cadete */
-#NC { fill: #CD853F; } /* Peru */
-#OH { fill: #6A5ACD; } /* Azul Ardósia */
-#TN { fill: #708090; } /* Azul Ardósia Cinza */
-#VA { fill: #8B008B; } /* Magenta Escuro */
-#WI { fill: #A0522D; } /* Sienna */
-#WV { fill: #20B2AA; } /* Verde Mar Claro */
-#DE { fill: #8FBC8F; } /* Verde Mar Escuro */
-#DC { fill: #DAA520; } /* Dourado Sólido */
-#MD { fill: #CD5C5C; } /* Vermelho Indiano */
-#NJ { fill: #4682B4; } /* Azul Aço */
-#PA { fill: #D2B48C; } /* Tan */
-#ME { fill: #808000; } /* Oliva */
+#IL { fill: #FF8C00; } /* DarkOrange */
+#IN { fill: #00FF7F; } /* SpringGreen */
+#KY { fill: #7FFFD4; } /* Aquamarine */
+#NC { fill: #FA8072; } /* Salmon */
+#OH { fill: #EE82EE; } /* Violet */
+#TN { fill: #3CB371; } /* MediumSeaGreen */
+#VA { fill: #4169E1; } /* RoyalBlue */
+#WI { fill: #6495ED; } /* CornflowerBlue */
+#WV { fill: #ADFF2F; } /* GreenYellow */
+#DE { fill: #FFB6C1; } /* LightPink */
+#DC { fill: #FFDEAD; } /* NavajoWhite */
+#MD { fill: #00BFFF; } /* DeepSkyBlue */
+#NJ { fill: #C71585; } /* MediumVioletRed */
+#PA { fill: #C5982A; } /* Dourado Antigo */
+#ME { fill: #98AFC7; } /* Azul Aço Claro */
+#MI { fill: #B0E0E6; } /* PowderBlue */
 #AK { fill: #778899; } /* Azul Ardósia Claro */
 #HI { fill: #DB7093; } /* PaleVioletRed */
 
