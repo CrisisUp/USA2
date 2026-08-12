@@ -7,13 +7,13 @@ const STORAGE_KEY = 'usa-map-favorites';
  * @returns {string[]} Lista de slugs favoritos.
  */
 export function getFavorites() {
-    try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        const parsed = raw ? JSON.parse(raw) : [];
-        return Array.isArray(parsed) ? parsed : [];
-    } catch {
-        return [];
-    }
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
 }
 
 /**
@@ -22,19 +22,19 @@ export function getFavorites() {
  * @returns {boolean} true se agora está favoritado, false caso contrário.
  */
 export function toggleFavorite(slug) {
-    const favorites = getFavorites();
-    const index = favorites.indexOf(slug);
-    if (index >= 0) {
-        favorites.splice(index, 1);
-    } else {
-        favorites.push(slug);
-    }
-    try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
-    } catch {
-        // localStorage indisponível (modo privado/quota) — ignora silenciosamente
-    }
-    return index < 0;
+  const favorites = getFavorites();
+  const index = favorites.indexOf(slug);
+  if (index >= 0) {
+    favorites.splice(index, 1);
+  } else {
+    favorites.push(slug);
+  }
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+  } catch {
+    // localStorage indisponível (modo privado/quota) — ignora silenciosamente
+  }
+  return index < 0;
 }
 
 /**
@@ -43,5 +43,5 @@ export function toggleFavorite(slug) {
  * @returns {boolean} true se favoritado.
  */
 export function isFavorite(slug) {
-    return getFavorites().includes(slug);
+  return getFavorites().includes(slug);
 }

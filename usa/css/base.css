@@ -1,42 +1,184 @@
 /* base.css - Estilos globais e básicos */
 
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
+/* === CSS Cascade Layers === */
+@layer reset, base, components, layout, map, utilities;
+
+/* === CSS Custom Properties (Design Tokens) === */
+@layer base {
+  :root {
+    --color-bg-start: #1a2a3a;
+    --color-bg-end: #0d1a2a;
+    --color-text: #e0e0e0;
+    --color-text-muted: #b0b0b0;
+    --color-accent: #ffcc00;
+    --color-accent-hover: #e0b300;
+    --color-primary: #66ccff;
+    --color-primary-hover: #a0e0ff;
+    --color-error: #ff4444;
+    --color-success: #4caf50;
+    --color-card-bg: #3a4a5a;
+    --color-border: #5a5a5a;
+    --color-selected: #ffcc00;
+    --color-search-match: #ffcc00;
+
+    --font-family: 'Segoe UI', Arial, sans-serif;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.2rem;
+    --font-size-xl: 1.8rem;
+    --font-size-xxl: 2.5rem;
+
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+
+    --radius-sm: 3px;
+    --radius-md: 5px;
+    --radius-lg: 8px;
+
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.5);
+
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+    --transition-slow: 400ms ease;
+
+    --z-index-dropdown: 100;
+    --z-index-popover: 200;
+    --z-index-tooltip: 300;
+    --z-index-modal: 400;
+  }
+
+  /* Dark mode support via prefers-color-scheme */
+  @media (prefers-color-scheme: light) {
+    :root {
+      --color-bg-start: #f0f4f8;
+      --color-bg-end: #d9e2ec;
+      --color-text: #1a2a3a;
+      --color-text-muted: #4a5a6a;
+      --color-card-bg: #ffffff;
+      --color-border: #c0c8d0;
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+/* === Reset Layer === */
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    tab-size: 4;
+  }
+
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
+}
+
+/* === Base Styles === */
+@layer base {
+  body {
+    font-family: var(--font-family);
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0;
-    padding: 20px;
-    background: linear-gradient(to bottom right, #1a2a3a, #0d1a2a);
-    color: #e0e0e0;
+    padding: var(--spacing-xl);
+    background: linear-gradient(to bottom right, var(--color-bg-start), var(--color-bg-end));
+    color: var(--color-text);
     min-height: 100vh;
-}
+  }
 
-h1 {
-    color: #ffcc00;
-    margin-bottom: 25px;
-    font-size: 2.5em;
+  h1 {
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-xl);
+    font-size: var(--font-size-xxl);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     text-align: center;
+  }
+
+  /* Mensagem de carregamento do mapa */
+  #map-loading-message {
+    color: var(--color-accent);
+    font-size: var(--font-size-lg);
+  }
+
+  /* Mensagem de erro de carregamento do mapa */
+  .error-message {
+    color: var(--color-error);
+    font-size: 1.1rem;
+  }
+
+  /* Focus visible para acessibilidade */
+  :focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  /* Selection styling */
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-bg-start);
+  }
 }
 
-/* Mensagem de carregamento do mapa (estava em style.css, que era código morto) */
-#map-loading-message {
-    color: #ffcc00;
-    font-size: 1.2em;
-}
+/* === Utilities Layer === */
+@layer utilities {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
 
-/* Mensagem de erro de carregamento do mapa */
-.error-message {
-    color: #ff4444;
-    font-size: 1.1em;
-}
-
-/* Container principal para o mapa e detalhes */
-#main-content-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 96vw;
-    max-width: 1400px;
+  .visually-hidden {
+    @extend .sr-only;
+  }
 }

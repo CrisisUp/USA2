@@ -1,94 +1,198 @@
 /* map.css - Estilos específicos do mapa SVG */
 
 #usa-map {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 
 /* Estilos para os estados no SVG */
 .state {
-    fill: #4a6a8a; /* Azul acinzentado suave, cor padrão para todos os estados */
-    stroke: #0d1a2a; /* Contorno mais escuro para separação */
-    stroke-width: 0.8px;
-    transition: fill 0.3s ease, transform 0.3s ease;
-    transform-origin: center center;
+  fill: #4a6a8a; /* Azul acinzentado suave, cor padrão para todos os estados */
+  stroke: #0d1a2a; /* Contorno mais escuro para separação */
+  stroke-width: 0.8px;
+  transition:
+    fill 0.3s ease,
+    transform 0.3s ease;
+  transform-origin: center center;
 }
 
 /* Estilo de foco para acessibilidade */
 .state:focus {
-    outline: 3px solid #ff00ff; /* Roxo vibrante para acessibilidade no foco */
-    outline-offset: 2px;
+  outline: 3px solid #ff00ff; /* Roxo vibrante para acessibilidade no foco */
+  outline-offset: 2px;
 }
 
 /* Cores personalizadas para estados específicos (todas únicas para legibilidade no mapa) */
-#MA { fill: #8B4513; } /* Sela */
-#NY { fill: #483D8B; } /* Azul Ardósia Escuro */
-#TX { fill: #B22222; } /* Tijolo de Fogo */
-#CA { fill: #2E8B57; } /* Verde Mar */
-#FL { fill: #800080; } /* Roxo */
-#WA { fill: #008B8B; } /* Ciano Escuro */
-#CO { fill: #8B0000; } /* Vermelho Escuro */
-#AZ { fill: #D2691E; } /* Chocolate */
-#MN { fill: #5F9EA0; } /* Azul Cadete */
-#MT { fill: #CD853F; } /* Peru */
-#ND { fill: #6A5ACD; } /* Azul Ardósia */
-#ID { fill: #708090; } /* Azul Ardósia Cinza */
-#NV { fill: #8B008B; } /* Magenta Escuro */
-#NM { fill: #A0522D; } /* Sienna */
-#OR { fill: #20B2AA; } /* Verde Mar Claro */
-#UT { fill: #8FBC8F; } /* Verde Mar Escuro */
-#WY { fill: #DAA520; } /* Dourado Sólido */
-#AR { fill: #CD5C5C; } /* Vermelho Indiano */
-#IA { fill: #4682B4; } /* Azul Aço */
-#KS { fill: #D2B48C; } /* Tan */
-#MO { fill: #808000; } /* Oliva */
-#NE { fill: #BC8F8F; } /* RosyBrown */
-#OK { fill: #DC143C; } /* Crimson */
-#SD { fill: #6B8E23; } /* OliveDrab */
-#LA { fill: #A52A2A; } /* Marrom */
-#CT { fill: #F4A460; } /* SandyBrown */
-#NH { fill: #9370DB; } /* MediumPurple */
-#RI { fill: #FF7F50; } /* Coral */
-#VT { fill: #66CDAA; } /* MediumAquamarine */
-#AL { fill: #00CED1; } /* DarkTurquoise */
-#GA { fill: #DA70D6; } /* Orchid */
-#MS { fill: #48D1CC; } /* MediumTurquoise */
-#SC { fill: #B8860B; } /* Ouro Escuro */
-#IL { fill: #FF8C00; } /* DarkOrange */
-#IN { fill: #00FF7F; } /* SpringGreen */
-#KY { fill: #7FFFD4; } /* Aquamarine */
-#NC { fill: #FA8072; } /* Salmon */
-#OH { fill: #EE82EE; } /* Violet */
-#TN { fill: #3CB371; } /* MediumSeaGreen */
-#VA { fill: #4169E1; } /* RoyalBlue */
-#WI { fill: #6495ED; } /* CornflowerBlue */
-#WV { fill: #ADFF2F; } /* GreenYellow */
-#DE { fill: #FFB6C1; } /* LightPink */
-#DC { fill: #FFDEAD; } /* NavajoWhite */
-#MD { fill: #00BFFF; } /* DeepSkyBlue */
-#NJ { fill: #C71585; } /* MediumVioletRed */
-#PA { fill: #C5982A; } /* Dourado Antigo */
-#ME { fill: #98AFC7; } /* Azul Aço Claro */
-#MI { fill: #B0E0E6; } /* PowderBlue */
-#AK { fill: #778899; } /* Azul Ardósia Claro */
-#HI { fill: #DB7093; } /* PaleVioletRed */
+#MA {
+  fill: #8b4513;
+} /* Sela */
+#NY {
+  fill: #483d8b;
+} /* Azul Ardósia Escuro */
+#TX {
+  fill: #b22222;
+} /* Tijolo de Fogo */
+#CA {
+  fill: #2e8b57;
+} /* Verde Mar */
+#FL {
+  fill: #800080;
+} /* Roxo */
+#WA {
+  fill: #008b8b;
+} /* Ciano Escuro */
+#CO {
+  fill: #8b0000;
+} /* Vermelho Escuro */
+#AZ {
+  fill: #d2691e;
+} /* Chocolate */
+#MN {
+  fill: #5f9ea0;
+} /* Azul Cadete */
+#MT {
+  fill: #cd853f;
+} /* Peru */
+#ND {
+  fill: #6a5acd;
+} /* Azul Ardósia */
+#ID {
+  fill: #708090;
+} /* Azul Ardósia Cinza */
+#NV {
+  fill: #8b008b;
+} /* Magenta Escuro */
+#NM {
+  fill: #a0522d;
+} /* Sienna */
+#OR {
+  fill: #20b2aa;
+} /* Verde Mar Claro */
+#UT {
+  fill: #8fbc8f;
+} /* Verde Mar Escuro */
+#WY {
+  fill: #daa520;
+} /* Dourado Sólido */
+#AR {
+  fill: #cd5c5c;
+} /* Vermelho Indiano */
+#IA {
+  fill: #4682b4;
+} /* Azul Aço */
+#KS {
+  fill: #d2b48c;
+} /* Tan */
+#MO {
+  fill: #808000;
+} /* Oliva */
+#NE {
+  fill: #bc8f8f;
+} /* RosyBrown */
+#OK {
+  fill: #dc143c;
+} /* Crimson */
+#SD {
+  fill: #6b8e23;
+} /* OliveDrab */
+#LA {
+  fill: #a52a2a;
+} /* Marrom */
+#CT {
+  fill: #f4a460;
+} /* SandyBrown */
+#NH {
+  fill: #9370db;
+} /* MediumPurple */
+#RI {
+  fill: #ff7f50;
+} /* Coral */
+#VT {
+  fill: #66cdaa;
+} /* MediumAquamarine */
+#AL {
+  fill: #00ced1;
+} /* DarkTurquoise */
+#GA {
+  fill: #da70d6;
+} /* Orchid */
+#MS {
+  fill: #48d1cc;
+} /* MediumTurquoise */
+#SC {
+  fill: #b8860b;
+} /* Ouro Escuro */
+#IL {
+  fill: #ff8c00;
+} /* DarkOrange */
+#IN {
+  fill: #00ff7f;
+} /* SpringGreen */
+#KY {
+  fill: #7fffd4;
+} /* Aquamarine */
+#NC {
+  fill: #fa8072;
+} /* Salmon */
+#OH {
+  fill: #ee82ee;
+} /* Violet */
+#TN {
+  fill: #3cb371;
+} /* MediumSeaGreen */
+#VA {
+  fill: #4169e1;
+} /* RoyalBlue */
+#WI {
+  fill: #6495ed;
+} /* CornflowerBlue */
+#WV {
+  fill: #adff2f;
+} /* GreenYellow */
+#DE {
+  fill: #ffb6c1;
+} /* LightPink */
+#DC {
+  fill: #ffdead;
+} /* NavajoWhite */
+#MD {
+  fill: #00bfff;
+} /* DeepSkyBlue */
+#NJ {
+  fill: #c71585;
+} /* MediumVioletRed */
+#PA {
+  fill: #c5982a;
+} /* Dourado Antigo */
+#ME {
+  fill: #98afc7;
+} /* Azul Aço Claro */
+#MI {
+  fill: #b0e0e6;
+} /* PowderBlue */
+#AK {
+  fill: #778899;
+} /* Azul Ardósia Claro */
+#HI {
+  fill: #db7093;
+} /* PaleVioletRed */
 
 /* REGRAS DE HOVER e SELECTED (MAIS ESPECÍFICAS) */
 .state:hover {
-    fill: #66ccff; /* Azul vibrante no hover para todos */
-    cursor: pointer;
-    transform: scale(1.03); /* Aumenta um pouco mais no hover */
+  fill: #66ccff; /* Azul vibrante no hover para todos */
+  cursor: pointer;
+  transform: scale(1.03); /* Aumenta um pouco mais no hover */
 }
 
 .state.selected {
-    fill: #ffcc00; /* Amarelo/dourado para o estado selecionado */
-    stroke: #e0e0e0; /* Contorno claro para o selecionado */
-    stroke-width: 1.5px;
+  fill: #ffcc00; /* Amarelo/dourado para o estado selecionado */
+  stroke: #e0e0e0; /* Contorno claro para o selecionado */
+  stroke-width: 1.5px;
 }
 
 /* Destaque de estados correspondentes a uma busca */
 .state.search-match {
-    outline: 3px solid #ffcc00;
-    stroke: #ffcc00;
-    stroke-width: 2px;
+  outline: 3px solid #ffcc00;
+  stroke: #ffcc00;
+  stroke-width: 2px;
 }

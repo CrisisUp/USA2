@@ -11,7 +11,11 @@ let dom;
 
 beforeAll(() => {
   const html = fs.readFileSync(INDEX_PATH, 'utf8');
-  dom = new JSDOM(html, { runScripts: 'dangerously', resources: 'usable', url: 'https://localhost/' });
+  dom = new JSDOM(html, {
+    runScripts: 'dangerously',
+    resources: 'usable',
+    url: 'https://localhost/',
+  });
 });
 
 afterAll(() => {

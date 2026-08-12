@@ -13,7 +13,7 @@ const IMDB_RE = /^https:\/\/www\.imdb\.com\/title\/tt\d+\/$/;
 const COVER_RE = /^images\/[A-Z]{2}\/[A-Za-z0-9._-]+\.(png|jpg|jpeg|webp|svg)$/;
 
 /** @type {{name: string, media: Array}[]} */
-const allItems = Object.values(stateData).flatMap((state) => state.media);
+const allItems = Object.values(stateData).flatMap(state => state.media);
 
 describe('catálogo', () => {
   it('tem 51 estados', () => {
@@ -53,7 +53,9 @@ describe('catálogo', () => {
       if (!item.cover) continue; // sem poster livre → placeholder no display.js
       expect(item.cover, `cover fora do padrão em "${item.title}"`).toMatch(COVER_RE);
       const file = path.resolve(USA_DIR, item.cover);
-      expect(fs.existsSync(file), `arquivo não encontrado: ${item.cover} ("${item.title}")`).toBe(true);
+      expect(fs.existsSync(file), `arquivo não encontrado: ${item.cover} ("${item.title}")`).toBe(
+        true
+      );
     }
   });
 

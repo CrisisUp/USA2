@@ -3,19 +3,34 @@
   "version": "1.0.0",
   "description": "Mapa interativo dos EUA com filmes e séries por estado (site estático em usa/).",
   "private": true,
+  "type": "module",
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "jshint usa/js/data.js usa/js/display.js usa/js/favorites.js usa/js/filters.js usa/js/main.js usa/js/map-interactions.js usa/js/search.js usa/js/utils.js",
+    "test:a11y": "vitest run tests/a11y.test.mjs",
+    "test:unit": "vitest run tests/catalog.test.mjs tests/dom.test.mjs",
+    "lint": "eslint usa/js/**/*.js tests/**/*.mjs",
+    "lint:fix": "eslint usa/js/**/*.js tests/**/*.mjs --fix",
+    "format": "prettier --write usa/js/**/*.js usa/css/**/*.css usa/index.html tests/**/*.mjs",
+    "format:check": "prettier --check usa/js/**/*.js usa/css/**/*.css usa/index.html tests/**/*.mjs",
     "check": "node --check usa/js/main.js && node --check usa/js/data.js",
-    "verify": "npm run lint && npm run test && npm run check"
+    "verify": "npm run format:check && npm run lint && npm run test:unit && npm run check",
+    "ci": "npm run verify",
+    "optimize:images": "node scripts/optimize-images.js"
   },
   "devDependencies": {
-    "jsdom": "^24.1.3",
-    "jshint": "^2.13.6",
-    "vitest": "^2.1.9"
+    "@axe-core/playwright": "^4.13.0",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.8.1",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.11.0",
+    "jsdom": "^30.0.1",
+    "playwright": "^1.62.1",
+    "prettier": "^3.9.6",
+    "sharp": "^0.35.3",
+    "vitest": "^4.1.10"
   }
 }

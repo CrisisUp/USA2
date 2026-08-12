@@ -10,7 +10,7 @@ const originalParents = new Map(); // Para armazenar o pai original de cada esta
  * @param {SVGElement} mapElement - O elemento SVG do mapa.
  */
 export function setMapInstance(mapElement) {
-    usaMapInstance = mapElement;
+  usaMapInstance = mapElement;
 }
 
 /**
@@ -18,7 +18,7 @@ export function setMapInstance(mapElement) {
  * @returns {SVGElement | null} O elemento SVG do mapa ou null.
  */
 export function getMapInstance() {
-    return usaMapInstance;
+  return usaMapInstance;
 }
 
 /**
@@ -27,13 +27,13 @@ export function getMapInstance() {
  * @param {SVGPathElement} statePath - O elemento <path> do estado.
  */
 function bringToFront(statePath) {
-    if (!originalParents.has(statePath)) {
-        originalParents.set(statePath, {
-            parent: statePath.parentNode,
-            nextSibling: statePath.nextSibling
-        });
-    }
-    statePath.parentNode.appendChild(statePath);
+  if (!originalParents.has(statePath)) {
+    originalParents.set(statePath, {
+      parent: statePath.parentNode,
+      nextSibling: statePath.nextSibling,
+    });
+  }
+  statePath.parentNode.appendChild(statePath);
 }
 
 /**
@@ -41,18 +41,20 @@ function bringToFront(statePath) {
  * @param {SVGPathElement} statePath - O elemento <path> do estado.
  */
 function restoreOriginalPosition(statePath) {
-    if (!originalParents.has(statePath)) {
-        return; // Nada a restaurar
+  if (!originalParents.has(statePath)) {
+    return; // Nada a restaurar
+  }
+  const { parent, nextSibling } = originalParents.get(statePath);
+  if (parent && parent.contains(statePath)) {
+    // Verifica se o pai ainda existe e contém o elemento
+    if (nextSibling && parent.contains(nextSibling)) {
+      // Verifica se o nextSibling ainda é um filho válido
+      parent.insertBefore(statePath, nextSibling);
+    } else {
+      parent.appendChild(statePath); // Caso contrário, adiciona ao final (seguro)
     }
-    const { parent, nextSibling } = originalParents.get(statePath);
-    if (parent && parent.contains(statePath)) { // Verifica se o pai ainda existe e contém o elemento
-        if (nextSibling && parent.contains(nextSibling)) { // Verifica se o nextSibling ainda é um filho válido
-            parent.insertBefore(statePath, nextSibling);
-        } else {
-            parent.appendChild(statePath); // Caso contrário, adiciona ao final (seguro)
-        }
-    }
-    originalParents.delete(statePath);
+  }
+  originalParents.delete(statePath);
 }
 
 /**
@@ -60,18 +62,19 @@ function restoreOriginalPosition(statePath) {
  * @param {NodeListOf<SVGPathElement>|HTMLCollectionOf<SVGPathElement>} statesList - A lista de elementos <path> dos estados a serem resetados.
  */
 export function resetStateHighlights(statesList) {
-    // Garante que statesList é um array iterável e usa a instância do mapa se statesList não for fornecido diretamente
-    const statesToReset = Array.from(statesList || getMapInstance()?.querySelectorAll('.state') || []);
+  // Garante que statesList é um array iterável e usa a instância do mapa se statesList não for fornecido diretamente
+  const statesToReset = Array.from(
+    statesList || getMapInstance()?.querySelectorAll('.state') || []
+  );
 
-    statesToReset.forEach(statePath => {
-        statePath.style.outline = ''; // Remove outline temporário de busca
-        statePath.style.strokeWidth = ''; // Volta ao stroke padrão (definido no CSS)
-        statePath.style.stroke = ''; // Volta ao stroke padrão (definido no CSS)
+  statesToReset.forEach(statePath => {
+    statePath.style.outline = ''; // Remove outline temporário de busca
+    statePath.style.strokeWidth = ''; // Volta ao stroke padrão (definido no CSS)
+    statePath.style.stroke = ''; // Volta ao stroke padrão (definido no CSS)
 
-        restoreOriginalPosition(statePath);
-    });
+    restoreOriginalPosition(statePath);
+  });
 }
-
 
 /**
  * Inicializa os event listeners para as interações do mapa (hover, click, teclado).
@@ -80,65 +83,77 @@ export function resetStateHighlights(statesList) {
  * @param {function} displayDetailsFunction - Função para exibir os detalhes do estado.
  */
 export function initMapInteractions(mapElement, stateData, displayDetailsFunction) {
-    setMapInstance(mapElement); // Atribui o elemento do mapa para uso interno do módulo
+  setMapInstance(mapElement); // Atribui o elemento do mapa para uso interno do módulo
 
-    const states = usaMapInstance.querySelectorAll('.state'); // Captura a lista inicial de estados
+  const states = usaMapInstance.querySelectorAll('.state'); // Captura a lista inicial de estados
 
-    states.forEach(statePath => {
-        statePath.setAttribute('tabindex', '0');
-        statePath.setAttribute('aria-label', `Clique para ver filmes e séries de ${stateData[statePath.id]?.name || statePath.id}`);
+  states.forEach(statePath => {
+    statePath.setAttribute('tabindex', '0');
+    statePath.setAttribute(
+      'aria-label',
+      `Clique para ver filmes e séries de ${stateData[statePath.id]?.name || statePath.id}`
+    );
 
-        // Evento de mouse enter (hover)
-        statePath.addEventListener('mouseenter', () => {
-            bringToFront(statePath);
-        });
-
-        // Evento de mouse leave (des-hover)
-        statePath.addEventListener('mouseleave', () => {
-            if (statePath !== currentSelectedState) {
-                restoreOriginalPosition(statePath);
-            }
-        });
-
-        statePath.addEventListener('click', () => {
-            const stateId = statePath.id;
-
-            // Ao clicar, garante que o estado selecionado fique na frente
-            bringToFront(statePath);
-
-            // Remove a seleção do estado anterior, se houver
-            if (currentSelectedState && currentSelectedState !== statePath) {
-                restoreOriginalPosition(currentSelectedState);
-                currentSelectedState.classList.remove('selected');
-            }
-
-            statePath.classList.add('selected');
-            currentSelectedState = statePath; // Atualiza o estado selecionado
-
-            displayDetailsFunction(stateId); // Chama a função de display do outro módulo
-
-            document.getElementById('details-container').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        });
-
-        statePath.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
-                statePath.click();
-            }
-        });
+    // Evento de mouse enter (hover)
+    statePath.addEventListener('mouseenter', () => {
+      bringToFront(statePath);
     });
-}
 
+    // Evento de mouse leave (des-hover)
+    statePath.addEventListener('mouseleave', () => {
+      if (statePath !== currentSelectedState) {
+        restoreOriginalPosition(statePath);
+      }
+    });
+
+    statePath.addEventListener('click', () => {
+      const stateId = statePath.id;
+
+      // Ao clicar, garante que o estado selecionado fique na frente
+      bringToFront(statePath);
+
+      // Remove a seleção do estado anterior, se houver
+      if (currentSelectedState && currentSelectedState !== statePath) {
+        restoreOriginalPosition(currentSelectedState);
+        currentSelectedState.classList.remove('selected');
+      }
+
+      statePath.classList.add('selected');
+      currentSelectedState = statePath; // Atualiza o estado selecionado
+
+      // View Transitions API para transição suave do painel de detalhes
+      if (document.startViewTransition) {
+        document.startViewTransition(() => {
+          displayDetailsFunction(stateId);
+          document.getElementById('details-container').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+        });
+      } else {
+        displayDetailsFunction(stateId);
+        document.getElementById('details-container').scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    });
+
+    statePath.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        statePath.click();
+      }
+    });
+  });
+}
 
 /**
  * Obtém o estado atualmente selecionado.
  * @returns {SVGPathElement | null} O elemento do estado selecionado ou null.
  */
 export function getCurrentSelectedState() {
-    return currentSelectedState;
+  return currentSelectedState;
 }
 
 /**
@@ -146,5 +161,5 @@ export function getCurrentSelectedState() {
  * @param {SVGPathElement | null} stateElement - O elemento do estado a ser definido como selecionado.
  */
 export function setCurrentSelectedState(stateElement) {
-    currentSelectedState = stateElement;
+  currentSelectedState = stateElement;
 }

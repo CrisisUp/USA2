@@ -1,7 +1,12 @@
 // search.js - Lógica de busca
 
 import { stateData } from './data.js';
-import { resetStateHighlights, getCurrentSelectedState, setCurrentSelectedState, getMapInstance } from './map-interactions.js';
+import {
+  resetStateHighlights,
+  getCurrentSelectedState,
+  setCurrentSelectedState,
+  getMapInstance,
+} from './map-interactions.js';
 import { displayStateDetails } from './display.js';
 
 let cachedStates = null; // Cache dos elementos .state do mapa
@@ -10,21 +15,21 @@ let cachedStates = null; // Cache dos elementos .state do mapa
  * Inicializa a funcionalidade de busca e seus event listeners.
  */
 export function initSearch() {
-    const searchInput = document.getElementById('search-input');
-    const searchButton = document.getElementById('search-button');
+  const searchInput = document.getElementById('search-input');
+  const searchButton = document.getElementById('search-button');
 
-    // Cacheia os elementos .state uma única vez (o mapa não muda após carregamento)
-    const map = getMapInstance();
-    if (map) {
-        cachedStates = map.querySelectorAll('.state');
+  // Cacheia os elementos .state uma única vez (o mapa não muda após carregamento)
+  const map = getMapInstance();
+  if (map) {
+    cachedStates = map.querySelectorAll('.state');
+  }
+
+  searchButton.addEventListener('click', performSearch);
+  searchInput.addEventListener('keydown', event => {
+    if (event.key === 'Enter') {
+      performSearch();
     }
-
-    searchButton.addEventListener('click', performSearch);
-    searchInput.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-            performSearch();
-        }
-    });
+  });
 }
 
 /**
@@ -32,8 +37,8 @@ export function initSearch() {
  * @returns {string} O termo em minúsculas, sem espaços nas pontas.
  */
 function getSearchTerm() {
-    const searchInput = document.getElementById('search-input');
-    return searchInput.value.toLowerCase().trim();
+  const searchInput = document.getElementById('search-input');
+  return searchInput.value.toLowerCase().trim();
 }
 
 /**
@@ -43,20 +48,23 @@ function getSearchTerm() {
  * @returns {boolean} true se houver correspondência.
  */
 function stateMatches(stateInfo, searchTerm) {
-    if (stateInfo.name.toLowerCase().includes(searchTerm)) {
-        return true;
-    }
+  if (stateInfo.name.toLowerCase().includes(searchTerm)) {
+    return true;
+  }
 
-    if (stateInfo.media && Array.isArray(stateInfo.media)) {
-        return stateInfo.media.some(mediaItem =>
-            mediaItem &&
-            mediaItem.title && mediaItem.description && mediaItem.type &&
-            (mediaItem.title.toLowerCase().includes(searchTerm) ||
-             mediaItem.description.toLowerCase().includes(searchTerm) ||
-             mediaItem.type.toLowerCase().includes(searchTerm))
-        );
-    }
-    return false;
+  if (stateInfo.media && Array.isArray(stateInfo.media)) {
+    return stateInfo.media.some(
+      mediaItem =>
+        mediaItem &&
+        mediaItem.title &&
+        mediaItem.description &&
+        mediaItem.type &&
+        (mediaItem.title.toLowerCase().includes(searchTerm) ||
+          mediaItem.description.toLowerCase().includes(searchTerm) ||
+          mediaItem.type.toLowerCase().includes(searchTerm))
+    );
+  }
+  return false;
 }
 
 /**
@@ -65,37 +73,37 @@ function stateMatches(stateInfo, searchTerm) {
  * @returns {{ foundAny: boolean, exactMatch: boolean }} Se algum estado foi encontrado e se houve correspondência exata.
  */
 function findAndHighlightStates(searchTerm) {
-    const usaMap = getMapInstance();
-    let foundAny = false;
-    let exactMatch = false;
+  const usaMap = getMapInstance();
+  let foundAny = false;
+  let exactMatch = false;
 
-    for (const stateId in stateData) {
-        const stateInfo = stateData[stateId];
-        const stateElement = usaMap.getElementById(stateId);
+  for (const stateId in stateData) {
+    const stateInfo = stateData[stateId];
+    const stateElement = usaMap.getElementById(stateId);
 
-        if (!stateInfo) {
-            console.warn(`Dados para o estado "${stateId}" ausentes em stateData.`);
-            continue;
-        }
-        if (!stateElement) {
-            console.warn(`Elemento SVG para o estado "${stateId}" não encontrado no mapa.`);
-            continue;
-        }
-
-        if (stateMatches(stateInfo, searchTerm)) {
-            stateElement.classList.add('search-match');
-            foundAny = true;
-
-            // Correspondência exata por nome ou código: seleciona o estado e exibe os detalhes
-            if (stateInfo.name.toLowerCase() === searchTerm || stateId.toLowerCase() === searchTerm) {
-                selectExactMatch(stateId, stateElement);
-                exactMatch = true;
-                break;
-            }
-        }
+    if (!stateInfo) {
+      console.warn(`Dados para o estado "${stateId}" ausentes em stateData.`);
+      continue;
+    }
+    if (!stateElement) {
+      console.warn(`Elemento SVG para o estado "${stateId}" não encontrado no mapa.`);
+      continue;
     }
 
-    return { foundAny, exactMatch };
+    if (stateMatches(stateInfo, searchTerm)) {
+      stateElement.classList.add('search-match');
+      foundAny = true;
+
+      // Correspondência exata por nome ou código: seleciona o estado e exibe os detalhes
+      if (stateInfo.name.toLowerCase() === searchTerm || stateId.toLowerCase() === searchTerm) {
+        selectExactMatch(stateId, stateElement);
+        exactMatch = true;
+        break;
+      }
+    }
+  }
+
+  return { foundAny, exactMatch };
 }
 
 /**
@@ -104,15 +112,17 @@ function findAndHighlightStates(searchTerm) {
  * @param {SVGPathElement} stateElement - O elemento <path> do estado.
  */
 function selectExactMatch(stateId, stateElement) {
-    const currentSelectedState = getCurrentSelectedState();
-    if (currentSelectedState) {
-        currentSelectedState.classList.remove('selected');
-    }
+  const currentSelectedState = getCurrentSelectedState();
+  if (currentSelectedState) {
+    currentSelectedState.classList.remove('selected');
+  }
 
-    stateElement.classList.add('selected');
-    setCurrentSelectedState(stateElement);
-    displayStateDetails(stateId);
-    document.getElementById('details-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  stateElement.classList.add('selected');
+  setCurrentSelectedState(stateElement);
+  displayStateDetails(stateId);
+  document
+    .getElementById('details-container')
+    .scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 /**
@@ -121,29 +131,36 @@ function selectExactMatch(stateId, stateElement) {
  * @param {string} message - O texto da lista de resultados.
  */
 function setSearchMessage(title, message) {
-    document.getElementById('selected-state-title').textContent = title;
-    document.getElementById('media-list').innerHTML = `<li class="media-item">${message}</li>`;
+  document.getElementById('selected-state-title').textContent = title;
+  document.getElementById('media-list').innerHTML = `<li class="media-item">${message}</li>`;
 }
 
 /**
  * Executa a busca no mapa e atualiza a exibição.
  */
 function performSearch() {
-    // Usa cache de elementos .state (populado em initSearch)
-    const states = cachedStates || getMapInstance()?.querySelectorAll('.state') || [];
-    resetStateHighlights(states); // Limpa destaques e seleções anteriores
+  // Usa cache de elementos .state (populado em initSearch)
+  const states = cachedStates || getMapInstance()?.querySelectorAll('.state') || [];
+  resetStateHighlights(states); // Limpa destaques e seleções anteriores
 
-    const searchTerm = getSearchTerm();
-    if (!searchTerm) {
-        document.getElementById('selected-state-title').textContent = `Clique em um estado para ver os filmes e séries!`;
-        document.getElementById('media-list').innerHTML = '';
-        return; // Sai se a busca estiver vazia
-    }
+  const searchTerm = getSearchTerm();
+  if (!searchTerm) {
+    document.getElementById('selected-state-title').textContent =
+      'Clique em um estado para ver os filmes e séries!';
+    document.getElementById('media-list').innerHTML = '';
+    return; // Sai se a busca estiver vazia
+  }
 
-    const { foundAny, exactMatch } = findAndHighlightStates(searchTerm);
-    if (!exactMatch && foundAny) {
-        setSearchMessage(`Resultados da busca por "${searchTerm}"`, 'Estados destacados no mapa correspondem à sua busca.');
-    } else if (!exactMatch) {
-        setSearchMessage(`Nenhum resultado encontrado para "${searchTerm}".`, 'Tente uma busca diferente.');
-    }
+  const { foundAny, exactMatch } = findAndHighlightStates(searchTerm);
+  if (!exactMatch && foundAny) {
+    setSearchMessage(
+      `Resultados da busca por "${searchTerm}"`,
+      'Estados destacados no mapa correspondem à sua busca.'
+    );
+  } else if (!exactMatch) {
+    setSearchMessage(
+      `Nenhum resultado encontrado para "${searchTerm}".`,
+      'Tente uma busca diferente.'
+    );
+  }
 }

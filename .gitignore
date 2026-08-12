@@ -9,3 +9,27 @@ usa/tools/
 # --- Arquivos temporários ---
 .tmp/
 *.log
+
+# --- IDE / Editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Cache / Build ---
+.cache/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# --- Testes ---
+.nyc_output/
+
+# --- Vercel ---
+.vercel/

@@ -1,71 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Explorando os EUA: Filmes e Séries por Estado</title>
-    <meta name="description" content="Mapa interativo dos EUA com curadoria de filmes e séries por estado.">
-    <meta name="theme-color" content="#1a2a3a">
-    <link rel="manifest" href="manifest.webmanifest">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/map.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
-</head>
-<body>
+    <meta
+      name="description"
+      content="Mapa interativo dos EUA com curadoria de filmes e séries por estado."
+    />
+    <meta name="theme-color" content="#1a2a3a" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/map.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body>
     <main>
-        <h1>Explorando os EUA: Filmes e Séries por Estado</h1>
+      <h1>Explorando os EUA: Filmes e Séries por Estado</h1>
 
-        <div id="search-container">
-            <input type="text" id="search-input" placeholder="Buscar estado ou filme..."
-                aria-label="Campo de busca por estado ou filme">
-            <button id="search-button" aria-label="Botão de busca">Buscar</button>
-        </div>
+      <div id="search-container">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Buscar estado ou filme..."
+          aria-label="Campo de busca por estado ou filme"
+        />
+        <button id="search-button" aria-label="Botão de busca">Buscar</button>
+      </div>
 
-        <div id="filters-container">
-            <div id="filters">
-                <label for="type-filter">Tipo:</label>
-                <select id="type-filter" aria-label="Filtrar por tipo">
-                    <option value="all">Todos</option>
-                    <option value="Filme">Filmes</option>
-                    <option value="Série">Séries</option>
-                </select>
-                <label for="min-rating">Nota mínima:</label>
-                <select id="min-rating" aria-label="Filtrar por nota mínima">
-                    <option value="0">Qualquer</option>
-                    <option value="7">7+</option>
-                    <option value="8">8+</option>
-                    <option value="9">9+</option>
-                </select>
-                <input type="text" id="favorites-filter" placeholder="Filtrar por favorito (☆)" aria-label="Mostrar apenas favoritos">
-                <button id="surprise-button" type="button" aria-label="Surpreenda-me com um título aleatório">Surpreenda-me!</button>
-            </div>
+      <div id="filters-container">
+        <div id="filters">
+          <label for="type-filter">Tipo:</label>
+          <select id="type-filter" aria-label="Filtrar por tipo">
+            <option value="all">Todos</option>
+            <option value="Filme">Filmes</option>
+            <option value="Série">Séries</option>
+          </select>
+          <label for="min-rating">Nota mínima:</label>
+          <select id="min-rating" aria-label="Filtrar por nota mínima">
+            <option value="0">Qualquer</option>
+            <option value="7">7+</option>
+            <option value="8">8+</option>
+            <option value="9">9+</option>
+          </select>
+          <input
+            type="text"
+            id="favorites-filter"
+            placeholder="Filtrar por favorito (☆)"
+            aria-label="Mostrar apenas favoritos"
+          />
+          <button
+            id="surprise-button"
+            type="button"
+            aria-label="Surpreenda-me com um título aleatório"
+          >
+            Surpreenda-me!
+          </button>
         </div>
-            <div id="map-container">
-                <p id="map-loading-message">Carregando mapa...</p>
-            </div>
+      </div>
+      <div id="map-container">
+        <p id="map-loading-message">Carregando mapa...</p>
+      </div>
 
-            <div id="details-container">
-                <h2 class="state-title" id="selected-state-title">Clique em um estado para ver os filmes e séries!</h2>
-                <ul class="media-list" id="media-list">
-                </ul>
-            </div>
-        </div>
+      <div id="details-container">
+        <h2 class="state-title" id="selected-state-title">
+          Clique em um estado para ver os filmes e séries!
+        </h2>
+        <ul class="media-list" id="media-list"></ul>
+      </div>
     </main>
     <script type="module" src="js/main.js"></script>
     <script>
-        // Registra o service worker para suporte offline/PWA (apenas em HTTPS ou localhost)
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js').catch((err) => {
-                    console.warn('Falha ao registrar o service worker:', err);
-                });
-            });
-        }
+      // Registra o service worker para suporte offline/PWA (apenas em HTTPS ou localhost)
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js').catch(err => {
+            console.warn('Falha ao registrar o service worker:', err);
+          });
+        });
+      }
     </script>
-</body>
-
+  </body>
 </html>

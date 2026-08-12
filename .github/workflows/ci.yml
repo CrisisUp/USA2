@@ -1,17 +1,129 @@
+# .github/workflows/ci.yml — CI/CD Pipeline
+# Executa lint, testes, testes a11y e build em PRs e push para main
+
 name: CI
 
 on:
   push:
     branches: [main]
   pull_request:
+    branches: [main]
+
+# Permissões mínimas necessárias
+permissions:
+  contents: read
 
 jobs:
-  lint:
+  lint-test:
+    name: Lint + Test
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - run: npm install --no-audit --no-fund
-      - run: npm run verify
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run format check
+        run: npm run format:check
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Run syntax check
+        run: npm run check
+
+  a11y:
+    name: Acessibilidade (axe-core)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: lint-test
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Start HTTP server
+        run: |
+          cd usa
+          python3 -m http.server 8080 &
+          SERVER_PID=$!
+          echo "SERVER_PID=$SERVER_PID" >> $GITHUB_ENV
+          sleep 3
+
+      - name: Run a11y tests
+        run: TEST_BASE_URL=http://localhost:8080 npm run test:a11y
+
+      - name: Stop HTTP server
+        if: always()
+        run: kill $SERVER_PID
+
+  # Job opcional: build/preview (para projetos com build step)
+  # build:
+  #   name: Build
+  #   needs: lint-test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '22'
+  #         cache: 'npm'
+  #     - run: npm ci
+  #     - run: npm run build  # se houver script de build
+
+  # Job opcional: deploy preview (ex.: Vercel, Netlify, GitHub Pages)
+  # deploy-preview:
+  #   name: Deploy Preview
+  #   needs: build
+  #   if: github.event_name == 'pull_request'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: amondnet/vercel-action@v25
+  #       with:
+  #         vercel-token: ${{ secrets.VERCEL_TOKEN }}
+  #         vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+  #         vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+  #         working-directory: ./usa
+
+  # Job opcional: deploy production
+  # deploy-production:
+  #   name: Deploy Production
+  #   needs: build
+  #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: amondnet/vercel-action@v25
+  #       with:
+  #         vercel-token: ${{ secrets.VERCEL_TOKEN }}
+  #         vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+  #         vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+  #         vercel-args: '--prod'
+  #         working-directory: ./usa

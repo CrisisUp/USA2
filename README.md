@@ -1,5 +1,12 @@
 # 🗺️ Mapa Interativo dos EUA: Uma Jornada Cinematográfica por Estado
 
+![CI](https://github.com/CrisisUp/USA2/actions/workflows/ci.yml/badge.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Node](https://img.shields.io/badge/node-%3E%3D22-brightgreen.svg)
+![ESLint](https://img.shields.io/badge/lint-eslint-4B32C3.svg)
+![Prettier](https://img.shields.io/badge/formatter-prettier-F7B93E.svg)
+![Vitest](https://img.shields.io/badge/test-vitest-6E9F18.svg)
+
 Este projeto é um **mapa interativo dos Estados Unidos** que permite ao usuário clicar em cada estado para descobrir uma curadoria de filmes e séries cujas paisagens, ruas ou edifícios são retratados naquele local. O objetivo é proporcionar uma experiência visual e informativa, unindo geografia e cultura pop.
 
 Construído com tecnologias web fundamentais, o projeto prioriza a **performance**, a **experiência do usuário (UX)** e a **acessibilidade**, garantindo que a navegação seja intuitiva e inclusiva.
