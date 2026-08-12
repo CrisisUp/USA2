@@ -6,29 +6,53 @@ let currentSelectedState = null;
 const originalParents = new Map(); // Para armazenar o pai original de cada estado para a animação
 
 /**
+ * Move um estado para o final do seu pai, trazendo-o para "a frente" dos demais
+ * (necessário para o efeito de zoom no hover e na seleção).
+ * @param {SVGPathElement} statePath - O elemento <path> do estado.
+ */
+function bringToFront(statePath) {
+    if (!originalParents.has(statePath)) {
+        originalParents.set(statePath, {
+            parent: statePath.parentNode,
+            nextSibling: statePath.nextSibling
+        });
+    }
+    statePath.parentNode.appendChild(statePath);
+}
+
+/**
+ * Restaura um estado à sua posição original no DOM, desfazendo o bringToFront.
+ * @param {SVGPathElement} statePath - O elemento <path> do estado.
+ */
+function restoreOriginalPosition(statePath) {
+    if (!originalParents.has(statePath)) {
+        return; // Nada a restaurar
+    }
+    const { parent, nextSibling } = originalParents.get(statePath);
+    if (parent && parent.contains(statePath)) { // Verifica se o pai ainda existe e contém o elemento
+        if (nextSibling && parent.contains(nextSibling)) { // Verifica se o nextSibling ainda é um filho válido
+            parent.insertBefore(statePath, nextSibling);
+        } else {
+            parent.appendChild(statePath); // Caso contrário, adiciona ao final (seguro)
+        }
+    }
+    originalParents.delete(statePath);
+}
+
+/**
  * Reseta os estilos de destaque dos estados e os retorna às suas posições originais no DOM.
  * @param {NodeListOf<SVGPathElement>|HTMLCollectionOf<SVGPathElement>} statesList - A lista de elementos <path> dos estados a serem resetados.
  */
 export function resetStateHighlights(statesList) {
     // Garante que statesList é um array iterável e usa a instância do mapa se statesList não for fornecido diretamente
-    const statesToReset = Array.from(statesList || (usaMapInstance ? usaMapInstance.querySelectorAll('.state') : [])); 
+    const statesToReset = Array.from(statesList || (usaMapInstance ? usaMapInstance.querySelectorAll('.state') : []));
 
     statesToReset.forEach(statePath => {
         statePath.style.outline = ''; // Remove outline temporário de busca
         statePath.style.strokeWidth = ''; // Volta ao stroke padrão (definido no CSS)
         statePath.style.stroke = ''; // Volta ao stroke padrão (definido no CSS)
 
-        if (originalParents.has(statePath)) {
-            const { parent, nextSibling } = originalParents.get(statePath);
-            if (parent && parent.contains(statePath)) { // Verifica se o pai ainda existe e contém o elemento
-                if (nextSibling && parent.contains(nextSibling)) { // Verifica se o nextSibling ainda é um filho válido
-                    parent.insertBefore(statePath, nextSibling);
-                } else {
-                    parent.appendChild(statePath); // Caso contrário, adiciona ao final (seguro)
-                }
-            }
-            originalParents.delete(statePath);
-        }
+        restoreOriginalPosition(statePath);
     });
 }
 
@@ -50,29 +74,13 @@ export function initMapInteractions(mapElement, stateData, displayDetailsFunctio
 
         // Evento de mouse enter (hover)
         statePath.addEventListener('mouseenter', () => {
-            if (!originalParents.has(statePath)) {
-                originalParents.set(statePath, {
-                    parent: statePath.parentNode,
-                    nextSibling: statePath.nextSibling
-                });
-            }
-            statePath.parentNode.appendChild(statePath);
+            bringToFront(statePath);
         });
 
         // Evento de mouse leave (des-hover)
         statePath.addEventListener('mouseleave', () => {
             if (statePath !== currentSelectedState) {
-                if (originalParents.has(statePath)) {
-                    const { parent, nextSibling } = originalParents.get(statePath);
-                    if (parent && parent.contains(statePath)) {
-                        if (nextSibling && parent.contains(nextSibling)) {
-                            parent.insertBefore(statePath, nextSibling);
-                        } else {
-                            parent.appendChild(statePath);
-                        }
-                    }
-                    originalParents.delete(statePath);
-                }
+                restoreOriginalPosition(statePath);
             }
         });
 
@@ -82,27 +90,11 @@ export function initMapInteractions(mapElement, stateData, displayDetailsFunctio
             const stateId = statePath.id;
 
             // Ao clicar, garante que o estado selecionado fique na frente
-            if (!originalParents.has(statePath)) {
-                originalParents.set(statePath, {
-                    parent: statePath.parentNode,
-                    nextSibling: statePath.nextSibling
-                });
-            }
-            statePath.parentNode.appendChild(statePath);
+            bringToFront(statePath);
 
             // Remove a seleção do estado anterior, se houver
             if (currentSelectedState && currentSelectedState !== statePath) {
-                if (originalParents.has(currentSelectedState)) {
-                    const { parent, nextSibling } = originalParents.get(currentSelectedState);
-                    if (parent && parent.contains(currentSelectedState)) {
-                        if (nextSibling && parent.contains(nextSibling)) {
-                            parent.insertBefore(currentSelectedState, nextSibling);
-                        } else {
-                            parent.appendChild(currentSelectedState);
-                        }
-                    }
-                    originalParents.delete(currentSelectedState);
-                }
+                restoreOriginalPosition(currentSelectedState);
                 currentSelectedState.classList.remove('selected');
             }
 

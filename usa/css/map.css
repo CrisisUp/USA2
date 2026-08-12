@@ -85,3 +85,10 @@
     stroke: #e0e0e0; /* Contorno claro para o selecionado */
     stroke-width: 1.5px;
 }
+
+/* Destaque de estados correspondentes a uma busca */
+.state.search-match {
+    outline: 3px solid #ffcc00;
+    stroke: #ffcc00;
+    stroke-width: 2px;
+}

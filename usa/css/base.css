@@ -26,6 +26,12 @@ h1 {
     font-size: 1.2em;
 }
 
+/* Mensagem de erro de carregamento do mapa */
+.error-message {
+    color: #ff4444;
+    font-size: 1.1em;
+}
+
 /* Container principal para o mapa e detalhes */
 #main-content-container {
     display: flex;

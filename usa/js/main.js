@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         usaMap = document.getElementById('usa-map');
         if (!usaMap) {
             console.error("Elemento SVG com ID 'usa-map' não encontrado após carregamento. Verifique o conteúdo do seu arquivo SVG e certifique-se que o ID é 'usa-map'.");
-            mapContainer.innerHTML = '<p style="color: red;">Erro: O mapa não pôde ser processado. Verifique o console para mais detalhes.</p>';
+            mapContainer.innerHTML = '<p class="error-message">Erro: O mapa não pôde ser processado. Verifique o console para mais detalhes.</p>';
             return;
         }
 

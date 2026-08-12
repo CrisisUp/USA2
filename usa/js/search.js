@@ -1,6 +1,5 @@
 // search.js - Lógica de busca
 
-import { escapeHTML } from './utils.js';
 import { stateData } from './data.js';
 // Importa funções de map-interactions diretamente, pois elas agora são exportadas no nível superior
 import { resetStateHighlights, getCurrentSelectedState, setCurrentSelectedState } from './map-interactions.js'; 
@@ -26,24 +25,45 @@ export function initSearch(mapElement) {
 }
 
 /**
- * Executa a busca no mapa e atualiza a exibição.
+ * Obtém o termo de busca do campo de entrada, normalizado para comparação.
+ * @returns {string} O termo em minúsculas, sem espaços nas pontas.
  */
-function performSearch() {
+function getSearchTerm() {
     const searchInput = document.getElementById('search-input');
-    const searchTerm = escapeHTML(searchInput.value.toLowerCase().trim());
-    
-    // Pega a lista de estados para passar para resetStateHighlights
-    const states = usaMapInstance.querySelectorAll('.state');
-    resetStateHighlights(states); // Chama resetStateHighlights com a lista de estados
+    return searchInput.value.toLowerCase().trim();
+}
 
-
-    if (!searchTerm) {
-        document.getElementById('selected-state-title').textContent = `Clique em um estado para ver os filmes e séries!`;
-        document.getElementById('media-list').innerHTML = '';
-        return; // Sai se a busca estiver vazia
+/**
+ * Verifica se um estado corresponde ao termo de busca (por nome, título, descrição ou tipo de mídia).
+ * @param {object} stateInfo - Os dados do estado em stateData.
+ * @param {string} searchTerm - O termo normalizado.
+ * @returns {boolean} true se houver correspondência.
+ */
+function stateMatches(stateInfo, searchTerm) {
+    if (stateInfo.name.toLowerCase().includes(searchTerm)) {
+        return true;
     }
 
+    if (stateInfo.media && Array.isArray(stateInfo.media)) {
+        return stateInfo.media.some(mediaItem =>
+            mediaItem &&
+            mediaItem.title && mediaItem.description && mediaItem.type &&
+            (mediaItem.title.toLowerCase().includes(searchTerm) ||
+             mediaItem.description.toLowerCase().includes(searchTerm) ||
+             mediaItem.type.toLowerCase().includes(searchTerm))
+        );
+    }
+    return false;
+}
+
+/**
+ * Destaca no mapa todos os estados que correspondem ao termo de busca.
+ * @param {string} searchTerm - O termo normalizado.
+ * @returns {{ foundAny: boolean, exactMatch: boolean }} Se algum estado foi encontrado e se houve correspondência exata.
+ */
+function findAndHighlightStates(searchTerm) {
     let foundAny = false;
+    let exactMatch = false;
 
     for (const stateId in stateData) {
         const stateInfo = stateData[stateId];
@@ -58,50 +78,67 @@ function performSearch() {
             continue;
         }
 
-        const stateNameLower = stateInfo.name.toLowerCase();
-        let stateMatchesSearch = false;
-
-        if (stateNameLower.includes(searchTerm)) {
-            stateMatchesSearch = true;
-        }
-
-        if (!stateMatchesSearch && stateInfo.media && Array.isArray(stateInfo.media)) {
-            stateInfo.media.forEach(mediaItem => {
-                if (mediaItem && mediaItem.title && mediaItem.description && mediaItem.type) {
-                    if (mediaItem.title.toLowerCase().includes(searchTerm) ||
-                        mediaItem.description.toLowerCase().includes(searchTerm) ||
-                        mediaItem.type.toLowerCase().includes(searchTerm)) {
-                        stateMatchesSearch = true;
-                    }
-                }
-            });
-        }
-
-        if (stateMatchesSearch) {
-            stateElement.style.outline = '3px solid #ffcc00';
-            stateElement.style.strokeWidth = '2px';
-            stateElement.style.stroke = '#ffcc00';
+        if (stateMatches(stateInfo, searchTerm)) {
+            stateElement.classList.add('search-match');
             foundAny = true;
 
-            if (stateNameLower === searchTerm || stateId.toLowerCase() === searchTerm) {
-                const currentSelectedState = getCurrentSelectedState();
-                if (currentSelectedState) {
-                    currentSelectedState.classList.remove('selected');
-                }
-                stateElement.classList.add('selected');
-                setCurrentSelectedState(stateElement); // Atualiza o estado selecionado via função exportada
-                displayStateDetails(stateId); 
-                document.getElementById('details-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                return;
+            // Correspondência exata por nome ou código: seleciona o estado e exibe os detalhes
+            if (stateInfo.name.toLowerCase() === searchTerm || stateId.toLowerCase() === searchTerm) {
+                selectExactMatch(stateId, stateElement);
+                exactMatch = true;
+                break;
             }
         }
     }
 
-    if (foundAny) {
-        document.getElementById('selected-state-title').textContent = `Resultados da busca por "${searchTerm}"`;
-        document.getElementById('media-list').innerHTML = '<li class="media-item">Estados destacados no mapa correspondem à sua busca.</li>';
-    } else {
-        document.getElementById('selected-state-title').textContent = `Nenhum resultado encontrado para "${searchTerm}".`;
-        document.getElementById('media-list').innerHTML = '<li class="media-item">Tente uma busca diferente.</li>';
+    return { foundAny, exactMatch };
+}
+
+/**
+ * Seleciona um estado com correspondência exata, exibe seus detalhes e rola até eles.
+ * @param {string} stateId - O ID do estado no mapa.
+ * @param {SVGPathElement} stateElement - O elemento <path> do estado.
+ */
+function selectExactMatch(stateId, stateElement) {
+    const currentSelectedState = getCurrentSelectedState();
+    if (currentSelectedState) {
+        currentSelectedState.classList.remove('selected');
+    }
+
+    stateElement.classList.add('selected');
+    setCurrentSelectedState(stateElement);
+    displayStateDetails(stateId);
+    document.getElementById('details-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/**
+ * Atualiza o painel de detalhes com a mensagem do resultado da busca.
+ * @param {string} title - O texto do título do painel.
+ * @param {string} message - O texto da lista de resultados.
+ */
+function setSearchMessage(title, message) {
+    document.getElementById('selected-state-title').textContent = title;
+    document.getElementById('media-list').innerHTML = `<li class="media-item">${message}</li>`;
+}
+
+/**
+ * Executa a busca no mapa e atualiza a exibição.
+ */
+function performSearch() {
+    const states = usaMapInstance.querySelectorAll('.state');
+    resetStateHighlights(states); // Limpa destaques e seleções anteriores
+
+    const searchTerm = getSearchTerm();
+    if (!searchTerm) {
+        document.getElementById('selected-state-title').textContent = `Clique em um estado para ver os filmes e séries!`;
+        document.getElementById('media-list').innerHTML = '';
+        return; // Sai se a busca estiver vazia
+    }
+
+    const { foundAny, exactMatch } = findAndHighlightStates(searchTerm);
+    if (!exactMatch && foundAny) {
+        setSearchMessage(`Resultados da busca por "${searchTerm}"`, 'Estados destacados no mapa correspondem à sua busca.');
+    } else if (!exactMatch) {
+        setSearchMessage(`Nenhum resultado encontrado para "${searchTerm}".`, 'Tente uma busca diferente.');
     }
 }
