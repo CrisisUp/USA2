@@ -3,31 +3,53 @@
 
 import { test, expect } from 'vitest';
 import { chromium } from 'playwright';
-import { injectAxe, checkA11y } from '@axe-core/playwright';
+import AxeBuilder from '@axe-core/playwright';
 
 const BASE_URL =
   (typeof process !== 'undefined' && process.env.TEST_BASE_URL) || 'http://localhost:8080';
 
 test.describe('Acessibilidade (axe-core)', () => {
   let browser;
+  let context;
   let page;
 
   test.beforeAll(async () => {
     browser = await chromium.launch();
-    page = await browser.newPage();
+    context = await browser.newContext();
+    page = await context.newPage();
     await page.goto(BASE_URL, { waitUntil: 'networkidle' });
-    await injectAxe(page);
   });
 
   test.afterAll(async () => {
+    await context.close();
     await browser.close();
   });
 
   test('página inicial não tem violações críticas de a11y', async () => {
-    await checkA11y(page, null, {
-      detailedReport: true,
-      includedImpacts: ['critical', 'serious'],
-    });
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+      .analyze();
+    const violations = results.violations.filter(v => ['critical', 'serious'].includes(v.impact));
+    if (violations.length > 0) {
+      console.warn(
+        'a11y violations:',
+        JSON.stringify(
+          violations.map(v => ({
+            id: v.id,
+            impact: v.impact,
+            description: v.description,
+            nodes: v.nodes.length,
+            html: v.nodes
+              .slice(0, 3)
+              .map(n => n.html?.substring(0, 200))
+              .join(' | '),
+          })),
+          null,
+          2
+        )
+      );
+    }
+    expect(violations.length).toBe(0);
   });
 
   test('mapa SVG tem labels acessíveis nos estados', async () => {
@@ -74,18 +96,32 @@ test.describe('Acessibilidade (axe-core)', () => {
   test('estados são focáveis via teclado', async () => {
     const firstState = page.locator('.state').first();
     await firstState.focus();
-    await expect(firstState).toBeFocused();
+    const isFocused = await firstState.evaluate(el => el === document.activeElement);
+    expect(isFocused).toBe(true);
   });
 
   test('contraste de cores no container principal', async () => {
-    // axe-core já verifica contraste, mas podemos testar especificamente
-    await checkA11y(page, '#main-content-container, main', {
-      detailedReport: true,
-      includedImpacts: ['critical', 'serious'],
-      rules: {
-        'color-contrast': { enabled: true },
-      },
-    });
+    const results = await new AxeBuilder({ page })
+      .include('#main-content-container, main')
+      .withRules(['color-contrast'])
+      .analyze();
+    const violations = results.violations.filter(v => ['critical', 'serious'].includes(v.impact));
+    if (violations.length > 0) {
+      console.warn(
+        'a11y violations:',
+        JSON.stringify(
+          violations.map(v => ({
+            id: v.id,
+            impact: v.impact,
+            description: v.description,
+            nodes: v.nodes.length,
+          })),
+          null,
+          2
+        )
+      );
+    }
+    expect(violations.length).toBe(0);
   });
 
   test('imagens têm alt text', async () => {

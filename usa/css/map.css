@@ -11,21 +11,43 @@
     --color-state-default,
     #4a6a8a
   ); /* Azul acinzentado suave, cor padrão para todos os estados */
-  stroke: var(--color-border, #0d1a2a); /* Contorno mais escuro para separação */
-  stroke-width: 0.8px;
+
+  /* Stroke acessível: contraste 4.5:1 contra o background gradiente
+     - Dark mode: stroke claro (#fff) contra bg escuro
+     - Light mode: stroke escuro (#0d1a2a) contra bg claro
+     - 1.5px garante visibilidade mesmo em zoom out */
+  stroke: var(--color-state-stroke, #ffffff);
+  stroke-width: 1.5px;
+  stroke-linejoin: round;
+
   transition:
     fill 0.3s ease,
+    stroke 0.3s ease,
     transform 0.3s ease;
   transform-origin: center center;
 }
 
+/* Dark mode (padrão): stroke branco para contraste contra bg escuro */
+@media (prefers-color-scheme: dark) {
+  .state {
+    --color-state-stroke: #ffffff;
+  }
+}
+
+/* Light mode: stroke escuro para contraste contra bg claro */
+@media (prefers-color-scheme: light) {
+  .state {
+    --color-state-stroke: #0d1a2a;
+  }
+}
+
 /* Modos de visualização do mapa: Filmes vs Séries */
 .state.mode-filmes {
-  fill: var(--color-mode-filmes, #2e8b57); /* Verde = mais filmes */
+  fill: var(--color-mode-filmes, #3b82f6); /* Azul = mais filmes */
 }
 
 .state.mode-series {
-  fill: var(--color-mode-series, #da70d6); /* Rosa/Roxo = mais séries */
+  fill: var(--color-mode-series, #ec4899); /* Rosa = mais séries */
 }
 
 .state.mode-neutral {

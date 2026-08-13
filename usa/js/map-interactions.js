@@ -89,10 +89,18 @@ export function initMapInteractions(mapElement, stateData, displayDetailsFunctio
 
   states.forEach(statePath => {
     statePath.setAttribute('tabindex', '0');
+    statePath.setAttribute('role', 'img'); // Permite aria-label em <path> SVG
     statePath.setAttribute(
       'aria-label',
       `Clique para ver filmes e séries de ${stateData[statePath.id]?.name || statePath.id}`
     );
+
+    // Adiciona <title> nativo SVG para melhor suporte a leitores de tela
+    if (!statePath.querySelector('title')) {
+      const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+      title.textContent = stateData[statePath.id]?.name || statePath.id;
+      statePath.appendChild(title);
+    }
 
     // Evento de mouse enter (hover)
     statePath.addEventListener('mouseenter', () => {

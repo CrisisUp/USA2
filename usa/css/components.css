@@ -37,7 +37,7 @@
 #search-button {
   padding: var(--spacing-sm) var(--spacing-md);
   background-color: var(--color-accent);
-  color: var(--color-bg-start);
+  color: var(--color-btn-text);
   border: none;
   border-radius: var(--radius-md);
   font-size: var(--font-size-base);
@@ -80,6 +80,91 @@
   animation: fadeInSlide var(--transition-slow) forwards;
   opacity: 0;
   transform: translateX(-10px);
+}
+
+/* Skeleton loading para cards de mídia */
+.media-item.skeleton {
+  animation: none;
+  opacity: 1;
+  transform: none;
+  pointer-events: none;
+}
+
+.media-item.skeleton .media-header {
+  height: 1.5rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.media-item.skeleton .media-header::before {
+  content: '';
+  display: block;
+  width: 60%;
+  height: 1.5rem;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--color-border) 25%,
+    var(--color-card-bg) 50%,
+    var(--color-border) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.media-item.skeleton .media-cover {
+  width: 80px;
+  height: 120px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--color-border) 25%,
+    var(--color-card-bg) 50%,
+    var(--color-border) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.media-item.skeleton .media-description {
+  height: 3rem;
+  margin: 0;
+}
+
+.media-item.skeleton .media-description::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3rem;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--color-border) 25%,
+    var(--color-card-bg) 50%,
+    var(--color-border) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.media-item.skeleton .media-info {
+  height: 2rem;
+}
+
+.media-item.skeleton .media-info::before {
+  content: '';
+  display: block;
+  width: 40%;
+  height: 2rem;
+  margin-left: auto;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--color-border) 25%,
+    var(--color-card-bg) 50%,
+    var(--color-border) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }
 
 .media-item strong {
@@ -257,7 +342,7 @@
 #surprise-button {
   padding: var(--spacing-xs) var(--spacing-sm);
   background-color: var(--color-accent);
-  color: var(--color-bg-start);
+  color: var(--color-btn-text);
   border: none;
   border-radius: var(--radius-md);
   font-size: 0.9rem;
