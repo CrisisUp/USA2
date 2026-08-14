@@ -1,7 +1,22 @@
-import { describe, it, expect } from 'vitest';
-import { itemSlug, filterMedia, getOptimizedCoverUrls } from '../usa/js/display.js';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { JSDOM } from 'jsdom';
+import { itemSlug, filterMedia, getOptimizedCoverUrls, renderMediaItem } from '../usa/js/display.js';
 
 describe('display', () => {
+  let dom;
+
+  beforeAll(() => {
+    dom = new JSDOM('<!DOCTYPE html><html><body></body></html>');
+    global.document = dom.window.document;
+    global.window = dom.window;
+  });
+
+  afterAll(() => {
+    dom.window.close();
+    delete global.document;
+    delete global.window;
+  });
+
   describe('itemSlug', () => {
     it('extracts IMDb ID from imdbLink', () => {
       const item = { imdbLink: 'https://www.imdb.com/title/tt0110912/' };
@@ -151,6 +166,98 @@ describe('display', () => {
       const result = getOptimizedCoverUrls('images/CA/MOVIE.PNG');
       expect(result.webp).toBe('images/CA/MOVIE.webp');
       expect(result.avif).toBe('images/CA/MOVIE.avif');
+    });
+  });
+
+  describe('renderMediaItem', () => {
+    const mockItem = {
+      title: 'Test Movie',
+      type: 'Filme',
+      rating: '9.0/10',
+      description: 'A great movie.',
+      imdbLink: 'https://www.imdb.com/title/tt1234567/',
+      cover: 'images/CA/test-movie.png',
+    };
+
+    it('creates an li with media-item class', () => {
+      const li = renderMediaItem(mockItem);
+      expect(li.tagName).toBe('LI');
+      expect(li.classList.contains('media-item')).toBe(true);
+    });
+
+    it('generates picture element with avif and webp sources', () => {
+      const li = renderMediaItem(mockItem);
+      const picture = li.querySelector('picture');
+      expect(picture).toBeTruthy();
+
+      const avifSource = picture.querySelector('source[type="image/avif"]');
+      expect(avifSource).toBeTruthy();
+      expect(avifSource.getAttribute('srcset')).toContain('.avif');
+
+      const webpSource = picture.querySelector('source[type="image/webp"]');
+      expect(webpSource).toBeTruthy();
+      expect(webpSource.getAttribute('srcset')).toContain('.webp');
+    });
+
+    it('img has correct src, alt, loading, width, height', () => {
+      const li = renderMediaItem(mockItem);
+      const img = li.querySelector('img.media-cover');
+      expect(img).toBeTruthy();
+      expect(img.getAttribute('src')).toContain('images/CA/test-movie.png');
+      expect(img.getAttribute('alt')).toBe('Capa de Test Movie');
+      expect(img.getAttribute('loading')).toBe('lazy');
+      expect(img.getAttribute('width')).toBe('80');
+      expect(img.getAttribute('height')).toBe('120');
+    });
+
+    it('img has onerror handler pointing to placeholder', () => {
+      const li = renderMediaItem(mockItem);
+      const img = li.querySelector('img.media-cover');
+      const onerror = img.getAttribute('onerror');
+      expect(onerror).toContain('via.placeholder.com');
+      expect(onerror).toContain("this.onerror=null");
+    });
+
+    it('includes fav button with correct aria attributes', () => {
+      const li = renderMediaItem(mockItem);
+      const favBtn = li.querySelector('.fav-btn');
+      expect(favBtn).toBeTruthy();
+      expect(favBtn.getAttribute('aria-pressed')).toBe('false');
+      expect(favBtn.getAttribute('aria-label')).toBe('Adicionar aos favoritos');
+      expect(favBtn.textContent).toBe('☆');
+    });
+
+    it('includes IMDb link with target="_blank"', () => {
+      const li = renderMediaItem(mockItem);
+      const imdbLink = li.querySelector('.imdb-link');
+      expect(imdbLink).toBeTruthy();
+      expect(imdbLink.getAttribute('href')).toBe('https://www.imdb.com/title/tt1234567/');
+      expect(imdbLink.getAttribute('target')).toBe('_blank');
+      expect(imdbLink.textContent).toBe('Ver no IMDb');
+    });
+
+    it('shows rating span', () => {
+      const li = renderMediaItem(mockItem);
+      const rating = li.querySelector('.media-rating');
+      expect(rating).toBeTruthy();
+      expect(rating.textContent).toBe('Nota: 9.0/10');
+    });
+
+    it('uses placeholder when cover is missing', () => {
+      const itemNoCover = { ...mockItem, cover: null };
+      const li = renderMediaItem(itemNoCover);
+      const img = li.querySelector('img.media-cover');
+      expect(img.getAttribute('src')).toContain('via.placeholder.com');
+    });
+
+    it('escapes HTML in title and description (XSS prevention)', () => {
+      const itemXSS = { ...mockItem, title: '<script>alert(1)</script>', description: '"onmouseover="xss' };
+      const li = renderMediaItem(itemXSS);
+      // innerHTML should have escaped entities (< > "), not raw tags/attrs
+      const headerHtml = li.querySelector('.media-header').innerHTML;
+      expect(headerHtml).not.toContain('<script>'); // raw <script> not present
+      const descHtml = li.querySelector('.media-description').innerHTML;
+      expect(descHtml).toContain('"'); // quotes escaped
     });
   });
 });
