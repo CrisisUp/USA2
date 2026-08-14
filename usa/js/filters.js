@@ -70,12 +70,13 @@ function getRandomStateIdWithMedia() {
  * Calcula a contagem de filmes e séries por estado.
  * @returns {Map<string, {filmes: number, series: number, total: number}>}
  */
-function calculateMediaCounts() {
+export function calculateMediaCounts() {
   const counts = new Map();
-  for (const [stateId, stateData] of Object.entries(stateData)) {
-    if (stateData.media) {
-      const filmes = stateData.media.filter(m => m.type === 'Filme').length;
-      const series = stateData.media.filter(m => m.type === 'Série').length;
+  // Evita shadowing do import `stateData` — usa nome diferente no loop
+  for (const [stateId, state] of Object.entries(stateData)) {
+    if (state.media) {
+      const filmes = state.media.filter(m => m.type === 'Filme').length;
+      const series = state.media.filter(m => m.type === 'Série').length;
       counts.set(stateId, { filmes, series, total: filmes + series });
     } else {
       counts.set(stateId, { filmes: 0, series: 0, total: 0 });
@@ -88,7 +89,7 @@ function calculateMediaCounts() {
  * Aplica o modo de visualização do mapa (filmes vs séries).
  * @param {string} mode - 'filmes' ou 'series'
  */
-function applyMapMode(mode) {
+export function applyMapMode(mode) {
   const usaMap = getMapInstance();
   if (!usaMap) return;
 
@@ -128,11 +129,16 @@ function applyMapMode(mode) {
 
   currentMapMode = mode;
 
-  // Atualiza botões
-  document.getElementById('mode-filmes').classList.toggle('active', mode === 'filmes');
-  document.getElementById('mode-filmes').setAttribute('aria-pressed', mode === 'filmes');
-  document.getElementById('mode-series').classList.toggle('active', mode === 'series');
-  document.getElementById('mode-series').setAttribute('aria-pressed', mode === 'series');
+  // Atualiza botões (guarda contra execução antes do DOM estar pronto)
+  const filmesBtn = document.getElementById('mode-filmes');
+  const seriesBtn = document.getElementById('mode-series');
+  if (!filmesBtn || !seriesBtn) {
+    return; // Botões ainda não existem no DOM
+  }
+  filmesBtn.classList.toggle('active', mode === 'filmes');
+  filmesBtn.setAttribute('aria-pressed', mode === 'filmes');
+  seriesBtn.classList.toggle('active', mode === 'series');
+  seriesBtn.setAttribute('aria-pressed', mode === 'series');
 }
 
 /**
