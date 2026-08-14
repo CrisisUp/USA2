@@ -4,7 +4,8 @@ import { escapeHTML } from './utils.js';
 import { stateData } from './data.js';
 import { isFavorite } from './favorites.js';
 
-const DEFAULT_COVER = 'https://via.placeholder.com/80x120?text=Sem+Capa'; // Placeholder para capas ausentes/inválidas
+// Placeholder SVG local (data URI) — funciona offline e evita dependência externa
+const DEFAULT_COVER = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSIxMjAiIHZpZXdCb3g9IjAgMCA4MCAxMjAiPjxyZWN0IHdpZHRoPSI4MCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiM0YTY4OWEiLz48dGV4dCB4PSI0MCIgeT0iNjAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjYWEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPlNlbSBDYXBhPC90ZXh0Pjwvc3ZnPg==';
 
 /**
  * Deriva um identificador estável (slug) de um item de mídia, usado para favoritos.
@@ -31,7 +32,7 @@ export function itemSlug(item) {
  * @param {{type?: string, minRating?: number, favoritesOnly?: boolean}} options - Os filtros ativos.
  * @returns {Array} A lista filtrada.
  */
-function filterMedia(media, options) {
+export function filterMedia(media, options) {
   const { type = 'all', minRating = 0, favoritesOnly = false } = options;
   return media.filter(item => {
     if (type !== 'all' && item.type !== type) {
@@ -55,7 +56,7 @@ function filterMedia(media, options) {
  * @param {string} coverPath - Caminho original da imagem (ex.: images/CA/lalaland.png)
  * @returns {{webp: string, avif: string}} URLs otimizadas
  */
-function getOptimizedCoverUrls(coverPath) {
+export function getOptimizedCoverUrls(coverPath) {
   if (!coverPath || typeof coverPath !== 'string') {
     return { webp: DEFAULT_COVER, avif: DEFAULT_COVER };
   }
@@ -138,6 +139,26 @@ export function renderMediaItem(item) {
 }
 
 /**
+ * Cria um card skeleton para loading.
+ * @returns {HTMLLIElement}
+ */
+function createSkeletonItem() {
+  const li = document.createElement('li');
+  li.className = 'media-item skeleton';
+  li.innerHTML = `
+    <div class="media-header"></div>
+    <div class="media-body">
+      <div class="media-cover"></div>
+      <div style="flex: 1;">
+        <p class="media-description"></p>
+      </div>
+    </div>
+    <div class="media-info"></div>
+  `;
+  return li;
+}
+
+/**
  * Exibe os detalhes de filmes e séries para um estado específico.
  * @param {string} stateId - O ID do estado.
  * @param {{type?: string, minRating?: number, favoritesOnly?: boolean}} [options] - Filtros de exibição.
@@ -152,24 +173,38 @@ export function displayStateDetails(stateId, options = {}) {
   mediaList.style.viewTransitionName = 'media-list';
   selectedStateTitle.style.viewTransitionName = 'media-item';
 
-  mediaList.innerHTML = ''; // Limpa a lista anterior
-
+  // Mostra skeletons imediatamente (antes de filtrar)
+  mediaList.innerHTML = '';
   const data = stateData[stateId];
 
   if (data && data.media && data.media.length > 0) {
     selectedStateTitle.textContent = `${escapeHTML(data.name)}: Filmes e Séries`;
 
     const items = filterMedia(data.media, options);
-    if (items.length === 0) {
-      selectedStateTitle.textContent = `${escapeHTML(data.name)}: Nenhum título corresponde aos filtros`;
-      mediaList.innerHTML = '<li class="media-item">Ajuste os filtros para ver mais títulos.</li>';
-    } else {
-      items.forEach((item, index) => {
-        const li = renderMediaItem(item);
-        li.style.viewTransitionName = `media-item-${index}`;
-        mediaList.appendChild(li);
-      });
+
+    // Mostra skeletons enquanto "carrega" (simula loading rápido)
+    const skeletonCount = Math.min(items.length, 6); // Máx 6 skeletons
+    for (let i = 0; i < skeletonCount; i++) {
+      mediaList.appendChild(createSkeletonItem());
     }
+
+    // Substitui skeletons por conteúdo real após breve delay
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        mediaList.innerHTML = '';
+        if (items.length === 0) {
+          selectedStateTitle.textContent = `${escapeHTML(data.name)}: Nenhum título corresponde aos filtros`;
+          mediaList.innerHTML =
+            '<li class="media-item">Ajuste os filtros para ver mais títulos.</li>';
+        } else {
+          items.forEach((item, index) => {
+            const li = renderMediaItem(item);
+            li.style.viewTransitionName = `media-item-${index}`;
+            mediaList.appendChild(li);
+          });
+        }
+      }, 150); // Delay visual para perceber o skeleton
+    });
   } else {
     // Mensagem mais amigável para estados sem dados ou com dados de mídia inválidos
     const stateName = data ? escapeHTML(data.name) : stateId; // Tenta pegar o nome do estado, senão usa o ID

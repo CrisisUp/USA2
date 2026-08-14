@@ -151,20 +151,20 @@ describe('display', () => {
 
     it('returns placeholder for empty cover', () => {
       const result = getOptimizedCoverUrls('');
-      expect(result.webp).toContain('via.placeholder.com');
-      expect(result.avif).toContain('via.placeholder.com');
+      expect(result.webp).toContain('data:image/svg+xml;base64');
+      expect(result.avif).toContain('data:image/svg+xml;base64');
     });
 
     it('returns placeholder for null cover', () => {
       const result = getOptimizedCoverUrls(null);
-      expect(result.webp).toContain('via.placeholder.com');
-      expect(result.avif).toContain('via.placeholder.com');
+      expect(result.webp).toContain('data:image/svg+xml;base64');
+      expect(result.avif).toContain('data:image/svg+xml;base64');
     });
 
     it('returns placeholder for undefined cover', () => {
       const result = getOptimizedCoverUrls(undefined);
-      expect(result.webp).toContain('via.placeholder.com');
-      expect(result.avif).toContain('via.placeholder.com');
+      expect(result.webp).toContain('data:image/svg+xml;base64');
+      expect(result.avif).toContain('data:image/svg+xml;base64');
     });
 
     it('handles case insensitive extensions', () => {
@@ -219,7 +219,7 @@ describe('display', () => {
       const li = renderMediaItem(mockItem);
       const img = li.querySelector('img.media-cover');
       const onerror = img.getAttribute('onerror');
-      expect(onerror).toContain('via.placeholder.com');
+      expect(onerror).toContain('data:image/svg+xml;base64');
       expect(onerror).toContain('this.onerror=null');
     });
 
@@ -252,7 +252,7 @@ describe('display', () => {
       const itemNoCover = { ...mockItem, cover: null };
       const li = renderMediaItem(itemNoCover);
       const img = li.querySelector('img.media-cover');
-      expect(img.getAttribute('src')).toContain('via.placeholder.com');
+      expect(img.getAttribute('src')).toContain('data:image/svg+xml;base64');
     });
 
     it('escapes HTML in title and description (XSS prevention)', () => {
