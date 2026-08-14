@@ -1,6 +1,11 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { JSDOM } from 'jsdom';
-import { itemSlug, filterMedia, getOptimizedCoverUrls, renderMediaItem } from '../usa/js/display.js';
+import {
+  itemSlug,
+  filterMedia,
+  getOptimizedCoverUrls,
+  renderMediaItem,
+} from '../usa/js/display.js';
 
 describe('display', () => {
   let dom;
@@ -215,7 +220,7 @@ describe('display', () => {
       const img = li.querySelector('img.media-cover');
       const onerror = img.getAttribute('onerror');
       expect(onerror).toContain('via.placeholder.com');
-      expect(onerror).toContain("this.onerror=null");
+      expect(onerror).toContain('this.onerror=null');
     });
 
     it('includes fav button with correct aria attributes', () => {
@@ -251,7 +256,11 @@ describe('display', () => {
     });
 
     it('escapes HTML in title and description (XSS prevention)', () => {
-      const itemXSS = { ...mockItem, title: '<script>alert(1)</script>', description: '"onmouseover="xss' };
+      const itemXSS = {
+        ...mockItem,
+        title: '<script>alert(1)</script>',
+        description: '"onmouseover="xss',
+      };
       const li = renderMediaItem(itemXSS);
       // innerHTML should have escaped entities (< > "), not raw tags/attrs
       const headerHtml = li.querySelector('.media-header').innerHTML;
