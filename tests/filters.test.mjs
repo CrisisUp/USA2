@@ -73,6 +73,7 @@ describe('filters', () => {
       expect(filters.type).toBe('all');
       expect(filters.minRating).toBe(0);
       expect(filters.favoritesOnly).toBe(false);
+      expect(filters.decade).toBe('all');
     });
 
     it('reads type filter value', () => {
@@ -97,6 +98,18 @@ describe('filters', () => {
       document.getElementById('favorites-filter').value = '  ';
       const filters = getActiveFilters();
       expect(filters.favoritesOnly).toBe(false);
+    });
+
+    it('reads decade filter value', () => {
+      document.getElementById('decade-filter').value = '1990s';
+      const filters = getActiveFilters();
+      expect(filters.decade).toBe('1990s');
+    });
+
+    it('returns all for decade when nothing selected', () => {
+      document.getElementById('decade-filter').value = 'all';
+      const filters = getActiveFilters();
+      expect(filters.decade).toBe('all');
     });
   });
 });

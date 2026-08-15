@@ -64,24 +64,28 @@ describe('display', () => {
         type: 'Filme',
         rating: '9.3/10',
         imdbLink: 'https://www.imdb.com/title/tt1/',
+        year: 1994,
       },
       {
         title: 'Series 1',
         type: 'Série',
         rating: '8.7/10',
         imdbLink: 'https://www.imdb.com/title/tt2/',
+        year: 2017,
       },
       {
         title: 'Movie 2',
         type: 'Filme',
         rating: '7.5/10',
         imdbLink: 'https://www.imdb.com/title/tt3/',
+        year: 1999,
       },
       {
         title: 'Series 2',
         type: 'Série',
         rating: '9.0/10',
         imdbLink: 'https://www.imdb.com/title/tt4/',
+        year: 2020,
       },
     ];
 
@@ -127,6 +131,63 @@ describe('display', () => {
     it('returns empty array when no matches', () => {
       const result = filterMedia(mockMedia, { type: 'Filme', minRating: 10 });
       expect(result).toHaveLength(0);
+    });
+
+    // Decade filter tests
+    it('filters by decade 1990s', () => {
+      const result = filterMedia(mockMedia, { decade: '1990s' });
+      expect(result).toHaveLength(2);
+      expect(result.every(m => m.year >= 1990 && m.year <= 1999)).toBe(true);
+      expect(result.map(m => m.title).sort()).toEqual(['Movie 1', 'Movie 2']);
+    });
+
+    it('filters by decade 2010s', () => {
+      const result = filterMedia(mockMedia, { decade: '2010s' });
+      expect(result).toHaveLength(1);
+      expect(result[0].title).toBe('Series 1');
+      expect(result[0].year).toBe(2017);
+    });
+
+    it('filters by decade 2020s', () => {
+      const result = filterMedia(mockMedia, { decade: '2020s' });
+      expect(result).toHaveLength(1);
+      expect(result[0].title).toBe('Series 2');
+      expect(result[0].year).toBe(2020);
+    });
+
+    it('returns all when decade is all', () => {
+      const result = filterMedia(mockMedia, { decade: 'all' });
+      expect(result).toHaveLength(4);
+    });
+
+    it('combines decade with type filter', () => {
+      const result = filterMedia(mockMedia, { type: 'Filme', decade: '1990s' });
+      expect(result).toHaveLength(2);
+      expect(result.every(m => m.type === 'Filme' && m.year >= 1990 && m.year <= 1999)).toBe(true);
+    });
+
+    it('combines decade with minRating', () => {
+      const result = filterMedia(mockMedia, { decade: '1990s', minRating: 9 });
+      expect(result).toHaveLength(1);
+      expect(result[0].title).toBe('Movie 1');
+      expect(result[0].year).toBe(1994);
+    });
+
+    it('returns empty for decade with no matches', () => {
+      const result = filterMedia(mockMedia, { decade: '1980s' });
+      expect(result).toHaveLength(0);
+    });
+
+    it('includes items without year when filtering by decade (graceful fallback)', () => {
+      // Items without year are included (treated as matching any decade)
+      const mediaWithoutYear = [
+        { title: 'No Year', type: 'Filme', rating: '8.0/10', imdbLink: 'https://www.imdb.com/title/tt1/' },
+        { title: 'Has Year', type: 'Filme', rating: '9.0/10', imdbLink: 'https://www.imdb.com/title/tt2/', year: 1995 },
+      ];
+      const result = filterMedia(mediaWithoutYear, { decade: '1990s' });
+      expect(result).toHaveLength(2); // both included - no-year items match any decade
+      expect(result.map(m => m.title)).toContain('No Year');
+      expect(result.map(m => m.title)).toContain('Has Year');
     });
   });
 
