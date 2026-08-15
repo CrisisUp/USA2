@@ -34,28 +34,35 @@ export function itemSlug(item) {
  * @returns {Array} A lista filtrada.
  */
 export function filterMedia(media, options) {
+  console.log('[DEBUG] filterMedia called with:', { mediaCount: media.length, options });
   const { type = 'all', minRating = 0, favoritesOnly = false, decade = 'all' } = options;
-  return media.filter(item => {
+  const result = media.filter(item => {
     if (type !== 'all' && item.type !== type) {
+      console.log('[DEBUG] filterMedia: filtered out by type', { item: item.title, itemType: item.type, filterType: type });
       return false;
     }
     if (minRating > 0) {
       const rating = parseFloat((item.rating || '').replace(',', '.'));
       if (Number.isNaN(rating) || rating < minRating) {
+        console.log('[DEBUG] filterMedia: filtered out by minRating', { item: item.title, itemRating: rating, filterRating: minRating });
         return false;
       }
     }
     if (favoritesOnly && !isFavorite(itemSlug(item))) {
+      console.log('[DEBUG] filterMedia: filtered out by favoritesOnly', { item: item.title });
       return false;
     }
     if (decade !== 'all' && item.year) {
       const itemDecade = Math.floor(item.year / 10) * 10 + 's';
       if (itemDecade !== decade) {
+        console.log('[DEBUG] filterMedia: filtered out by decade', { item: item.title, itemYear: item.year, itemDecade, filterDecade: decade });
         return false;
       }
     }
     return true;
   });
+  console.log('[DEBUG] filterMedia result:', { input: media.length, output: result.length, options });
+  return result;
 }
 
 /**
@@ -176,6 +183,7 @@ function createSkeletonItem() {
  * @param {{type?: string, minRating?: number, favoritesOnly?: boolean}} [options] - Filtros de exibição.
  */
 export function displayStateDetails(stateId, options = {}) {
+  console.log('[DEBUG] displayStateDetails called:', { stateId, options });
   const mediaList = document.getElementById('media-list');
   const selectedStateTitle = document.getElementById('selected-state-title');
   const detailsContainer = document.getElementById('details-container');
@@ -193,9 +201,11 @@ export function displayStateDetails(stateId, options = {}) {
   const data = stateData[stateId];
 
   if (data && data.media && data.media.length > 0) {
+    console.log('[DEBUG] displayStateDetails: state data found', { stateName: data.name, mediaCount: data.media.length });
     selectedStateTitle.textContent = `${escapeHTML(data.name)}: Filmes e Séries`;
 
     const items = filterMedia(data.media, options);
+    console.log('[DEBUG] displayStateDetails: after filterMedia', { filteredCount: items.length });
 
     // Mostra skeletons enquanto "carrega" (simula loading rápido)
     const skeletonCount = Math.min(items.length, 6); // Máx 6 skeletons

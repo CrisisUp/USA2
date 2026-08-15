@@ -8,6 +8,7 @@ import {
   getMapInstance,
 } from './map-interactions.js';
 import { displayStateDetails } from './display.js';
+import { setDisplayedState } from './filters.js';
 
 let cachedStates = null; // Cache dos elementos .state do mapa
 
@@ -120,7 +121,7 @@ function selectExactMatch(stateId, stateElement) {
 
   stateElement.classList.add('selected');
   setCurrentSelectedState(stateElement);
-  displayStateDetails(stateId);
+  setDisplayedState(stateId);
   document
     .getElementById('details-container')
     .scrollIntoView({ behavior: 'smooth', block: 'start' });

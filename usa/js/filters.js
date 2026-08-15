@@ -5,28 +5,47 @@ import { displayStateDetails } from './display.js';
 import { toggleFavorite } from './favorites.js';
 import { getMapInstance } from './map-interactions.js';
 
-let currentStateId = null; // Estado cujos detalhes estão exibidos
+// Use object to track mutations (primitives can't be watched)
+const stateTracker = { currentStateId: null };
 let currentMapMode = 'filmes'; // 'filmes' | 'series'
+
+// Debug wrapper - SINGLE SOURCE OF TRUTH
+function setCurrentStateId(val, label = '') {
+  console.log('[DEBUG] currentStateId SET:', { from: stateTracker.currentStateId, to: val, label, stack: new Error().stack.split('\n').slice(1,3).join('\n') });
+  stateTracker.currentStateId = val;
+}
+function getCurrentStateId() {
+  console.log('[DEBUG] currentStateId GET:', stateTracker.currentStateId);
+  return stateTracker.currentStateId;
+}
 
 /**
  * Lê os filtros ativos do DOM.
  * @returns {{type: string, minRating: number, favoritesOnly: boolean}} Filtros atuais.
  */
 export function getActiveFilters() {
-  return {
+  const filters = {
     type: document.getElementById('type-filter').value,
     minRating: parseInt(document.getElementById('min-rating').value, 10) || 0,
     favoritesOnly: document.getElementById('favorites-filter').value.trim() !== '',
     decade: document.getElementById('decade-filter').value,
   };
+  console.log('[DEBUG] getActiveFilters:', filters);
+  return filters;
 }
 
 /**
  * Aplica os filtros atuais ao estado que está sendo exibido.
  */
 export function applyFilters() {
-  if (currentStateId) {
-    displayStateDetails(currentStateId, getActiveFilters());
+  const csid = getCurrentStateId();
+  console.log('[DEBUG] applyFilters called, currentStateId:', csid);
+  if (csid) {
+    const filters = getActiveFilters();
+    console.log('[DEBUG] applyFilters calling displayStateDetails with filters:', filters);
+    displayStateDetails(csid, filters);
+  } else {
+    console.log('[DEBUG] applyFilters: currentStateId is null, skipping displayStateDetails');
   }
 }
 
@@ -35,7 +54,9 @@ export function applyFilters() {
  * @param {string} stateId - O ID do estado selecionado.
  */
 export function setDisplayedState(stateId) {
-  currentStateId = stateId;
+  console.log('[DEBUG] setDisplayedState called:', { stateId, currentStateIdBefore: getCurrentStateId() });
+  setCurrentStateId(stateId, 'setDisplayedState');
+  console.log('[DEBUG] setDisplayedState: currentStateId set to:', getCurrentStateId());
   applyFilters();
 }
 
@@ -162,9 +183,10 @@ export function initFilters() {
   const typeFilter = document.getElementById('type-filter');
   const minRating = document.getElementById('min-rating');
   const favoritesFilter = document.getElementById('favorites-filter');
+  const decadeFilter = document.getElementById('decade-filter');
   const surpriseButton = document.getElementById('surprise-button');
 
-  [typeFilter, minRating, favoritesFilter].forEach(el => {
+  [typeFilter, minRating, favoritesFilter, decadeFilter].forEach(el => {
     el.addEventListener('change', applyFilters);
   });
   favoritesFilter.addEventListener('input', applyFilters);
