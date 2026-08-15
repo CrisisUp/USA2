@@ -492,3 +492,54 @@
 .media-item:nth-child(8) {
   animation-delay: 0.8s;
 }
+
+/* Empty State Styles */
+.media-item.empty-state {
+  border-left: none;
+  background: transparent;
+  padding: var(--spacing-xl) var(--spacing-md);
+  text-align: center;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+.empty-state-content {
+  max-width: 300px;
+  padding: var(--spacing-md);
+}
+
+.empty-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--spacing-md);
+  color: var(--color-text-muted);
+  opacity: 0.5;
+}
+
+.empty-message {
+  font-size: 1.1rem;
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-xs);
+  font-weight: 500;
+}
+
+.empty-hint {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Search input loading state */
+#search-input.searching {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2366CCFF' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10' stroke-dasharray='31.4 31.4' stroke-dashoffset='31.4' stroke-linecap='round'%3E%3Canimate attributeName='stroke-dashoffset' dur='1s' repeatCount='indefinite' from='31.4' to='0'/%3E%3Canimate attributeName='stroke-dasharray' dur='1s' repeatCount='indefinite' values='15.7 15.7;31.4 0;15.7 15.7'/%3E%3C/circle%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px;
+  padding-right: 44px;
+}

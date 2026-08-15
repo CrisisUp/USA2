@@ -11,6 +11,8 @@ import { displayStateDetails } from './display.js';
 import { setDisplayedState } from './filters.js';
 
 let cachedStates = null; // Cache dos elementos .state do mapa
+let debounceTimer = null;
+const DEBOUNCE_MS = 300;
 
 /**
  * Inicializa a funcionalidade de busca e seus event listeners.
@@ -25,10 +27,36 @@ export function initSearch() {
     cachedStates = map.querySelectorAll('.state');
   }
 
+  // Debounced search on input (auto-search as user types)
+  searchInput.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    searchInput.classList.add('searching');
+    debounceTimer = setTimeout(() => {
+      performSearch();
+      searchInput.classList.remove('searching');
+    }, DEBOUNCE_MS);
+  });
+
+  // Explicit search on button click
   searchButton.addEventListener('click', performSearch);
+
+  // Explicit search on Enter key
   searchInput.addEventListener('keydown', event => {
     if (event.key === 'Enter') {
+      clearTimeout(debounceTimer);
+      searchInput.classList.remove('searching');
       performSearch();
+    }
+  });
+
+  // Clear search on Escape
+  searchInput.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      clearTimeout(debounceTimer);
+      searchInput.value = '';
+      searchInput.classList.remove('searching');
+      performSearch();
+      searchInput.blur();
     }
   });
 }
@@ -131,10 +159,27 @@ function selectExactMatch(stateId, stateElement) {
  * Atualiza o painel de detalhes com a mensagem do resultado da busca.
  * @param {string} title - O texto do título do painel.
  * @param {string} message - O texto da lista de resultados.
+ * @param {boolean} [isEmpty=false] - Se é um estado vazio (sem resultados).
  */
-function setSearchMessage(title, message) {
+function setSearchMessage(title, message, isEmpty = false) {
   document.getElementById('selected-state-title').textContent = title;
-  document.getElementById('media-list').innerHTML = `<li class="media-item">${message}</li>`;
+
+  if (isEmpty) {
+    document.getElementById('media-list').innerHTML = `
+      <li class="media-item empty-state">
+        <div class="empty-state-content">
+          <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <p class="empty-message">${message}</p>
+          <p class="empty-hint">Tente buscar por outro estado, filme ou série.</p>
+        </div>
+      </li>
+    `;
+  } else {
+    document.getElementById('media-list').innerHTML = `<li class="media-item">${message}</li>`;
+  }
 }
 
 /**
@@ -162,7 +207,8 @@ function performSearch() {
   } else if (!exactMatch) {
     setSearchMessage(
       `Nenhum resultado encontrado para "${searchTerm}".`,
-      'Tente uma busca diferente.'
+      'Nenhum estado, filme ou série corresponde à sua busca.',
+      true // isEmpty = true para mostrar estado vazio estilizado
     );
   }
 }
