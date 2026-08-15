@@ -394,7 +394,6 @@ const ASSETS_TO_CACHE = [
   './tools/find-td.mjs',
   './tools/fix-png-out.txt',
   './tools/inspect-bom.cjs',
-  './tools/items.json',
   './tools/mi-out.txt',
   './tools/mi2-out.txt',
   './tools/probe-films-out.txt',

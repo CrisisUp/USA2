@@ -44,11 +44,12 @@ function getSearchTerm() {
 /**
  * Verifica se um estado corresponde ao termo de busca (por nome, título, descrição ou tipo de mídia).
  * @param {object} stateInfo - Os dados do estado em stateData.
- * @param {string} searchTerm - O termo normalizado.
+ * @param {string} searchTerm - O termo de busca (será normalizado internamente).
  * @returns {boolean} true se houver correspondência.
  */
-function stateMatches(stateInfo, searchTerm) {
-  if (stateInfo.name.toLowerCase().includes(searchTerm)) {
+export function stateMatches(stateInfo, searchTerm) {
+  const term = String(searchTerm).toLowerCase().trim();
+  if (stateInfo.name.toLowerCase().includes(term)) {
     return true;
   }
 
@@ -59,9 +60,9 @@ function stateMatches(stateInfo, searchTerm) {
         mediaItem.title &&
         mediaItem.description &&
         mediaItem.type &&
-        (mediaItem.title.toLowerCase().includes(searchTerm) ||
-          mediaItem.description.toLowerCase().includes(searchTerm) ||
-          mediaItem.type.toLowerCase().includes(searchTerm))
+        (mediaItem.title.toLowerCase().includes(term) ||
+          mediaItem.description.toLowerCase().includes(term) ||
+          mediaItem.type.toLowerCase().includes(term))
     );
   }
   return false;

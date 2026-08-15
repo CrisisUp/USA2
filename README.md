@@ -17,19 +17,19 @@ Construído com tecnologias web fundamentais, o projeto prioriza a **performance
 
 * **Mapa Interativo Dinâmico:** Navegue por um mapa visualmente atraente dos EUA, onde cada estado é clicável e reage ao `hover`.
 * **Visualização por Estado:** Ao clicar em um estado, um painel abaixo do mapa exibe uma lista de filmes e séries associados a ele, incluindo:
-    * **Capa do Filme/Série:** Uma imagem visual para cada título.
-    * **Nota de Avaliação:** Uma nota clara para referência rápida.
-    * **Link para o IMDb:** Acesso direto à página do título no IMDb para mais informações.
+  * **Capa do Filme/Série:** Uma imagem visual para cada título.
+  * **Nota de Avaliação:** Uma nota clara para referência rápida.
+  * **Link para o IMDb:** Acesso direto à página do título no IMDb para mais informações.
 * **Efeitos Visuais:**
-    * **Hover:** Os estados mudam de cor e aumentam sutilmente ao passar o mouse, indicando interatividade.
-    * **Seleção:** O estado clicado muda de cor para indicar a seleção ativa.
-    * **Animações:** A área de detalhes e os itens de mídia aparecem com animações suaves.
+  * **Hover:** Os estados mudam de cor e aumentam sutilmente ao passar o mouse, indicando interatividade.
+  * **Seleção:** O estado clicado muda de cor para indicar a seleção ativa.
+  * **Animações:** A área de detalhes e os itens de mídia aparecem com animações suaves.
 * **Barra de Pesquisa:** Permite buscar estados ou filmes/séries pelo nome, destacando os resultados no mapa.
 * **Responsividade Completa:** O layout do site se adapta a diferentes tamanhos de tela, desde desktops grandes até dispositivos móveis.
 * **Acessibilidade (A11y) Integrada:**
-    * **Navegação por Teclado:** Todos os estados são focáveis via `Tab` e ativáveis por `Enter` ou `Espaço`.
-    * **Foco Visual Claro:** Um contorno de destaque visível indica o estado atualmente focado pelo teclado.
-    * **Compatibilidade com Leitores de Tela:** Uso de `aria-label` e estrutura semântica para melhor compreensão por tecnologias assistivas.
+  * **Navegação por Teclado:** Todos os estados são focáveis via `Tab` e ativáveis por `Enter` ou `Espaço`.
+  * **Foco Visual Claro:** Um contorno de destaque visível indica o estado atualmente focado pelo teclado.
+  * **Compatibilidade com Leitores de Tela:** Uso de `aria-label` e estrutura semântica para melhor compreensão por tecnologias assistivas.
 * **Robustez no Tratamento de Erros:** O JavaScript inclui validações para dados de mídia (capas, links) e mensagens de erro visíveis, prevenindo quebras e informando o usuário.
 
 ---
@@ -58,23 +58,26 @@ Para explorar este mapa interativo em seu ambiente local, siga as instruções a
 
 ### Passos
 
-1.  **Clone o Repositório:**
+1. **Clone o Repositório:**
     Abra seu terminal ou prompt de comando e execute o seguinte comando para clonar o projeto do GitHub:
+
     ```bash
     git clone [https://github.com/CrisisUp/USA2.git](https://github.com/CrisisUp/USA2.git)
     ```
+
     (Se você já tem o projeto, pule esta etapa e certifique-se de que sua pasta local está atualizada via `git pull origin main`.)
 
-2.  **Navegue até a Pasta do Projeto:**
+2. **Navegue até a Pasta do Projeto:**
     Acesse o diretório raiz do projeto recém-clonado:
+
     ```bash
     cd USA2
     ```
 
-3.  **Verifique a Estrutura de Arquivos:**
+3. **Verifique a Estrutura de Arquivos:**
     A pasta do projeto deve estar organizada da seguinte forma, o que é crucial para o funcionamento dos caminhos relativos:
 
-    ```
+    ```text
     USA2/
     ├── usa/                  # Todo o site fica aqui (não há index.html na raiz)
     │   ├── index.html        # Página principal do site
@@ -102,7 +105,7 @@ Para explorar este mapa interativo em seu ambiente local, siga as instruções a
     └── README.md
     ```
 
-4.  **Inicie o Servidor Local (Recomendado):**
+4. **Inicie o Servidor Local (Recomendado):**
     * **Com Live Server (VS Code):** Abra a pasta `USA2` no VS Code. Clique com o botão direito no arquivo `usa/index.html` e selecione "Open with Live Server". Seu navegador abrirá automaticamente o site.
     * **Com Python:** Na pasta `USA2`, execute `python -m http.server 8000 --directory usa` (ou navegue até `usa/` e rode `python -m http.server`).
     * **Com Node.js `http-server`:** Instale globalmente (`npm install -g http-server`) e, na pasta `usa/`, execute `http-server`.
@@ -117,9 +120,9 @@ Este projeto foi desenhado para ser facilmente personalizável e expansível:
 * **Conteúdo `js/data.js`:** A principal área para expansão! Adicione mais filmes e séries para cada estado, incluindo `cover` (URLs de imagem), `rating` e `imdbLink`.
 * **Estilo Visual:** Modifique as cores, fontes, sombras e outros estilos nos arquivos `.css` para criar uma estética única. Experimente diferentes paletas para o mapa em `map.css`.
 * **Funcionalidades:**
-    * Adicione filtros por gênero, ano de lançamento, etc.
-    * Implemente a exibição de mais detalhes ao passar o mouse sobre os itens de mídia na lista.
-    * As capas são **arquivos locais** em `usa/images/` — o site funciona 100% offline, sem depender de CDN ou API de filmes.
+  * Adicione filtros por gênero, ano de lançamento, etc.
+  * Implemente a exibição de mais detalhes ao passar o mouse sobre os itens de mídia na lista.
+  * As capas são **arquivos locais** em `usa/images/` — o site funciona 100% offline, sem depender de CDN ou API de filmes.
 * **Acessibilidade:** Continue testando com ferramentas como o [Lighthouse](https://developers.google.com/web/tools/lighthouse) no Chrome para identificar e corrigir quaisquer outras questões de acessibilidade.
 
 ---

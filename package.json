@@ -11,7 +11,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:a11y": "vitest run tests/a11y.test.mjs",
-    "test:unit": "vitest run tests/catalog.test.mjs tests/dom.test.mjs",
+    "test:unit": "vitest run tests/catalog.test.mjs tests/dom.test.mjs tests/utils.test.mjs tests/favorites.test.mjs tests/display.test.mjs tests/filters.test.mjs tests/search.test.mjs",
     "lint": "eslint usa/js/**/*.js tests/**/*.mjs",
     "lint:fix": "eslint usa/js/**/*.js tests/**/*.mjs --fix",
     "format": "prettier --write usa/js/**/*.js usa/css/**/*.css usa/index.html tests/**/*.mjs",
@@ -20,7 +20,8 @@
     "verify": "npm run format:check && npm run lint && npm run test:unit && npm run check",
     "ci": "npm run verify",
     "optimize:images": "node scripts/optimize-images.js",
-    "build:sw": "node scripts/generate-sw-cache.js"
+    "build:sw": "node scripts/generate-sw-cache.js",
+    "js-reverse": "node scripts/js-reverse.js"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",

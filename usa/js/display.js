@@ -5,7 +5,8 @@ import { stateData } from './data.js';
 import { isFavorite } from './favorites.js';
 
 // Placeholder SVG local (data URI) — funciona offline e evita dependência externa
-const DEFAULT_COVER = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSIxMjAiIHZpZXdCb3g9IjAgMCA4MCAxMjAiPjxyZWN0IHdpZHRoPSI4MCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiM0YTY4OWEiLz48dGV4dCB4PSI0MCIgeT0iNjAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjYWEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPlNlbSBDYXBhPC90ZXh0Pjwvc3ZnPg==';
+const DEFAULT_COVER =
+  'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSIxMjAiIHZpZXdCb3g9IjAgMCA4MCAxMjAiPjxyZWN0IHdpZHRoPSI4MCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiM0YTY4OWEiLz48dGV4dCB4PSI0MCIgeT0iNjAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjYWEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPlNlbSBDYXBhPC90ZXh0Pjwvc3ZnPg==';
 
 /**
  * Deriva um identificador estável (slug) de um item de mídia, usado para favoritos.
@@ -33,7 +34,7 @@ export function itemSlug(item) {
  * @returns {Array} A lista filtrada.
  */
 export function filterMedia(media, options) {
-  const { type = 'all', minRating = 0, favoritesOnly = false } = options;
+  const { type = 'all', minRating = 0, favoritesOnly = false, decade = 'all' } = options;
   return media.filter(item => {
     if (type !== 'all' && item.type !== type) {
       return false;
@@ -47,18 +48,29 @@ export function filterMedia(media, options) {
     if (favoritesOnly && !isFavorite(itemSlug(item))) {
       return false;
     }
+    if (decade !== 'all' && item.year) {
+      const itemDecade = Math.floor(item.year / 10) * 10 + 's';
+      if (itemDecade !== decade) {
+        return false;
+      }
+    }
     return true;
   });
 }
 
 /**
  * Gera URLs para WebP e AVIF baseadas no caminho original da capa.
+ * Para SVGs, retorna o original (não há WebP/AVIF de SVG).
  * @param {string} coverPath - Caminho original da imagem (ex.: images/CA/lalaland.png)
  * @returns {{webp: string, avif: string}} URLs otimizadas
  */
 export function getOptimizedCoverUrls(coverPath) {
   if (!coverPath || typeof coverPath !== 'string') {
     return { webp: DEFAULT_COVER, avif: DEFAULT_COVER };
+  }
+  // Se for SVG, não tenta otimizar (usa o original)
+  if (/\.svg$/i.test(coverPath)) {
+    return { webp: coverPath, avif: coverPath };
   }
   const basePath = coverPath.replace(/\.(png|jpg|jpeg)$/i, '');
   return {
@@ -173,6 +185,9 @@ export function displayStateDetails(stateId, options = {}) {
   mediaList.style.viewTransitionName = 'media-list';
   selectedStateTitle.style.viewTransitionName = 'media-item';
 
+  // Remove classe show para permitir re-animação ao trocar de estado
+  detailsContainer.classList.remove('show');
+
   // Mostra skeletons imediatamente (antes de filtrar)
   mediaList.innerHTML = '';
   const data = stateData[stateId];
@@ -202,6 +217,8 @@ export function displayStateDetails(stateId, options = {}) {
             li.style.viewTransitionName = `media-item-${index}`;
             mediaList.appendChild(li);
           });
+          // Torna o container visível (CSS transition)
+          detailsContainer.classList.add('show');
         }
       }, 150); // Delay visual para perceber o skeleton
     });

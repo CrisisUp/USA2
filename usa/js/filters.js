@@ -17,6 +17,7 @@ export function getActiveFilters() {
     type: document.getElementById('type-filter').value,
     minRating: parseInt(document.getElementById('min-rating').value, 10) || 0,
     favoritesOnly: document.getElementById('favorites-filter').value.trim() !== '',
+    decade: document.getElementById('decade-filter').value,
   };
 }
 

@@ -12,6 +12,7 @@ export const stateData = {
         cover: 'images/CA/lalaland.png',
         rating: '8.0/10',
         imdbLink: 'https://www.imdb.com/title/tt3783958/',
+        year: 2016,
       },
 
       {
@@ -22,6 +23,7 @@ export const stateData = {
         cover: 'images/CA/biglittlelies.png',
         rating: '8.5/10',
         imdbLink: 'https://www.imdb.com/title/tt3920596/',
+        year: 2017,
       },
 
       {
@@ -32,6 +34,7 @@ export const stateData = {
         cover: 'images/CA/pulpfiction.png',
         rating: '8.9/10',
         imdbLink: 'https://www.imdb.com/title/tt0110912/',
+        year: 1994,
       },
 
       {
@@ -42,6 +45,7 @@ export const stateData = {
         cover: 'images/CA/la-confidential.jpg',
         rating: '8.2/10',
         imdbLink: 'https://www.imdb.com/title/tt0119488/',
+        year: 1997,
       },
 
       {
@@ -52,6 +56,7 @@ export const stateData = {
         cover: 'images/CA/once-upon-a-time-in-hollywood.png',
         rating: '7.6/10',
         imdbLink: 'https://www.imdb.com/title/tt7131622/',
+        year: 2019,
       },
 
       {
@@ -62,6 +67,7 @@ export const stateData = {
         cover: 'images/CA/boyz-n-the-hood.jpg',
         rating: '7.8/10',
         imdbLink: 'https://www.imdb.com/title/tt0101507/',
+        year: 1991,
       },
     ],
   },
@@ -77,6 +83,7 @@ export const stateData = {
         cover: 'images/NY/taxi-driver.png',
         rating: '8.2/10',
         imdbLink: 'https://www.imdb.com/title/tt0075314/',
+        year: 1976,
       },
 
       {
@@ -87,6 +94,7 @@ export const stateData = {
         cover: 'images/NY/friends.png',
         rating: '8.9/10',
         imdbLink: 'https://www.imdb.com/title/tt0108778/',
+        year: 1994,
       },
 
       {
@@ -97,6 +105,7 @@ export const stateData = {
         cover: 'images/NY/o-poderoso-chefao.png',
         rating: '9.2/10',
         imdbLink: 'https://www.imdb.com/title/tt0068646/',
+        year: 1972,
       },
 
       {
@@ -107,6 +116,7 @@ export const stateData = {
         cover: 'images/NY/o-poderoso-chefao-parte-2.jpg',
         rating: '9.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0071562/',
+        year: 1974,
       },
 
       {
@@ -117,6 +127,7 @@ export const stateData = {
         cover: 'images/NY/midnight-cowboy.jpg',
         rating: '8.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0064665/',
+        year: 1969,
       },
 
       {
@@ -127,6 +138,7 @@ export const stateData = {
         cover: 'images/NY/dog-day-afternoon.png',
         rating: '8.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0072890/',
+        year: 1975,
       },
     ],
   },
@@ -142,6 +154,7 @@ export const stateData = {
         cover: 'images/TX/no-country-for-old-men.jpg',
         rating: '8.2/10',
         imdbLink: 'https://www.imdb.com/title/tt0477080/',
+        year: 2007,
       },
 
       {
@@ -149,8 +162,10 @@ export const stateData = {
         title: 'Friday Night Lights',
         description:
           'Drama realista sobre a vida de um time de futebol americano escolar e a comunidade de Dillon, Texas.',
+        cover: 'images/TX/friday-night-lights.png',
         rating: '8.7/10',
         imdbLink: 'https://www.imdb.com/title/tt0758745/',
+        year: 2006,
       },
 
       {
@@ -161,6 +176,7 @@ export const stateData = {
         cover: 'images/TX/apollo-13.jpg',
         rating: '7.7/10',
         imdbLink: 'https://www.imdb.com/title/tt0112384/',
+        year: 1995,
       },
     ],
   },
@@ -176,6 +192,7 @@ export const stateData = {
         cover: 'images/FL/miami-vice.jpg',
         rating: '6.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0473582/',
+        year: 2006,
       },
 
       {
@@ -186,6 +203,7 @@ export const stateData = {
         cover: 'images/FL/scarface.jpg',
         rating: '8.3/10',
         imdbLink: 'https://www.imdb.com/title/tt0086250/',
+        year: 1983,
       },
 
       {
@@ -196,6 +214,7 @@ export const stateData = {
         cover: 'images/FL/marley-e-me.jpg',
         rating: '7.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0822832/',
+        year: 2008,
       },
 
       {
@@ -206,6 +225,7 @@ export const stateData = {
         cover: 'images/FL/the-birdcage.jpg',
         rating: '7.2/10',
         imdbLink: 'https://www.imdb.com/title/tt0115685/',
+        year: 1996,
       },
     ],
   },
@@ -221,6 +241,7 @@ export const stateData = {
         cover: 'images/AK/a-proposta.jpg',
         rating: '6.7/10',
         imdbLink: 'https://www.imdb.com/title/tt1142977/',
+        year: 2009,
       },
 
       {
@@ -231,6 +252,7 @@ export const stateData = {
         cover: 'images/AK/northern-exposure.jpg',
         rating: '8.3/10',
         imdbLink: 'https://www.imdb.com/title/tt0098904/',
+        year: 1990,
       },
     ],
   },
@@ -246,6 +268,7 @@ export const stateData = {
         cover: 'images/HI/como-se-fosse-a-primeira-vez.png',
         rating: '6.8/10',
         imdbLink: 'https://www.imdb.com/title/tt0343660/',
+        year: 2004,
       },
 
       {
@@ -255,6 +278,7 @@ export const stateData = {
         cover: 'images/HI/havai-five-0.png',
         rating: '7.4/10',
         imdbLink: 'https://www.imdb.com/title/tt1600194/',
+        year: 2010,
       },
     ],
   },
@@ -269,6 +293,7 @@ export const stateData = {
         cover: 'images/MA/manchester-a-beira-mar.jpg',
         rating: '7.8/10',
         imdbLink: 'https://www.imdb.com/title/tt4034228/',
+        year: 2016,
       },
 
       {
@@ -278,6 +303,7 @@ export const stateData = {
         cover: 'images/MA/a-rede-social.png',
         rating: '7.8/10',
         imdbLink: 'https://www.imdb.com/title/tt1285016/',
+        year: 2010,
       },
     ],
   },
@@ -293,6 +319,7 @@ export const stateData = {
         cover: 'images/MN/fargo.png',
         rating: '8.1/10',
         imdbLink: 'https://www.imdb.com/title/tt0116282/',
+        year: 1996,
       },
 
       {
@@ -302,6 +329,7 @@ export const stateData = {
         cover: 'images/MN/juno.png',
         rating: '7.5/10',
         imdbLink: 'https://www.imdb.com/title/tt0460780/',
+        year: 2007,
       },
     ],
   },
@@ -317,6 +345,7 @@ export const stateData = {
         cover: 'images/MT/yellowstone.png',
         rating: '8.7/10',
         imdbLink: 'https://www.imdb.com/title/tt4236770/',
+        year: 2018,
       },
 
       {
@@ -327,6 +356,7 @@ export const stateData = {
         cover: 'images/MT/1883.png',
         rating: '6.5/10',
         imdbLink: 'https://www.imdb.com/title/tt13991232/',
+        year: 2021,
       },
     ],
   },
@@ -342,6 +372,7 @@ export const stateData = {
         cover: 'images/ND/fargo.png',
         rating: '8.1/10',
         imdbLink: 'https://www.imdb.com/title/tt2802850/',
+        year: 2014,
       },
 
       {
@@ -352,6 +383,7 @@ export const stateData = {
         cover: 'images/ND/nomadland.jpg',
         rating: '7.3/10',
         imdbLink: 'https://www.imdb.com/title/tt9770150/',
+        year: 2020,
       },
     ],
   },
@@ -367,6 +399,7 @@ export const stateData = {
         cover: 'images/ID/napoleao-dinamite.jpg',
         rating: '6.9/10',
         imdbLink: 'https://www.imdb.com/title/tt0359345/',
+        year: 2004,
       },
 
       {
@@ -377,6 +410,7 @@ export const stateData = {
         cover: 'images/ID/my-own-private-idaho.jpg',
         rating: '7.3/10',
         imdbLink: 'https://www.imdb.com/title/tt0102494/',
+        year: 1991,
       },
     ],
   },
@@ -392,6 +426,7 @@ export const stateData = {
         cover: 'images/WA/sintonia-de-amor.jpg',
         rating: '6.8/10',
         imdbLink: 'https://www.imdb.com/title/tt0108160/',
+        year: 1993,
       },
 
       {
@@ -399,8 +434,10 @@ export const stateData = {
         title: "Grey's Anatomy",
         description:
           'Drama médico centrado na vida de cirurgiões residentes e atendentes em Seattle.',
+        cover: 'images/WA/grey-s-anatomy.svg',
         rating: '7.6/10',
         imdbLink: 'https://www.imdb.com/title/tt0413573/',
+        year: 2005,
       },
     ],
   },
@@ -415,6 +452,7 @@ export const stateData = {
         cover: 'images/AZ/arizona-nunca-mais.png',
         rating: '7.3/10',
         imdbLink: 'https://www.imdb.com/title/tt0093822/',
+        year: 1987,
       },
 
       {
@@ -425,6 +463,7 @@ export const stateData = {
         cover: 'images/AZ/tombstone.jpg',
         rating: '7.8/10',
         imdbLink: 'https://www.imdb.com/title/tt0108358/',
+        year: 1993,
       },
     ],
   },
@@ -440,6 +479,7 @@ export const stateData = {
         cover: 'images/CO/o-iluminado.jpg',
         rating: '8.4/10',
         imdbLink: 'https://www.imdb.com/title/tt0081505/',
+        year: 1980,
       },
 
       {
@@ -450,6 +490,7 @@ export const stateData = {
         cover: 'images/CO/encontro-explosivo.jpg',
         rating: '6.3/10',
         imdbLink: 'https://www.imdb.com/title/tt1013721/',
+        year: 2010,
       },
     ],
   },
@@ -465,6 +506,7 @@ export const stateData = {
         cover: 'images/NV/se-beber-nao-case.png',
         rating: '7.7/10',
         imdbLink: 'https://www.imdb.com/title/tt1119646/',
+        year: 2009,
       },
 
       {
@@ -475,6 +517,7 @@ export const stateData = {
         cover: 'images/NV/csi-investigacao-criminal.png',
         rating: '7.7/10',
         imdbLink: 'https://www.imdb.com/title/tt0247082/',
+        year: 2000,
       },
     ],
   },
@@ -487,8 +530,10 @@ export const stateData = {
         title: 'Breaking Bad',
         description:
           'Um professor de química do ensino médio diagnosticado com câncer começa a fabricar metanfetamina para garantir o futuro de sua família.',
+        cover: 'images/NM/breaking-bad.png',
         rating: '9.5/10',
         imdbLink: 'https://www.imdb.com/title/tt0903747/',
+        year: 2008,
       },
     ],
   },
@@ -504,6 +549,7 @@ export const stateData = {
         cover: 'images/OR/os-goonies.jpg',
         rating: '7.7/10',
         imdbLink: 'https://www.imdb.com/title/tt0089218/',
+        year: 1985,
       },
 
       {
@@ -511,8 +557,10 @@ export const stateData = {
         title: 'Portlandia',
         description:
           'Uma série de comédia de esquetes que satiriza a cultura peculiar de Portland, Oregon.',
+        cover: 'images/OR/portlandia.png',
         rating: '7.9/10',
         imdbLink: 'https://www.imdb.com/title/tt1702444/',
+        year: 2011,
       },
     ],
   },
@@ -528,6 +576,7 @@ export const stateData = {
         cover: 'images/UT/127-horas.jpg',
         rating: '7.5/10',
         imdbLink: 'https://www.imdb.com/title/tt1542344/',
+        year: 2010,
       },
 
       {
@@ -535,8 +584,10 @@ export const stateData = {
         title: 'Westworld',
         description:
           "Um parque temático futurista populado por 'anfitriões' androides, onde os visitantes podem viver suas fantasias, com paisagens que remetem a Utah.",
+        cover: 'images/UT/westworld.jpg',
         rating: '8.5/10',
         imdbLink: 'https://www.imdb.com/title/tt0475784/',
+        year: 2016,
       },
     ],
   },
@@ -551,6 +602,7 @@ export const stateData = {
         cover: 'images/WY/o-segredo-de-brokeback-mountain.png',
         rating: '7.7/10',
         imdbLink: 'https://www.imdb.com/title/tt0388795/',
+        year: 2005,
       },
 
       {
@@ -561,6 +613,7 @@ export const stateData = {
         cover: 'images/WY/os-imperdoaveis.png',
         rating: '8.2/10',
         imdbLink: 'https://www.imdb.com/title/tt0105695/',
+        year: 1992,
       },
     ],
   },
@@ -576,6 +629,7 @@ export const stateData = {
         cover: 'images/AR/mud.jpg',
         rating: '7.4/10',
         imdbLink: 'https://www.imdb.com/title/tt1935179/',
+        year: 2012,
       },
     ],
   },
@@ -591,6 +645,7 @@ export const stateData = {
         cover: 'images/IA/campos-dos-sonhos.jpg',
         rating: '7.5/10',
         imdbLink: 'https://www.imdb.com/title/tt0097356/',
+        year: 1989,
       },
 
       {
@@ -601,6 +656,7 @@ export const stateData = {
         cover: 'images/IA/as-pontes-de-madison.jpg',
         rating: '7.6/10',
         imdbLink: 'https://www.imdb.com/title/tt0112579/',
+        year: 1995,
       },
     ],
   },
@@ -616,6 +672,7 @@ export const stateData = {
         cover: 'images/KS/o-magico-de-oz.jpg',
         rating: '8.1/10',
         imdbLink: 'https://www.imdb.com/title/tt0032138/',
+        year: 1939,
       },
 
       {
@@ -623,8 +680,10 @@ export const stateData = {
         title: 'Supernatural',
         description:
           'Dois irmãos caçam demônios e outras criaturas sobrenaturais pelos Estados Unidos, com raízes em Lawrence, Kansas.',
+        cover: 'images/KS/supernatural.svg',
         rating: '8.4/10',
         imdbLink: 'https://www.imdb.com/title/tt0460681/',
+        year: 2005,
       },
     ],
   },
@@ -640,6 +699,7 @@ export const stateData = {
         cover: 'images/MO/garota-exemplar.jpg',
         rating: '8.1/10',
         imdbLink: 'https://www.imdb.com/title/tt2267998/',
+        year: 2014,
       },
 
       {
@@ -647,8 +707,10 @@ export const stateData = {
         title: 'Ozark',
         description:
           'Uma família de lavadores de dinheiro de Chicago é forçada a se mudar para os lagos Ozark, no Missouri.',
+        cover: 'images/MO/ozark.svg',
         rating: '8.5/10',
         imdbLink: 'https://www.imdb.com/title/tt5071412/',
+        year: 2017,
       },
     ],
   },
@@ -664,6 +726,7 @@ export const stateData = {
         cover: 'images/NE/nebraska.jpg',
         rating: '7.7/10',
         imdbLink: 'https://www.imdb.com/title/tt1821549/',
+        year: 2013,
       },
 
       {
@@ -674,6 +737,7 @@ export const stateData = {
         cover: 'images/NE/as-sete-faces-do-dr-lao.jpg',
         rating: '7.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0058037/',
+        year: 1964,
       },
     ],
   },
@@ -689,6 +753,7 @@ export const stateData = {
         cover: 'images/OK/oklahoma.jpg',
         rating: '7.2/10',
         imdbLink: 'https://www.imdb.com/title/tt0048445/',
+        year: 1955,
       },
 
       {
@@ -699,6 +764,7 @@ export const stateData = {
         cover: 'images/OK/twister.jpg',
         rating: '6.4/10',
         imdbLink: 'https://www.imdb.com/title/tt0117998/',
+        year: 1996,
       },
     ],
   },
@@ -714,6 +780,7 @@ export const stateData = {
         cover: 'images/SD/deadwood-season1.jpg',
         rating: '8.6/10',
         imdbLink: 'https://www.imdb.com/title/tt0349909/',
+        year: 2004,
       },
 
       {
@@ -724,6 +791,7 @@ export const stateData = {
         cover: 'images/SD/o-voo-do-dragao.jpg',
         rating: '6.3/10',
         imdbLink: 'https://www.imdb.com/title/tt0097241/',
+        year: 1990,
       },
     ],
   },
@@ -739,6 +807,7 @@ export const stateData = {
         cover: 'images/LA/um-bonde-chamado-desejo.jpg',
         rating: '7.9/10',
         imdbLink: 'https://www.imdb.com/title/tt0045322/',
+        year: 1951,
       },
 
       {
@@ -746,8 +815,10 @@ export const stateData = {
         title: 'True Detective (Temporada 1)',
         description:
           'Dois detetives rastreiam um serial killer ao longo de 17 anos na Louisiana, em um drama criminal complexo.',
+        cover: 'images/LA/true-detective-temporada-1.jpg',
         rating: '8.9/10',
         imdbLink: 'https://www.imdb.com/title/tt2356777/',
+        year: 2014,
       },
     ],
   },
@@ -763,6 +834,7 @@ export const stateData = {
         cover: 'images/CT/o-show-de-truman.jpg',
         rating: '8.2/10',
         imdbLink: 'https://www.imdb.com/title/tt0120382/',
+        year: 1998,
       },
 
       {
@@ -770,8 +842,10 @@ export const stateData = {
         title: 'Gilmore Girls',
         description:
           'A relação entre uma mãe solteira e sua filha em uma charmosa cidade fictícia de Connecticut.',
+        cover: 'images/CT/gilmore-girls.svg',
         rating: '8.2/10',
         imdbLink: 'https://www.imdb.com/title/tt0201889/',
+        year: 2000,
       },
     ],
   },
@@ -787,6 +861,7 @@ export const stateData = {
         cover: 'images/NH/jumanji.jpg',
         rating: '7.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0113497/',
+        year: 1995,
       },
 
       {
@@ -797,6 +872,7 @@ export const stateData = {
         cover: 'images/NH/o-resgate-do-soldado-ryan.jpg',
         rating: '8.6/10',
         imdbLink: 'https://www.imdb.com/title/tt0120815/',
+        year: 1998,
       },
     ],
   },
@@ -812,6 +888,7 @@ export const stateData = {
         cover: 'images/RI/a-invencao-de-hugo-cabret.png',
         rating: '7.5/10',
         imdbLink: 'https://www.imdb.com/title/tt0970179/',
+        year: 2011,
       },
 
       {
@@ -822,6 +899,7 @@ export const stateData = {
         cover: 'images/RI/irmaos-gemeos.jpg',
         rating: '6.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0096320/',
+        year: 1988,
       },
     ],
   },
@@ -837,6 +915,7 @@ export const stateData = {
         cover: 'images/VT/um-hotel-bom-pra-cachorro.jpg',
         rating: '6.4/10',
         imdbLink: 'https://www.imdb.com/title/tt0785108/',
+        year: 2009,
       },
 
       {
@@ -846,6 +925,7 @@ export const stateData = {
         cover: 'images/VT/super-troopers.jpg',
         rating: '7.1/10',
         imdbLink: 'https://www.imdb.com/title/tt0232509/',
+        year: 2001,
       },
     ],
   },
@@ -861,6 +941,7 @@ export const stateData = {
         cover: 'images/AL/forrest-gump.png',
         rating: '8.8/10',
         imdbLink: 'https://www.imdb.com/title/tt0109830/',
+        year: 1994,
       },
 
       {
@@ -871,6 +952,7 @@ export const stateData = {
         cover: 'images/AL/selma.png',
         rating: '7.5/10',
         imdbLink: 'https://www.imdb.com/title/tt1020072/',
+        year: 2014,
       },
     ],
   },
@@ -883,8 +965,10 @@ export const stateData = {
         title: 'Stranger Things',
         description:
           'Um grupo de crianças em uma cidade de Indiana se depara com forças sobrenaturais, filmado principalmente na Geórgia.',
+        cover: 'images/GA/stranger-things.png',
         rating: '8.7/10',
         imdbLink: 'https://www.imdb.com/title/tt4574334/',
+        year: 2016,
       },
 
       {
@@ -895,6 +979,7 @@ export const stateData = {
         cover: 'images/GA/the-walking-dead.jpg',
         rating: '8.1/10',
         imdbLink: 'https://www.imdb.com/title/tt1520211/',
+        year: 2010,
       },
     ],
   },
@@ -910,6 +995,7 @@ export const stateData = {
         cover: 'images/MS/historias-cruzadas.png',
         rating: '8.1/10',
         imdbLink: 'https://www.imdb.com/title/tt1454029/',
+        year: 2011,
       },
 
       {
@@ -920,6 +1006,7 @@ export const stateData = {
         cover: 'images/MS/tempo-de-matar.png',
         rating: '7.5/10',
         imdbLink: 'https://www.imdb.com/title/tt0117913/',
+        year: 1996,
       },
     ],
   },
@@ -934,6 +1021,7 @@ export const stateData = {
         cover: 'images/SC/diario-de-uma-paixao.jpg',
         rating: '7.8/10',
         imdbLink: 'https://www.imdb.com/title/tt0332280/',
+        year: 2004,
       },
     ],
   },
@@ -949,6 +1037,7 @@ export const stateData = {
         cover: 'images/IL/curtindo-a-vida-adoidado.jpg',
         rating: '7.8/10',
         imdbLink: 'https://www.imdb.com/title/tt0091042/',
+        year: 1986,
       },
 
       {
@@ -959,6 +1048,7 @@ export const stateData = {
         cover: 'images/IL/os-intocaveis.jpg',
         rating: '7.9/10',
         imdbLink: 'https://www.imdb.com/title/tt0094226/',
+        year: 1987,
       },
     ],
   },
@@ -974,6 +1064,7 @@ export const stateData = {
         cover: 'images/IN/hoosiers.jpg',
         rating: '7.5/10',
         imdbLink: 'https://www.imdb.com/title/tt0091217/',
+        year: 1986,
       },
 
       {
@@ -981,8 +1072,10 @@ export const stateData = {
         title: 'Parks and Recreation',
         description:
           'Uma funcionária otimista do departamento de parques tenta melhorar sua pequena cidade fictícia de Pawnee, Indiana.',
+        cover: 'images/IN/parks-and-recreation.svg',
         rating: '8.6/10',
         imdbLink: 'https://www.imdb.com/title/tt1266020/',
+        year: 2009,
       },
     ],
   },
@@ -998,6 +1091,7 @@ export const stateData = {
         cover: 'images/KY/rain-man.jpg',
         rating: '8.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0095953/',
+        year: 1988,
       },
 
       {
@@ -1008,6 +1102,7 @@ export const stateData = {
         cover: 'images/KY/o-gambito-da-rainha.png',
         rating: '8.6/10',
         imdbLink: 'https://www.imdb.com/title/tt10048342/',
+        year: 2020,
       },
     ],
   },
@@ -1020,8 +1115,10 @@ export const stateData = {
         title: 'One Tree Hill',
         description:
           'A vida de dois meio-irmãos e seus amigos no ensino médio e na vida adulta em uma pequena cidade da Carolina do Norte.',
+        cover: 'images/NC/one-tree-hill.jpg',
         rating: '7.7/10',
         imdbLink: 'https://www.imdb.com/title/tt0368598/',
+        year: 2003,
       },
 
       {
@@ -1032,6 +1129,7 @@ export const stateData = {
         cover: 'images/NC/jogos-vorazes.jpg',
         rating: '7.2/10',
         imdbLink: 'https://www.imdb.com/title/tt1392170/',
+        year: 2012,
       },
     ],
   },
@@ -1047,6 +1145,7 @@ export const stateData = {
         cover: 'images/OH/vingadores-os-vingadores.jpg',
         rating: '8.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0848228/',
+        year: 2012,
       },
     ],
   },
@@ -1062,6 +1161,7 @@ export const stateData = {
         cover: 'images/TN/walk-the-line.jpg',
         rating: '7.8/10',
         imdbLink: 'https://www.imdb.com/title/tt0358273/',
+        year: 2005,
       },
 
       {
@@ -1072,6 +1172,7 @@ export const stateData = {
         cover: 'images/TN/nashville.png',
         rating: '7.5/10',
         imdbLink: 'https://www.imdb.com/title/tt2279188/',
+        year: 2012,
       },
     ],
   },
@@ -1087,6 +1188,7 @@ export const stateData = {
         cover: 'images/VA/duelo-de-titas.jpg',
         rating: '7.8/10',
         imdbLink: 'https://www.imdb.com/title/tt0210945/',
+        year: 2000,
       },
 
       {
@@ -1094,8 +1196,10 @@ export const stateData = {
         title: 'The Americans',
         description:
           'Espiões da KGB disfarçados de casal americano vivem no subúrbio de Washington D.C., com muitas cenas na Virgínia.',
+        cover: 'images/VA/the-americans.png',
         rating: '8.4/10',
         imdbLink: 'https://www.imdb.com/title/tt2149175/',
+        year: 2013,
       },
     ],
   },
@@ -1111,6 +1215,7 @@ export const stateData = {
         cover: 'images/WI/missao-madrinha-de-casamento.png',
         rating: '6.8/10',
         imdbLink: 'https://www.imdb.com/title/tt1478338/',
+        year: 2011,
       },
 
       {
@@ -1121,6 +1226,7 @@ export const stateData = {
         cover: 'images/WI/that-70s-show.png',
         rating: '8.1/10',
         imdbLink: 'https://www.imdb.com/title/tt0165598/',
+        year: 1998,
       },
     ],
   },
@@ -1136,6 +1242,7 @@ export const stateData = {
         cover: 'images/WV/missao-impossivel-iii.jpg',
         rating: '6.9/10',
         imdbLink: 'https://www.imdb.com/title/tt0317917/',
+        year: 2006,
       },
 
       {
@@ -1146,6 +1253,7 @@ export const stateData = {
         cover: 'images/WV/os-indomaveis.jpg',
         rating: '7.3/10',
         imdbLink: 'https://www.imdb.com/title/tt0468689/',
+        year: 2003,
       },
     ],
   },
@@ -1161,6 +1269,7 @@ export const stateData = {
         cover: 'images/DE/clube-da-luta.jpg',
         rating: '8.8/10',
         imdbLink: 'https://www.imdb.com/title/tt0137523/',
+        year: 1999,
       },
 
       {
@@ -1171,6 +1280,7 @@ export const stateData = {
         cover: 'images/DE/o-curioso-caso-de-benjamin-button.png',
         rating: '7.8/10',
         imdbLink: 'https://www.imdb.com/title/tt0818955/',
+        year: 2008,
       },
     ],
   },
@@ -1182,8 +1292,10 @@ export const stateData = {
         type: 'Série',
         title: 'House of Cards',
         description: 'Um congressista inescrupuloso e sua esposa buscam poder em Washington D.C.',
+        cover: 'images/DC/house-of-cards.png',
         rating: '8.7/10',
         imdbLink: 'https://www.imdb.com/title/tt1856010/',
+        year: 2013,
       },
 
       {
@@ -1194,6 +1306,7 @@ export const stateData = {
         cover: 'images/DC/a-casa-branca.jpg',
         rating: '6.3/10',
         imdbLink: 'https://www.imdb.com/title/tt2302828/',
+        year: 2013,
       },
     ],
   },
@@ -1206,8 +1319,10 @@ export const stateData = {
         title: 'The Wire',
         description:
           'Um olhar detalhado sobre o tráfico de drogas em Baltimore, Maryland, sob a perspectiva de traficantes e policiais.',
+        cover: 'images/MD/the-wire.png',
         rating: '9.3/10',
         imdbLink: 'https://www.imdb.com/title/tt0306764/',
+        year: 2002,
       },
 
       {
@@ -1218,6 +1333,7 @@ export const stateData = {
         cover: 'images/MD/o-silencio-dos-inocentes.jpg',
         rating: '8.6/10',
         imdbLink: 'https://www.imdb.com/title/tt0102926/',
+        year: 1991,
       },
     ],
   },
@@ -1230,8 +1346,10 @@ export const stateData = {
         title: 'The Sopranos',
         description:
           'A vida de um chefe da máfia de Nova Jersey que tenta equilibrar sua vida familiar com seus negócios criminosos.',
+        cover: 'images/NJ/the-sopranos.jpg',
         rating: '9.2/10',
         imdbLink: 'https://www.imdb.com/title/tt0141842/',
+        year: 1999,
       },
 
       {
@@ -1242,6 +1360,7 @@ export const stateData = {
         cover: 'images/NJ/garden-state.jpg',
         rating: '7.4/10',
         imdbLink: 'https://www.imdb.com/title/tt0333766/',
+        year: 2004,
       },
     ],
   },
@@ -1257,6 +1376,7 @@ export const stateData = {
         cover: 'images/PA/rocky.jpg',
         rating: '8.1/10',
         imdbLink: 'https://www.imdb.com/title/tt0075148/',
+        year: 1976,
       },
 
       {
@@ -1264,8 +1384,10 @@ export const stateData = {
         title: 'The Office',
         description:
           'O dia a dia de funcionários de uma empresa de papel em Scranton, Pensilvânia, no formato de mockumentary.',
+        cover: 'images/PA/the-office.svg',
         rating: '9.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0386676/',
+        year: 2005,
       },
     ],
   },
@@ -1281,6 +1403,7 @@ export const stateData = {
         cover: 'images/ME/um-sonho-de-liberdade.jpg',
         rating: '9.3/10',
         imdbLink: 'https://www.imdb.com/title/tt0111161/',
+        year: 1994,
       },
 
       {
@@ -1291,6 +1414,7 @@ export const stateData = {
         cover: 'images/ME/it-a-coisa.jpg',
         rating: '7.3/10',
         imdbLink: 'https://www.imdb.com/title/tt1396484/',
+        year: 2017,
       },
     ],
   },
@@ -1306,6 +1430,7 @@ export const stateData = {
         cover: 'images/MI/robocop.jpg',
         rating: '7.6/10',
         imdbLink: 'https://www.imdb.com/title/tt0093870/',
+        year: 1987,
       },
 
       {
@@ -1316,6 +1441,7 @@ export const stateData = {
         cover: 'images/MI/8-mile.jpg',
         rating: '7.1/10',
         imdbLink: 'https://www.imdb.com/title/tt0298203/',
+        year: 2002,
       },
     ],
   },

@@ -15,6 +15,7 @@ const createMockFiltersDOM = () => {
     <select id="type-filter"><option value="all" selected>Todos</option><option value="Filme">Filmes</option><option value="Série">Séries</option></select>
     <select id="min-rating"><option value="0" selected>Qualquer</option><option value="7">7+</option><option value="8">8+</option></select>
     <input type="text" id="favorites-filter" value="" />
+    <select id="decade-filter"><option value="all" selected>Todas</option><option value="1990s">1990s</option></select>
     <button id="mode-filmes" class="map-mode-btn"></button>
     <button id="mode-series" class="map-mode-btn"></button>
     <div id="media-list"></div>
