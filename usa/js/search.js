@@ -61,23 +61,33 @@ export function initSearch() {
 }
 
 /**
+ * Normaliza string: minúsculas, trim, remove acentos/diacríticos.
+ * @param {string} str
+ * @returns {string}
+ */
+function normalizeTerm(str) {
+  return String(str).toLowerCase().trim().normalize('NFD').replace(/[̀-ͯ]/g, ''); // remove acentos
+}
+
+/**
  * Obtém o termo de busca do campo de entrada, normalizado para comparação.
- * @returns {string} O termo em minúsculas, sem espaços nas pontas.
+ * @returns {string} O termo normalizado.
  */
 function getSearchTerm() {
   const searchInput = document.getElementById('search-input');
-  return searchInput.value.toLowerCase().trim();
+  return normalizeTerm(searchInput.value);
 }
 
 /**
  * Verifica se um estado corresponde ao termo de busca (por nome, título, descrição ou tipo de mídia).
  * @param {object} stateInfo - Os dados do estado em stateData.
- * @param {string} searchTerm - O termo de busca (será normalizado internamente).
+ * @param {string} searchTerm - O termo de busca (já normalizado).
  * @returns {boolean} true se houver correspondência.
  */
 export function stateMatches(stateInfo, searchTerm) {
-  const term = String(searchTerm).toLowerCase().trim();
-  if (stateInfo.name.toLowerCase().includes(term)) {
+  const term = normalizeTerm(searchTerm);
+  const stateNameNorm = normalizeTerm(stateInfo.name);
+  if (stateNameNorm.includes(term)) {
     return true;
   }
 
@@ -88,9 +98,9 @@ export function stateMatches(stateInfo, searchTerm) {
         mediaItem.title &&
         mediaItem.description &&
         mediaItem.type &&
-        (mediaItem.title.toLowerCase().includes(term) ||
-          mediaItem.description.toLowerCase().includes(term) ||
-          mediaItem.type.toLowerCase().includes(term))
+        (normalizeTerm(mediaItem.title).includes(term) ||
+          normalizeTerm(mediaItem.description).includes(term) ||
+          normalizeTerm(mediaItem.type).includes(term))
     );
   }
   return false;
@@ -99,12 +109,13 @@ export function stateMatches(stateInfo, searchTerm) {
 /**
  * Destaca no mapa todos os estados que correspondem ao termo de busca.
  * @param {string} searchTerm - O termo normalizado.
- * @returns {{ foundAny: boolean, exactMatch: boolean }} Se algum estado foi encontrado e se houve correspondência exata.
+ * @returns {{ foundAny: boolean, exactMatch: boolean, firstMatchId: string|null }} Se algum estado foi encontrado, se houve correspondência exata, e o ID do primeiro match.
  */
 function findAndHighlightStates(searchTerm) {
   const usaMap = getMapInstance();
   let foundAny = false;
   let exactMatch = false;
+  let firstMatchId = null;
 
   for (const stateId in stateData) {
     const stateInfo = stateData[stateId];
@@ -123,16 +134,23 @@ function findAndHighlightStates(searchTerm) {
       stateElement.classList.add('search-match');
       foundAny = true;
 
-      // Correspondência exata por nome ou código: seleciona o estado e exibe os detalhes
-      if (stateInfo.name.toLowerCase() === searchTerm || stateId.toLowerCase() === searchTerm) {
+      // Guarda o primeiro match para seleção fallback
+      if (firstMatchId === null) {
+        firstMatchId = stateId;
+      }
+
+      // Correspondência exata por nome normalizado ou código: seleciona o estado e exibe os detalhes
+      const stateNameNorm = normalizeTerm(stateInfo.name);
+      if (stateNameNorm === searchTerm || stateId.toLowerCase() === searchTerm) {
         selectExactMatch(stateId, stateElement);
         exactMatch = true;
+        firstMatchId = stateId;
         break;
       }
     }
   }
 
-  return { foundAny, exactMatch };
+  return { foundAny, exactMatch, firstMatchId };
 }
 
 /**
@@ -197,7 +215,20 @@ function performSearch() {
     return; // Sai se a busca estiver vazia
   }
 
-  const { foundAny, exactMatch } = findAndHighlightStates(searchTerm);
+  const { foundAny, exactMatch, firstMatchId } = findAndHighlightStates(searchTerm);
+  if (exactMatch) {
+    // selectExactMatch já foi chamado dentro de findAndHighlightStates
+    return;
+  }
+  if (!exactMatch && foundAny && firstMatchId) {
+    // Seleciona o primeiro match como fallback
+    const usaMap = getMapInstance();
+    const stateElement = usaMap.getElementById(firstMatchId);
+    if (stateElement) {
+      selectExactMatch(firstMatchId, stateElement);
+      return;
+    }
+  }
   if (!exactMatch && foundAny) {
     setSearchMessage(
       `Resultados da busca por "${searchTerm}"`,
