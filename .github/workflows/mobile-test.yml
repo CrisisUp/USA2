@@ -1,0 +1,106 @@
+# .github/workflows/mobile-test.yml — Mobile Testing CI
+# Executa testes mobile com Playwright + Lighthouse CI
+
+name: Mobile Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  checks: write
+
+jobs:
+  mobile-tests:
+    name: Playwright Mobile Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run mobile tests
+        run: npx playwright test --config=playwright.mobile.config.ts
+        env:
+          TEST_BASE_URL: http://localhost:8080
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-mobile-report
+          path: playwright-report-mobile/
+          retention-days: 7
+
+      - name: Upload test screenshots/videos
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-mobile-failures
+          path: test-results/
+          retention-days: 7
+
+  lighthouse:
+    name: Lighthouse CI (Mobile Performance)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: mobile-tests
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.13.x
+
+      - name: Start HTTP server
+        run: |
+          cd usa
+          python3 -m http.server 8080 &
+          SERVER_PID=$!
+          echo "SERVER_PID=$SERVER_PID" >> $GITHUB_ENV
+          sleep 3
+
+      - name: Run Lighthouse CI
+        run: lhci autorun --config=lighthouse-budget.json
+        env:
+          LHCI_SERVER_BASE_URL: https://lhci.example.com
+
+      - name: Stop HTTP server
+        if: always()
+        run: kill $SERVER_PID
+
+      - name: Upload Lighthouse results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-results
+          path: .lighthouseci/
+          retention-days: 7
