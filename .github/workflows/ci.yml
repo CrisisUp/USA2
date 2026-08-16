@@ -23,17 +23,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # package-lock.json é intencionalmente excluído do versionamento
-      # (.gitignore) — por isso usamos `npm install` e deixamos o setup-node
-      # detectar o caminho de cache automaticamente (sem cache-dependency-path).
+      # package-lock.json é versionado para instalação determinística (npm ci) e
+      # cache de dependências no setup-node (cache-dependency-path aponta para ele).
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run format check
         run: npm run format:check
@@ -57,17 +57,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # package-lock.json é intencionalmente excluído do versionamento
-      # (.gitignore) — por isso usamos `npm install` e deixamos o setup-node
-      # detectar o caminho de cache automaticamente (sem cache-dependency-path).
+      # package-lock.json é versionado para instalação determinística (npm ci) e
+      # cache de dependências no setup-node (cache-dependency-path aponta para ele).
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
