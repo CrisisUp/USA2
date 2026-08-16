@@ -91,7 +91,7 @@ export const stateData = {
         title: 'Harry e Sally: Feitos um para o Outro',
         description:
           "Comédia romântica clássica em Nova Iorque: Katz's Delicatessen (Lower East Side), Central Park (Bow Bridge, Bethesda Terrace), Metropolitan Museum of Art e ruas do Upper West Side.",
-        cover: 'images/NY/taxi-driver.png',
+        cover: 'images/NY/when-harry-met-sally.png',
         rating: '7.7/10',
         imdbLink: 'https://www.imdb.com/title/tt0098635/',
         year: 1989,
@@ -831,7 +831,7 @@ export const stateData = {
         type: 'Filme',
         title: 'O Show de Truman',
         description:
-          'Um homem descobre que toda a sua vida é um reality show televisionado, ambientado em uma cidade fictícia inspirada em Connecticut.',
+          'Um homem descobre que toda a sua vida é um reality show televisionado. A cidade fictícia de Seahaven (inspirada em Connecticut) foi filmada em Seaside, Flórida, com sua arquitetura planejada e ruas perfeitas.',
         cover: 'images/CT/o-show-de-truman.jpg',
         rating: '8.2/10',
         imdbLink: 'https://www.imdb.com/title/tt0120382/',
@@ -842,7 +842,7 @@ export const stateData = {
         type: 'Série',
         title: 'Gilmore Girls',
         description:
-          'A relação entre uma mãe solteira e sua filha em uma charmosa cidade fictícia de Connecticut.',
+          'A relação entre uma mãe solteira e sua filha na charmosa cidade fictícia de Stars Hollow (Connecticut). Filmada nos Warner Bros Studios em Burbank, Califórnia, com cenários externos em South Pasadena e Altadena (CA).',
         cover: 'images/CT/gilmore-girls.svg',
         rating: '8.2/10',
         imdbLink: 'https://www.imdb.com/title/tt0201889/',
@@ -896,8 +896,8 @@ export const stateData = {
         type: 'Filme',
         title: 'Irmãos Gêmeos',
         description:
-          'Dois irmãos muito diferentes, separados no nascimento, se reencontram. Filmado em Providence, com cenas no Waterplace Park, na State House e na costa de Narragansett.',
-        cover: 'images/RI/irmaos-gemeos.jpg',
+          'Dois irmãos muito diferentes, separados no nascimento, se reencontram em San Diego. Cenas na orla de La Jolla, no Hotel del Coronado e no Balboa Park.',
+        cover: 'images/CA/irmaos-gemeos.jpg',
         rating: '6.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0096320/',
         year: 1988,
@@ -1241,7 +1241,7 @@ export const stateData = {
         title: 'Ecos do Além (The Mothman Prophecies)',
         description:
           'Jornalista investiga aparições misteriosas do Mothman em Point Pleasant, Virgínia Ocidental, cidade conhecida pela estátua do Mothman e pela ponte Silver Bridge.',
-        cover: 'images/WV/os-indomaveis.jpg',
+        cover: 'images/WV/mothman-prophecies.png',
         rating: '6.5/10',
         imdbLink: 'https://www.imdb.com/title/tt0264492/',
         year: 2002,
