@@ -87,21 +87,21 @@ export const stateData = {
       },
 
       {
-        type: 'Série',
-        title: 'Friends',
+        type: 'Filme',
+        title: 'Harry e Sally: Feitos um para o Outro',
         description:
-          'A vida e os amores de seis amigos que vivem em Manhattan, explorando amizade, carreira e desafios diários.',
-        cover: 'images/NY/friends.png',
-        rating: '8.9/10',
-        imdbLink: 'https://www.imdb.com/title/tt0108778/',
-        year: 1994,
+          "Comédia romântica clássica em Nova Iorque: Katz's Delicatessen (Lower East Side), Central Park (Bow Bridge, Bethesda Terrace), Metropolitan Museum of Art e ruas do Upper West Side.",
+        cover: 'images/NY/taxi-driver.png',
+        rating: '7.7/10',
+        imdbLink: 'https://www.imdb.com/title/tt0098635/',
+        year: 1989,
       },
 
       {
         type: 'Filme',
         title: 'O Poderoso Chefão',
         description:
-          'A saga da família Corleone, uma poderosa máfia italiana em Nova Iorque, com foco em poder, lealdade e traição.',
+          'A saga da família Corleone em Nova Iorque, com cenas icônicas no bairro italiano de Little Italy, no Brooklyn e na Ponte de Brooklyn.',
         cover: 'images/NY/o-poderoso-chefao.png',
         rating: '9.2/10',
         imdbLink: 'https://www.imdb.com/title/tt0068646/',
@@ -112,7 +112,7 @@ export const stateData = {
         type: 'Filme',
         title: 'O Poderoso Chefão: Parte II',
         description:
-          'A continuação da saga dos Corleone, alternando entre a ascensão do jovem Vito em Nova Iorque e o declínio de seu filho Michael.',
+          'A saga dos Corleone continua com cenas no Lago Tahoe (Nevada/Califórnia fronteira), em Havana (Cuba) e nos bairros italianos de Nova Iorque dos anos 1920-50.',
         cover: 'images/NY/o-poderoso-chefao-parte-2.jpg',
         rating: '9.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0071562/',
@@ -123,7 +123,7 @@ export const stateData = {
         type: 'Filme',
         title: 'Perdidos na Noite',
         description:
-          'Um ambicioso caubói do Texas chega a Nova Iorque em busca de sucesso e forma uma improvável amizade com um vigarista tuberculoso.',
+          "Um caubói do Texas chega a Nova Iorque e vive nas ruas da Times Square, na 42nd Street e no bairro de Hell's Kitchen dos anos 1960.",
         cover: 'images/NY/midnight-cowboy.jpg',
         rating: '8.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0064665/',
@@ -134,7 +134,7 @@ export const stateData = {
         type: 'Filme',
         title: 'Um Dia de Cão',
         description:
-          'Baseado em fatos reais, um assalto a banco em Brooklyn degenera em uma crise que toma conta da atenção da cidade inteira.',
+          'Baseado em fatos reais, um assalto a banco no Brooklyn (Chase Manhattan Bank, Gravesend) que vira cerco policial transmitido ao vivo pela TV.',
         cover: 'images/NY/dog-day-afternoon.png',
         rating: '8.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0072890/',
@@ -210,7 +210,7 @@ export const stateData = {
         type: 'Filme',
         title: 'Marley & Eu',
         description:
-          'Um casal recém-casado adota um labrador impossível e descobre que o cachorro mais difícil de todos se torna o melhor amigo da família.',
+          'Um casal recém-casado adota um labrador em Fort Lauderdale, com cenas nas praias de Hollywood Beach, no Riverwalk e no centro histórico.',
         cover: 'images/FL/marley-e-me.jpg',
         rating: '7.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0822832/',
@@ -221,7 +221,7 @@ export const stateData = {
         type: 'Filme',
         title: 'A Gaiola das Loucas',
         description:
-          'Um casal gay gerencia uma boate de drag queens em South Beach, Miami, e o filho do protagonista anuncia que vai se casar com a filha de um político conservador.',
+          'Um casal gay gerencia uma boate de drag queens em South Beach (Ocean Drive, Art Deco District), com cenas na Lincoln Road e no Vizcaya Museum.',
         cover: 'images/FL/the-birdcage.jpg',
         rating: '7.2/10',
         imdbLink: 'https://www.imdb.com/title/tt0115685/',
@@ -299,7 +299,8 @@ export const stateData = {
       {
         type: 'Filme',
         title: 'A Rede Social',
-        description: 'A história da fundação do Facebook por Mark Zuckerberg, em Harvard.',
+        description:
+          'A história da fundação do Facebook em Harvard (Cambridge), com cenas no campus de Harvard Square, no rio Charles e no Harvard Yard.',
         cover: 'images/MA/a-rede-social.png',
         rating: '7.8/10',
         imdbLink: 'https://www.imdb.com/title/tt1285016/',
@@ -422,7 +423,7 @@ export const stateData = {
         type: 'Filme',
         title: 'Sintonia de Amor',
         description:
-          'Um menino deseja uma nova esposa para seu pai, e uma jornalista responde ao seu pedido.',
+          'Um menino em Seattle deseja uma nova esposa para seu pai; cenas icônicas na Space Needle, no Pike Place Market, no lago Union e nas casas flutuantes do lago Washington.',
         cover: 'images/WA/sintonia-de-amor.jpg',
         rating: '6.8/10',
         imdbLink: 'https://www.imdb.com/title/tt0108160/',
@@ -486,7 +487,7 @@ export const stateData = {
         type: 'Filme',
         title: 'Encontro Explosivo',
         description:
-          'Uma mulher é arrastada para o mundo de um agente secreto, que a leva em uma fuga global.',
+          'Ação global com cenas no Red Rocks Amphitheatre (Morrison), nas montanhas de Aspen e nas ruas de Denver.',
         cover: 'images/CO/encontro-explosivo.jpg',
         rating: '6.3/10',
         imdbLink: 'https://www.imdb.com/title/tt1013721/',
@@ -513,7 +514,7 @@ export const stateData = {
         type: 'Série',
         title: 'CSI: Crime Scene Investigation',
         description:
-          'Uma equipe de cientistas forenses resolve crimes em Las Vegas usando tecnologia avançada.',
+          'Equipe forense resolve crimes em Las Vegas, com cenas na Strip, no Welcome to Fabulous Las Vegas Sign, nos cassinos Bellagio, Caesars Palace e no deserto de Red Rock Canyon.',
         cover: 'images/NV/csi-investigacao-criminal.png',
         rating: '7.7/10',
         imdbLink: 'https://www.imdb.com/title/tt0247082/',
@@ -652,7 +653,7 @@ export const stateData = {
         type: 'Filme',
         title: 'As Pontes de Madison',
         description:
-          'Um fotógrafo da National Geographic se envolve em um romance com uma dona de casa em Iowa.',
+          'Romance no interior de Iowa; filmado nas pontes cobertas de Madison County (Roseman, Cedar, Imes, Cutler-Donahoe, Hogback, McBride, Roseman) e na cidade de Winterset.',
         cover: 'images/IA/as-pontes-de-madison.jpg',
         rating: '7.6/10',
         imdbLink: 'https://www.imdb.com/title/tt0112579/',
@@ -857,7 +858,7 @@ export const stateData = {
         type: 'Filme',
         title: 'Jumanji',
         description:
-          'Duas crianças libertam um homem preso em um jogo de tabuleiro mágico por décadas, ambientado na fictícia Brantford, Nova Hampshire.',
+          'Ambientado na fictícia Brantford, NH; filmado em Keene (casa Parrish), em Keene State College, nas White Mountains e na cidade de Keene (Main Street).',
         cover: 'images/NH/jumanji.jpg',
         rating: '7.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0113497/',
@@ -868,7 +869,7 @@ export const stateData = {
         type: 'Filme',
         title: 'O Resgate do Soldado Ryan',
         description:
-          'O início e o fim do épico da Segunda Guerra Mundial se passam com o veterano em Nova Hampshire.',
+          'O início e fim se passam em Nova Hampshire (cena do cemitério em Normandy American Cemetery filmada em New Hampshire); filmado em Inglaterra, França e Omaha Beach (recriação).',
         cover: 'images/NH/o-resgate-do-soldado-ryan.jpg',
         rating: '8.6/10',
         imdbLink: 'https://www.imdb.com/title/tt0120815/',
@@ -884,7 +885,7 @@ export const stateData = {
         type: 'Filme',
         title: 'A Invenção de Hugo Cabret',
         description:
-          'Um órfão que vive em uma estação de trem em Paris é levado a uma aventura, com cenas iniciais que remetem a Rhode Island.',
+          'Se passa em Paris (Gare Montparnasse), mas filmado em Londres. Rhode Island aparece na cena inicial na costa de Newport e no The Breakers.',
         cover: 'images/RI/a-invencao-de-hugo-cabret.png',
         rating: '7.5/10',
         imdbLink: 'https://www.imdb.com/title/tt0970179/',
@@ -895,7 +896,7 @@ export const stateData = {
         type: 'Filme',
         title: 'Irmãos Gêmeos',
         description:
-          'Dois irmãos muito diferentes, separados no nascimento, se reencontram em Rhode Island.',
+          'Dois irmãos muito diferentes, separados no nascimento, se reencontram. Filmado em Providence, com cenas no Waterplace Park, na State House e na costa de Narragansett.',
         cover: 'images/RI/irmaos-gemeos.jpg',
         rating: '6.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0096320/',
@@ -911,7 +912,7 @@ export const stateData = {
         type: 'Filme',
         title: 'Um Hotel Bom Pra Cachorro',
         description:
-          'Duas crianças órfãs abrigam cachorros de rua em um hotel abandonado, com cenas filmadas em Vermont.',
+          'Duas crianças abrigam cachorros em um hotel abandonado; filmado em Burlington (Church Street Marketplace), Waterfront Park e no lago Champlain.',
         cover: 'images/VT/um-hotel-bom-pra-cachorro.jpg',
         rating: '6.4/10',
         imdbLink: 'https://www.imdb.com/title/tt0785108/',
@@ -921,7 +922,8 @@ export const stateData = {
       {
         type: 'Filme',
         title: 'Super Troopers',
-        description: 'Policias rodoviários peculiares de Vermont tentam salvar seus empregos.',
+        description:
+          'Polícias rodoviários de Vermont; filmado em Burlington (cena do posto), Stowe (estrada 100), Jay Peak e na fronteira com Quebec.',
         cover: 'images/VT/super-troopers.jpg',
         rating: '7.1/10',
         imdbLink: 'https://www.imdb.com/title/tt0232509/',
@@ -964,7 +966,7 @@ export const stateData = {
         type: 'Série',
         title: 'Stranger Things',
         description:
-          'Um grupo de crianças em uma cidade de Indiana se depara com forças sobrenaturais, filmado principalmente na Geórgia.',
+          'Embora se passe em Indiana (Hawkins fictícia), foi filmado em Atlanta e arredores: Jackson (Hawkins), Screen Gems Studios, East Point, Stockbridge e a floresta de Stone Mountain Park.',
         cover: 'images/GA/stranger-things.png',
         rating: '8.7/10',
         imdbLink: 'https://www.imdb.com/title/tt4574334/',
@@ -975,7 +977,7 @@ export const stateData = {
         type: 'Série',
         title: 'The Walking Dead',
         description:
-          'Sobreviventes de um apocalipse zumbi lutam para sobreviver, com grande parte da série filmada na Geórgia.',
+          'Filmado na Geórgia: Senoia (Alexandria), Riverwood Studios (Hilltop/Kingdom), Atlanta (CDC, cidade), Griffin (Woodbury), Haralson County (The Sanctuary).',
         cover: 'images/GA/the-walking-dead.jpg',
         rating: '8.1/10',
         imdbLink: 'https://www.imdb.com/title/tt1520211/',
@@ -1098,7 +1100,7 @@ export const stateData = {
         type: 'Filme',
         title: 'O Gambito da Rainha',
         description:
-          'Uma órfã prodígio do xadrez, de Kentucky, luta contra o vício enquanto busca o estrelato mundial.',
+          'Uma órfã prodígio do xadrez cresce em Lexington, Kentucky, com cenas no Lexington Theological Seminary, em Paris (KY), e no centro histórico de Lexington.',
         cover: 'images/KY/o-gambito-da-rainha.png',
         rating: '8.6/10',
         imdbLink: 'https://www.imdb.com/title/tt10048342/',
@@ -1125,7 +1127,7 @@ export const stateData = {
         type: 'Filme',
         title: 'Jogos Vorazes',
         description:
-          'Adolescentes são forçados a lutar até a morte em um evento televisivo, com muitas cenas filmadas na Carolina do Norte.',
+          'Filmado na Carolina do Norte: Charlotte (Capitol), DuPont State Recreational Forest (arena), Hildebran (Distrito 12), Concord e Shelby.',
         cover: 'images/NC/jogos-vorazes.jpg',
         rating: '7.2/10',
         imdbLink: 'https://www.imdb.com/title/tt1392170/',
@@ -1141,7 +1143,7 @@ export const stateData = {
         type: 'Filme',
         title: 'Vingadores: Os Vingadores',
         description:
-          'Super-heróis se unem para salvar a Terra de uma invasão alienígena, com a batalha final ocorrendo em Cleveland, Ohio.',
+          'A batalha final ocorre em Cleveland (Public Square, Terminal Tower, East 9th Street), com a Torre do Terminal e ruas do centro transformadas em Nova Iorque.',
         cover: 'images/OH/vingadores-os-vingadores.jpg',
         rating: '8.0/10',
         imdbLink: 'https://www.imdb.com/title/tt0848228/',
@@ -1236,13 +1238,13 @@ export const stateData = {
     media: [
       {
         type: 'Filme',
-        title: 'Missão Impossível III',
+        title: 'Ecos do Além (The Mothman Prophecies)',
         description:
-          'Ethan Hunt é forçado a voltar à ativa para enfrentar um traficante de armas. Cenas de ação foram filmadas na Virgínia Ocidental.',
-        cover: 'images/WV/missao-impossivel-iii.jpg',
-        rating: '6.9/10',
-        imdbLink: 'https://www.imdb.com/title/tt0317917/',
-        year: 2006,
+          'Jornalista investiga aparições misteriosas do Mothman em Point Pleasant, Virgínia Ocidental, cidade conhecida pela estátua do Mothman e pela ponte Silver Bridge.',
+        cover: 'images/WV/os-indomaveis.jpg',
+        rating: '6.5/10',
+        imdbLink: 'https://www.imdb.com/title/tt0264492/',
+        year: 2002,
       },
 
       {
@@ -1265,7 +1267,7 @@ export const stateData = {
         type: 'Filme',
         title: 'Clube da Luta',
         description:
-          'Um homem insone e um vendedor de sabonetes formam um clube da luta. O autor do livro é de Delaware, embora o filme não seja ambientado lá.',
+          'Embora o livro seja de autor de Delaware, o filme se passa em Los Angeles (Paper Street House, Lou Tawer, 7th Street Bridge). Delaware não é cenário.',
         cover: 'images/DE/clube-da-luta.jpg',
         rating: '8.8/10',
         imdbLink: 'https://www.imdb.com/title/tt0137523/',
@@ -1276,7 +1278,7 @@ export const stateData = {
         type: 'Filme',
         title: 'O Curioso Caso de Benjamin Button',
         description:
-          'A vida de um homem que nasce velho e rejuvenesce ao longo do tempo, com conexões a Wilmington, Delaware.',
+          'A vida de um homem que nasce velho e rejuvenesce; cenas em Nova Orleans (LA), mas conexão com Wilmington, DE (casa da infância, Ebright Azimuth, Brandywine Park).',
         cover: 'images/DE/o-curioso-caso-de-benjamin-button.png',
         rating: '7.8/10',
         imdbLink: 'https://www.imdb.com/title/tt0818955/',
@@ -1291,7 +1293,8 @@ export const stateData = {
       {
         type: 'Série',
         title: 'House of Cards',
-        description: 'Um congressista inescrupuloso e sua esposa buscam poder em Washington D.C.',
+        description:
+          'Poder em Washington D.C.: Capitólio, Casa Branca (exterior), Georgetown (ruas de paralelepípedos), National Mall, Union Station e o bairro de Foggy Bottom.',
         cover: 'images/DC/house-of-cards.png',
         rating: '8.7/10',
         imdbLink: 'https://www.imdb.com/title/tt1856010/',
@@ -1302,7 +1305,7 @@ export const stateData = {
         type: 'Filme',
         title: 'A Casa Branca',
         description:
-          'Um guarda do Capitólio deve proteger o Presidente durante um ataque à Casa Branca, em D.C.',
+          'Ataque à Casa Branca (Pennsylvania Ave, South Lawn), com cenas no Capitólio, no Monumento a Washington e no National Mall.',
         cover: 'images/DC/a-casa-branca.jpg',
         rating: '6.3/10',
         imdbLink: 'https://www.imdb.com/title/tt2302828/',
@@ -1329,7 +1332,7 @@ export const stateData = {
         type: 'Filme',
         title: 'O Silêncio dos Inocentes',
         description:
-          'Uma jovem agente do FBI busca a ajuda de um assassino em série canibal para capturar outro serial killer, com locações em Maryland.',
+          'Cenas em Baltimore (Centro de Convenções, Druid Hill Park), no Condado de Harford (casa de Buffalo Bill) e no Hospital Psiquiátrico de Springfield (MD).',
         cover: 'images/MD/o-silencio-dos-inocentes.jpg',
         rating: '8.6/10',
         imdbLink: 'https://www.imdb.com/title/tt0102926/',
@@ -1356,7 +1359,7 @@ export const stateData = {
         type: 'Filme',
         title: 'Garden State',
         description:
-          'Um ator retorna à sua cidade natal em Nova Jersey para o funeral de sua mãe e redescobre a si mesmo.',
+          'Um ator retorna a Nova Jersey (South Orange, Maplewood, Newark Airport, Lincoln Tunnel, Jersey Turnpike) para o funeral da mãe.',
         cover: 'images/NJ/garden-state.jpg',
         rating: '7.4/10',
         imdbLink: 'https://www.imdb.com/title/tt0333766/',
