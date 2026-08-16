@@ -43,8 +43,12 @@ test.describe('Smoke: Filters after click on Iowa', () => {
     await page.selectOption('#type-filter', 'Série');
     await page.waitForTimeout(300);
 
-    const count = await page.locator('.media-item').count();
-    expect(count).toBe(0); // Iowa has 0 series
+    // Iowa has 0 series → the UI renders the "no titles match" empty message
+    // (itself a <li class="media-item">), so don't count raw .media-item.
+    await expect(page.locator('#selected-state-title')).toContainText(
+      'Nenhum título corresponde aos filtros',
+      { timeout: 5000 }
+    );
   });
 
   test('Decade filter on Iowa', async ({ page }) => {
@@ -82,7 +86,8 @@ test.describe('Smoke: Search', () => {
     await page.click('#search-button');
     await page.waitForTimeout(300);
 
-    const ca = page.locator('[data-name="California"]');
+    // SVG uses the accented name ("Califórnia"), matching the data
+    const ca = page.locator('[data-name="Califórnia"]');
     await expect(ca).toHaveClass(/search-match/, { timeout: 5000 });
   });
 });
