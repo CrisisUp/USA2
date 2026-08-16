@@ -10,7 +10,7 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:a11y": "vitest run tests/a11y.test.mjs",
+    "test:a11y": "vitest run --config vitest.a11y.config.mjs",
     "test:unit": "vitest run tests/catalog.test.mjs tests/dom.test.mjs tests/utils.test.mjs tests/favorites.test.mjs tests/display.test.mjs tests/filters.test.mjs tests/search.test.mjs",
     "lint": "eslint usa/js/**/*.js tests/**/*.mjs",
     "lint:fix": "eslint usa/js/**/*.js tests/**/*.mjs --fix",
