@@ -7,7 +7,6 @@ import {
   setCurrentSelectedState,
   getMapInstance,
 } from './map-interactions.js';
-import { displayStateDetails } from './display.js';
 import { setDisplayedState } from './filters.js';
 
 let cachedStates = null; // Cache dos elementos .state do mapa

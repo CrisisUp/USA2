@@ -72,6 +72,9 @@ export function resetStateHighlights(statesList) {
     statePath.style.strokeWidth = ''; // Volta ao stroke padrão (definido no CSS)
     statePath.style.stroke = ''; // Volta ao stroke padrão (definido no CSS)
 
+    // Remove classes de estado visual
+    statePath.classList.remove('selected', 'search-match');
+
     restoreOriginalPosition(statePath);
   });
 }
@@ -116,7 +119,6 @@ export function initMapInteractions(mapElement, stateData, displayDetailsFunctio
 
     statePath.addEventListener('click', () => {
       const stateId = statePath.id;
-      console.log('[DEBUG] map-interactions: click on state', { stateId, displayDetailsFunction: displayDetailsFunction.name });
 
       // Ao clicar, garante que o estado selecionado fique na frente
       bringToFront(statePath);
@@ -133,7 +135,6 @@ export function initMapInteractions(mapElement, stateData, displayDetailsFunctio
       // View Transitions API para transição suave do painel de detalhes
       if (document.startViewTransition) {
         document.startViewTransition(() => {
-          console.log('[DEBUG] map-interactions: calling displayDetailsFunction', { stateId });
           displayDetailsFunction(stateId);
           document.getElementById('details-container').scrollIntoView({
             behavior: 'smooth',
@@ -141,7 +142,6 @@ export function initMapInteractions(mapElement, stateData, displayDetailsFunctio
           });
         });
       } else {
-        console.log('[DEBUG] map-interactions: calling displayDetailsFunction (no VT)', { stateId });
         displayDetailsFunction(stateId);
         document.getElementById('details-container').scrollIntoView({
           behavior: 'smooth',

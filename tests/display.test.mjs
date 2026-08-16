@@ -181,8 +181,19 @@ describe('display', () => {
     it('includes items without year when filtering by decade (graceful fallback)', () => {
       // Items without year are included (treated as matching any decade)
       const mediaWithoutYear = [
-        { title: 'No Year', type: 'Filme', rating: '8.0/10', imdbLink: 'https://www.imdb.com/title/tt1/' },
-        { title: 'Has Year', type: 'Filme', rating: '9.0/10', imdbLink: 'https://www.imdb.com/title/tt2/', year: 1995 },
+        {
+          title: 'No Year',
+          type: 'Filme',
+          rating: '8.0/10',
+          imdbLink: 'https://www.imdb.com/title/tt1/',
+        },
+        {
+          title: 'Has Year',
+          type: 'Filme',
+          rating: '9.0/10',
+          imdbLink: 'https://www.imdb.com/title/tt2/',
+          year: 1995,
+        },
       ];
       const result = filterMedia(mediaWithoutYear, { decade: '1990s' });
       expect(result).toHaveLength(2); // both included - no-year items match any decade

@@ -9,13 +9,12 @@ import { getMapInstance } from './map-interactions.js';
 const stateTracker = { currentStateId: null };
 let currentMapMode = 'filmes'; // 'filmes' | 'series'
 
-// Debug wrapper - SINGLE SOURCE OF TRUTH
-function setCurrentStateId(val, label = '') {
-  console.log('[DEBUG] currentStateId SET:', { from: stateTracker.currentStateId, to: val, label, stack: new Error().stack.split('\n').slice(1,3).join('\n') });
+// Wrapper para manter o estado exibido em um local único (mutações de objeto
+// são observáveis; primitivos não podem ser "observados").
+function setCurrentStateId(val) {
   stateTracker.currentStateId = val;
 }
 function getCurrentStateId() {
-  console.log('[DEBUG] currentStateId GET:', stateTracker.currentStateId);
   return stateTracker.currentStateId;
 }
 
@@ -24,14 +23,12 @@ function getCurrentStateId() {
  * @returns {{type: string, minRating: number, favoritesOnly: boolean}} Filtros atuais.
  */
 export function getActiveFilters() {
-  const filters = {
+  return {
     type: document.getElementById('type-filter').value,
     minRating: parseInt(document.getElementById('min-rating').value, 10) || 0,
     favoritesOnly: document.getElementById('favorites-filter').value.trim() !== '',
     decade: document.getElementById('decade-filter').value,
   };
-  console.log('[DEBUG] getActiveFilters:', filters);
-  return filters;
 }
 
 /**
@@ -39,13 +36,9 @@ export function getActiveFilters() {
  */
 export function applyFilters() {
   const csid = getCurrentStateId();
-  console.log('[DEBUG] applyFilters called, currentStateId:', csid);
   if (csid) {
     const filters = getActiveFilters();
-    console.log('[DEBUG] applyFilters calling displayStateDetails with filters:', filters);
     displayStateDetails(csid, filters);
-  } else {
-    console.log('[DEBUG] applyFilters: currentStateId is null, skipping displayStateDetails');
   }
 }
 
@@ -54,9 +47,7 @@ export function applyFilters() {
  * @param {string} stateId - O ID do estado selecionado.
  */
 export function setDisplayedState(stateId) {
-  console.log('[DEBUG] setDisplayedState called:', { stateId, currentStateIdBefore: getCurrentStateId() });
-  setCurrentStateId(stateId, 'setDisplayedState');
-  console.log('[DEBUG] setDisplayedState: currentStateId set to:', getCurrentStateId());
+  setCurrentStateId(stateId);
   applyFilters();
 }
 
