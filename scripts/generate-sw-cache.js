@@ -13,6 +13,10 @@ async function walkDir(dir, fileList = [], baseDir = dir) {
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
+      // Ignora a pasta tools/ — contém scripts one-shot de desenvolvimento que
+      // não fazem parte do site e são excluídos do versionamento (.gitignore).
+      // Incluí-la no cache faria o service worker falhar em produção.
+      if (entry.name === 'tools') continue;
       await walkDir(fullPath, fileList, baseDir);
     } else {
       // Ignora arquivos ocultos e sourcemaps
