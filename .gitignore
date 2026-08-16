@@ -29,6 +29,8 @@ coverage/
 
 # --- Testes ---
 .nyc_output/
+test-results/
+playwright-report/
 
 # --- Vercel ---
 .vercel/
