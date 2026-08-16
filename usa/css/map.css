@@ -3,6 +3,7 @@
 #usa-map {
   width: 100%;
   height: auto;
+  touch-action: manipulation; /* Evita zoom/pan indesejado no mapa em touch */
 }
 
 /* Estilos para os estados no SVG */

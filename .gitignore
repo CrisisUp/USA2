@@ -34,3 +34,5 @@ playwright-report/
 
 # --- Vercel ---
 .vercel/
+.vercel
+.env*

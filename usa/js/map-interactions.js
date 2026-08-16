@@ -105,17 +105,37 @@ export function initMapInteractions(mapElement, stateData, displayDetailsFunctio
       statePath.appendChild(title);
     }
 
-    // Evento de mouse enter (hover)
+    // Evento de mouse enter (hover) - desktop
     statePath.addEventListener('mouseenter', () => {
       bringToFront(statePath);
     });
 
-    // Evento de mouse leave (des-hover)
+    // Evento de mouse leave (des-hover) - desktop
     statePath.addEventListener('mouseleave', () => {
       if (statePath !== currentSelectedState) {
         restoreOriginalPosition(statePath);
       }
     });
+
+    // Touch events para mobile - traz para frente ao tocar
+    statePath.addEventListener(
+      'touchstart',
+      e => {
+        e.preventDefault(); // Evita scroll/zoom no mapa
+        bringToFront(statePath);
+      },
+      { passive: false }
+    );
+
+    // Touch end - dispara o click handler existente
+    statePath.addEventListener(
+      'touchend',
+      e => {
+        e.preventDefault();
+        statePath.click();
+      },
+      { passive: false }
+    );
 
     statePath.addEventListener('click', () => {
       const stateId = statePath.id;

@@ -334,24 +334,56 @@ export function initStatePopovers(mapElement, stateData) {
         popover.id = `popover-${stateId}`;
       }
 
-      // Mostra no mouseenter
-      statePath.addEventListener('mouseenter', () => {
-        popover.showPopover();
-        // Posiciona próximo ao cursor
-        const rect = statePath.getBoundingClientRect();
+      // Função para posicionar o popover
+      const positionPopover = element => {
+        const rect = element.getBoundingClientRect();
         popover.style.left = `${rect.left + window.scrollX + rect.width / 2}px`;
         popover.style.top = `${rect.top + window.scrollY - 10}px`;
         popover.style.transform = 'translateX(-50%) translateY(-100%)';
+      };
+
+      // Desktop: mostra no hover
+      statePath.addEventListener('mouseenter', () => {
+        positionPopover(statePath);
+        popover.showPopover();
       });
 
-      // Esconde no mouseleave
       statePath.addEventListener('mouseleave', () => {
         popover.hidePopover();
       });
 
-      // Limpeza
+      // Mobile: toggle no touch/click
+      let touchHandled = false;
+      statePath.addEventListener(
+        'touchstart',
+        () => {
+          touchHandled = true;
+        },
+        { passive: true }
+      );
+
+      statePath.addEventListener(
+        'touchend',
+        e => {
+          if (!touchHandled) return;
+          touchHandled = false;
+          e.preventDefault();
+          positionPopover(statePath);
+          // Toggle: se aberto, fecha; se fechado, abre
+          if (popover.matches(':popover-open')) {
+            popover.hidePopover();
+          } else {
+            popover.showPopover();
+          }
+        },
+        { passive: false }
+      );
+
+      // Click (desktop): fecha popover se aberto
       statePath.addEventListener('click', () => {
-        popover.hidePopover();
+        if (popover.matches(':popover-open')) {
+          popover.hidePopover();
+        }
       });
     }
   });
