@@ -1,6 +1,5 @@
 # --- Dependências / build local (não versionar) ---
 node_modules/
-package-lock.json
 npm-debug.log*
 
 # --- Ferramentas one-shot de build de capas (não fazem parte do site) ---
