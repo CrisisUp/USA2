@@ -21,12 +21,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # package-lock.json é versionado para instalação determinística (npm ci) e
       # cache de dependências no setup-node (cache-dependency-path aponta para ele).
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22'
           cache: 'npm'
@@ -55,12 +55,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # package-lock.json é versionado para instalação determinística (npm ci) e
       # cache de dependências no setup-node (cache-dependency-path aponta para ele).
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22'
           cache: 'npm'
@@ -93,8 +93,8 @@ jobs:
   #   needs: lint-test
   #   runs-on: ubuntu-latest
   #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: actions/setup-node@v4
+  #     - uses: actions/checkout@v5
+  #     - uses: actions/setup-node@v5
   #       with:
   #         node-version: '22'
   #         cache: 'npm'
@@ -108,7 +108,7 @@ jobs:
   #   if: github.event_name == 'pull_request'
   #   runs-on: ubuntu-latest
   #   steps:
-  #     - uses: actions/checkout@v4
+  #     - uses: actions/checkout@v5
   #     - uses: amondnet/vercel-action@v25
   #       with:
   #         vercel-token: ${{ secrets.VERCEL_TOKEN }}
@@ -123,7 +123,7 @@ jobs:
   #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
   #   runs-on: ubuntu-latest
   #   steps:
-  #     - uses: actions/checkout@v4
+  #     - uses: actions/checkout@v5
   #     - uses: amondnet/vercel-action@v25
   #       with:
   #         vercel-token: ${{ secrets.VERCEL_TOKEN }}
